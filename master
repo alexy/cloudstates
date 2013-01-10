@@ -1,0 +1,17 @@
+interface: 0.0.0.0
+user: root
+state_top: top.sls
+log_level: debug
+file_roots:
+  base:
+    - /srv/cloudconf/salt/
+  dev:
+    - /srv/cloudconf/salt/dev/services
+    - /srv/cloudconf/salt/dev/states
+  prod:
+    - /srv/cloudconf/salt/prod/services
+    - /srv/cloudconf/salt/prod/states
+
+pillar_roots:
+  base:
+    - /srv/cloudconf/pillar

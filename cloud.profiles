@@ -1,4 +1,21 @@
 #/etc/salt/cloud.profiles
+base_ubuntu_aws_tomcat:
+  provider: aws
+  image: ami-e565ba8c
+  AWS.availability_zone: us-west-2b
+
+  size: Micro Instance
+  os: Ubuntu
+  AWS:
+  	- securitygroup:
+  		- tomcat
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+  grains:
+    environment: production
+    role: tomcat
+
 base_ubuntu_aws_prod:
   provider: aws
   image: ami-e565ba8c
@@ -9,6 +26,7 @@ base_ubuntu_aws_prod:
   		- versal
   minion:
     master: mcp.vrsl.net
+    log_level: debug
   grains:
     environment: production
 
@@ -22,6 +40,7 @@ base_ubuntu_aws_staging:
   		- versal
   minion:
     master: mcp.vrsl.net
+    log_level: debug
   grains:
     environment: production
 
@@ -35,5 +54,6 @@ base_ubuntu_aws_dev:
   		- versal
   minion:
     master: mcp.vrsl.net
+    log_level: debug
 	grains:
 	    role: webserver
