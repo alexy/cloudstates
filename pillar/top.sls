@@ -11,5 +11,5 @@
 
 base:
   '*':
-    - packagenames
-    - servers
+    # - packagenames
+    # - servers
