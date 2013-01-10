@@ -1,0 +1,35 @@
+# /etc/salt/cloud
+
+log_level: debug
+
+# Set up the location of the salt master
+minion:
+  master: mcp.vrsl.net
+
+# Set the AWS login data
+AWS.id: AKIAI432PQQEY2TABA7A
+AWS.key: '5XPJ2TCdQ6kUuAd/SPr2yJJCz/80pQBkHKqsm5jc'
+AWS.keyname: versalsaltca
+AWS.securitygroup: 
+	- versal
+
+AWS.private_key: /root/versalsaltca.pem
+
+# Set up an optional default cloud provider
+provider: AWS
+
+# Optionally configure default region
+AWS.location: us-west-2
+AWS.availability_zone: us-west-2b
+
+# Specify whether to use public or private IP for deploy script 
+# private_ips or public_ips
+# https://github.com/saltstack/salt-cloud/pull/18
+
+# AWS.ssh_interface: public_ips
+AWS.ssh_interface: public_ips
+
+# Configure which user to use to run the deploy script
+AWS.ssh_username: 
+  - ubuntu
+  - ec2-user  
