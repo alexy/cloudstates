@@ -4,8 +4,8 @@
 
 {% if grains['os'] == 'RedHat' %}
 apache: httpd
-git: git
+#git: git
 {% elif grains['os'] == 'Debian' %}
 apache: apache2
-git: git-core
+#git: git-core
 {% endif %}
