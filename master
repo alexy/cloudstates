@@ -14,4 +14,4 @@ file_roots:
 
 pillar_roots:
   base:
-    - /srv/cloudconf/pillar
+    - /srv/cloudstate/pillar
