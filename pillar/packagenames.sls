@@ -1,6 +1,6 @@
 #Handle package name differences...
 #In the sls files, load this data by using this:
-# name: {{ pillar['git'] }}
+# name: pillar['git']
 
 {% if grains['os'] == 'RedHat' %}
 apache: httpd
