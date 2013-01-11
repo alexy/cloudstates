@@ -1,6 +1,6 @@
 api:
   - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
-	- ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
+  - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
   # - api2.vrsl.net
   # - api3.vrsl.net
   # - api4.vrsl.net
