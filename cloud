@@ -6,10 +6,15 @@ log_level: debug
 minion:
   master: mcp.vrsl.net
 
+
+## AWS-Specific Setup
+
 # Set the AWS login data
 AWS.id: AKIAI432PQQEY2TABA7A
 AWS.key: '5XPJ2TCdQ6kUuAd/SPr2yJJCz/80pQBkHKqsm5jc'
 AWS.keyname: versalsaltca
+
+# Put security groups Here
 AWS.securitygroup: 
 	- versal
 
