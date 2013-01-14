@@ -12,5 +12,19 @@
 base:
   '*':
     - packagenames
+
+localdev:
+  '*':
     - servers
 
+dev:
+  '*':
+    - servers
+
+staging:
+  '*':
+    - servers            
+
+prod:
+  '*':
+    - servers
