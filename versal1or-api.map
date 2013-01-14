@@ -1,0 +1,23 @@
+#versal_cluster map file
+
+# provider: aws
+#  image: ami-7e2da54e
+#  size: Micro Instance
+#  script: Ubuntu
+
+base_ubuntu_small_aws:
+{% set api_servers = pillar["api"] %}
+{% for api_server in api_servers: %}
+  - api_server{{ x }}.vrsl.net
+  {% if y is not '' }
+  - eip_cname: {{ y }}{%}
+  {% if z is not '' }
+    - dns: {{ z }}{%}
+  - grains:
+    roles:
+      - api
+    environment:
+      - {{pillar["environment"]}}
+    dns:
+      - {{api_server}}
+{% endfor %}        
