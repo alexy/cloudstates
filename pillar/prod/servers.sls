@@ -1,3 +1,5 @@
+# prod servers
+
 api:
   - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
   - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080

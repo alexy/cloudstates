@@ -4,7 +4,10 @@ state_top: top.sls
 log_level: debug
 file_roots:
   base:
-    - /srv/cloudconf/salt/
+    - /srv/cloudconf/salt
+    - /srv/cloudconf/salt/base
+    - /srv/cloudconf/salt/base/services
+    - /srv/cloudconf/salt/base/states
   localdev:
     - /srv/cloudconf/salt/localdev/services
     - /srv/cloudconf/salt/localdev/states
@@ -22,10 +25,10 @@ pillar_roots:
   base:
     - /srv/cloudstate/pillar
   localdev:
-    - /srv/cloudstate/pillar_localdev
+    - /srv/cloudstate/pillar/localdev
   dev:
-    - /srv/cloudstate/pillar_dev
+    - /srv/cloudstate/pillar/dev
   staging:
-    - /srv/cloudstate/pillar_staging
+    - /srv/cloudstate/pillar/staging
   prod:
-    - /srv/cloudstate/pillar_prod
+    - /srv/cloudstate/pillar/prod
