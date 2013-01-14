@@ -12,13 +12,13 @@ minion:
 # Set the AWS login data
 AWS.id: AKIAI432PQQEY2TABA7A
 AWS.key: '5XPJ2TCdQ6kUuAd/SPr2yJJCz/80pQBkHKqsm5jc'
-AWS.keyname: versalsaltca
+AWS.keyname: versal1or
 
 # Put security groups Here
 AWS.securitygroup: 
-	- versal
+  - versal
 
-AWS.private_key: /root/versalsaltca.pem
+AWS.private_key: /root/keys/versal1or.pem
 
 # Set up an optional default cloud provider
 provider: AWS
@@ -32,7 +32,7 @@ AWS.availability_zone: us-west-2b
 # https://github.com/saltstack/salt-cloud/pull/18
 
 # AWS.ssh_interface: public_ips
-AWS.ssh_interface: public_ips
+AWS.ssh_interface: private_ips
 
 # Configure which user to use to run the deploy script
 AWS.ssh_username: 

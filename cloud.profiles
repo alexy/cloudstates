@@ -2,14 +2,14 @@
 
 base_ubuntu_small:
   provider: aws
-  image: ami-e565ba8c
+  image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
 
   size: Micro Instance
   os: Ubuntu
   AWS:
-  	- securitygroup:
-  		- tomcat
+    - securitygroup:
+      - tomcat
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -23,8 +23,8 @@ base_ubuntu_small:
 #   size: Micro Instance
 #   os: Ubuntu
 #   AWS:
-#   	- securitygroup:
-#   		- versal
+#     - securitygroup:
+#       - versal
 #   minion:
 #     master: mcp.vrsl.net
 #     log_level: debug
@@ -37,8 +37,8 @@ base_ubuntu_small:
 #   size: Micro Instance
 #   os: Ubuntu
 #   AWS:
-#   	- securitygroup:
-#   		- versal
+#     - securitygroup:
+#       - versal
 #   minion:
 #     master: mcp.vrsl.net
 #     log_level: debug
@@ -51,8 +51,8 @@ base_ubuntu_small:
 #   size: Micro Instance
 #   os: Ubuntu
 #   AWS:
-#   	- securitygroup:
-#   		- versal
+#     - securitygroup:
+#       - versal
 #   minion:
 #     master: mcp.vrsl.net
 #     log_level: debug
