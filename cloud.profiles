@@ -1,6 +1,6 @@
 #/etc/salt/cloud.profiles
 #http://cloud-images.ubuntu.com/releases/precise/release/
-base_ubuntu_micro_aws:
+base_ubuntu_micro_aws_west-2b:
   provider: aws
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
@@ -10,7 +10,17 @@ base_ubuntu_micro_aws:
     master: mcp.vrsl.net
     log_level: debug
 
-base_ubuntu_small_aws:
+base_ubuntu_micro_aws_west-2c:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: Micro Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+base_ubuntu_small_aws_west-2b:
   provider: aws
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
@@ -20,7 +30,17 @@ base_ubuntu_small_aws:
     master: mcp.vrsl.net
     log_level: debug
 
-base_ubuntu_medium_aws:
+base_ubuntu_small_aws_west-2c:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: Small Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+base_ubuntu_medium_aws_west-2b:
   provider: aws
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
@@ -30,7 +50,17 @@ base_ubuntu_medium_aws:
     master: mcp.vrsl.net
     log_level: debug
 
-base_ubuntu_large_aws:
+base_ubuntu_medium_aws_west-2c:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: High-CPU Medium Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+base_ubuntu_large_aws_west-2b:
   provider: aws
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
@@ -40,7 +70,15 @@ base_ubuntu_large_aws:
     master: mcp.vrsl.net
     log_level: debug
 
-
+base_ubuntu_large_aws_west-2c:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: Large Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
 
 
 

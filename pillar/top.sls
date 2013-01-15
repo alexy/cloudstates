@@ -14,17 +14,21 @@ base:
     - packagenames
 
 localdev:
-  '*':
+  'environment:localdev':
+    - match: grain  
     - servers
 
 dev:
-  '*':
+  'environment:dev':
+    - match: grain  
     - servers
 
 staging:
-  '*':
+  'environment:staging':
+    - match: grain  
     - servers            
 
 prod:
-  '*':
+  'environment:prod':
+    - match: grain 
     - servers
