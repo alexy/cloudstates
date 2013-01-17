@@ -1,5 +1,6 @@
 #/etc/salt/cloud.profiles
 #http://cloud-images.ubuntu.com/releases/precise/release/
+
 base_ubuntu_micro_aws_west-2b:
   provider: aws
   image: ami-7e2da54e

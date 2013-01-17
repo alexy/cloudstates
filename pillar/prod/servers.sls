@@ -1,15 +1,18 @@
 # prod servers
 
 api:
-  - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
-  - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
-  # - api2.vrsl.net
-  # - api3.vrsl.net
-  # - api4.vrsl.net
+	- auto-managed: False
+	- instances:
+	  - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
+	  - ec2-54-245-225-244.us-west-2.compute.amazonaws.com:8080
+	  - ec2-54-245-225-245.us-west-2.compute.amazonaws.com:8080
+	  - ec2-54-245-225-246.us-west-2.compute.amazonaws.com:8080
 
-# lb:
-#   - lb1.vrsl.net
-#   - lb2.vrsl.net
+lb:
+	- auto-managed: False
+	- instances:
+	  - lb1.vrsl.net
+	  - lb2.vrsl.net
 
 # log:
 #   - log1.vrsl.net

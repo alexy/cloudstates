@@ -1,40 +1,78 @@
-# staging servers
+# staging servers pillar
+
+domain: staging.vrsl.net
+
+environment: staging
+
+#api1-staging.vrsl.net
+
 
 api:
-  - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
-  - ec2-54-245-225-243.us-west-2.compute.amazonaws.com:8080
-  # - api2.vrsl.net
-  # - api3.vrsl.net
-  # - api4.vrsl.net
+  role: 'api'
+  size: 'small'
+  tenant: 'single'
+  dns: 'dynamic'
+  instances:
+    - {number: 2, provider: 'aws', region: 'west-2b'}
+    - {number: 2, provider: 'aws', region: 'west-2c'}
 
-# lb:
-#   - lb1.vrsl.net
-#   - lb2.vrsl.net
 
-# log:
-#   - log1.vrsl.net
+lb:
+  role: 'lb'
+  size: 'small'
+  tenant: 'single'
+  dns: 'static'
+  instances: 
+    - {number: 1, provider: 'aws', region: 'west-2b'}
+    - {number: 1, provider: 'aws', region: 'west-2c'}
 
-# db:
-#   - db1.vrsl.net
-#   - db2.vrsl.net
-#   - db3.vrsl.net
-#   - db4.vrsl.net
+api_names:
+  - apple
+  - banana
+  - cherry
+  - date
+  - etrog
+  - fig
+  - grape
+  - huckleberry
+  - indianalmond
+  - jasmine
+  - kiwi
+  - lemon
+  - melon
+  - nectarine
+  - orange
+  - plum
+  - quinze
+  - raspberry
+  - strawberry
+  - tangerine
+  - ugli
+  - vanilla
+  - watermelon
+  - xigua
+  - yumberry
+  - zucchini
 
-# List of default TCP ports to open in iptables:
-#accept_tcp_ports:
-#  - 80
-#  - 22
+lb_names:
+  - agnon
+  - beckett
+  - camus
+  - deledda
+  - elytis
+  - faulkner
+  - garcia
+  - hemingway
+  - italia
+  - jensen
+  - kipling
+  - lewis
 
-# List of all daemons which should be enabled at boot:
-# daemons:
-#   - syslog-ng
-#   - network
-#   - sshd
-#   - ntpd
-#   - crond
-#   - iptables
-#   - salt-minion
+lb_static_ips:
+  - 54.245.225.145
+  - 54.245.225.243
 
-# List of users allowed to log in with ssh:
-# allowed_users:
-#   - myunprivilegeduser
+
+# uni:
+#   - 192.168.1.4
+#   - 192.168.1.5

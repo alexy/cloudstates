@@ -2,6 +2,13 @@ interface: 0.0.0.0
 user: root
 state_top: top.sls
 log_level: debug
+#renderer: yaml_jinja #this is the default
+renderer: mako_yaml
+state_verbose: true
+state_output: full
+
+failhard: False # if true, will stop salt execution after first failure.
+
 file_roots:
   base:
     - /srv/cloudconf/salt

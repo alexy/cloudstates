@@ -1,0 +1,71 @@
+#!mako|yaml
+
+#versal staging environment map file
+
+# provider: aws
+#  image: ami-7e2da54e
+#  size: Micro Instance
+#  script: Ubuntu
+
+#cluster needs to...
+# parse the number of needed, single-tenance instances per region 
+
+
+## setup api servers
+
+% servergroup = pillar["api"]
+% servernames = pillar["api_names"]
+% for instance in servergroup["instances"]:
+  % for x in range(instance["number"]):
+base_ubuntu_${servergroup["size"]}_${servergroup["provider"]}_${servergroup["region"]}:
+  - ${servernames[x]}-${pillar["domain"]}
+    grains:
+      roles:
+        - ${servergroup["role"]}
+      environment: pillar["environment"]
+  % endfor
+
+% endfor 
+
+# ## setup lb servers
+
+% servergroup = pillar["lb"]
+% servernames = pillar["lb_names"]
+% serverips = pillar["lb_static_ips"]
+% for instance in servergroup["instances"]:
+  % for x in range(instance["number"]):
+base_ubuntu_${servergroup["size"]}_${servergroup["provider"]}_${servergroup["region"]}:
+  - ${servernames[x]}-${pillar["domain"]}
+    grains:
+      roles:
+        - ${servergroup["role"]}
+      environment: pillar["environment"]
+    % if servergroup["dns"] == 'static':
+        % for serverip in serverips:
+      eip: ${serverip[x]}
+        % endfor
+    % endif
+  % endfor
+% endfor 
+
+
+
+
+
+
+
+# {% set api_servers = pillar["api"] %}
+# {% for api_server in api_servers: %}
+#   - api_server{{ x }}.vrsl.net
+#   {% if y is not '' }
+#   - eip_cname: {{ y }}{%}
+#   {% if z is not '' }
+#     - dns: {{ z }}{%}
+#   - grains:
+#     roles:
+#       - api
+#     environment:
+#       - {{pillar["environment"]}}
+#     dns:
+#       - {{api_server}}
+# {% endfor %}        
