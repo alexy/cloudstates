@@ -8,8 +8,21 @@
 #  script: Ubuntu
 
 #cluster needs to...
-# parse the number of needed, single-tenance instances per region 
+# parse the number of needed, single-tenant instances per region 
 
+<%
+from yaml import load, dump
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+
+
+environment='staging'
+
+stream = file('/srv/cloudstate/pillar/'+environment+'/servers.sls', 'r')
+pillar = load(stream, Loader=Loader)
+%>
 
 ## setup api servers
 
