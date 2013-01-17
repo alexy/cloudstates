@@ -3,7 +3,7 @@ user: root
 state_top: top.sls
 log_level: debug
 #renderer: yaml_jinja #this is the default
-renderer: mako_yaml
+renderer: mako|yaml
 state_verbose: true
 state_output: full
 
