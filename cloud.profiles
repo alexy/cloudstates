@@ -80,3 +80,83 @@ staging_large_region-2:
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
+
+prod_micro_region-1:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2b
+  size: Micro Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+prod_micro_region-2:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: Micro Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+prod_small_region-1:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2b
+  size: Small Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+prod_small_region-2:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: Small Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+prod_medium_region-1:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2b
+  size: High-CPU Medium Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+prod_medium_region-2:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: High-CPU Medium Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+prod_large_region-1:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2b
+  size: Large Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
+
+prod_large_region-2:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-2c
+  size: Large Instance
+  os: Ubuntu
+  minion:
+    master: mcp.vrsl.net
+    log_level: debug
