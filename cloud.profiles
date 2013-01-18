@@ -8,7 +8,6 @@ base_ubuntu_micro_aws_west-2b:
   size: Micro Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
 
 base_ubuntu_micro_aws_west-2c:
@@ -18,7 +17,6 @@ base_ubuntu_micro_aws_west-2c:
   size: Micro Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
 
 base_ubuntu_small_aws_west-2b:
@@ -28,7 +26,6 @@ base_ubuntu_small_aws_west-2b:
   size: Small Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
 
 base_ubuntu_small_aws_west-2c:
@@ -38,7 +35,6 @@ base_ubuntu_small_aws_west-2c:
   size: Small Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
 
 base_ubuntu_medium_aws_west-2b:
@@ -48,7 +44,6 @@ base_ubuntu_medium_aws_west-2b:
   size: High-CPU Medium Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
 
 base_ubuntu_medium_aws_west-2c:
@@ -58,7 +53,6 @@ base_ubuntu_medium_aws_west-2c:
   size: High-CPU Medium Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
 
 base_ubuntu_large_aws_west-2b:
@@ -68,7 +62,6 @@ base_ubuntu_large_aws_west-2b:
   size: Large Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
 
 base_ubuntu_large_aws_west-2c:
@@ -78,58 +71,4 @@ base_ubuntu_large_aws_west-2c:
   size: Large Instance
   os: Ubuntu
   minion:
-    master: mcp.vrsl.net
     log_level: debug
-
-
-
-
-
-
-
-
-
-#  grains:
-#    environment: production
-
-# base_ubuntu_aws_prod:
-#   provider: aws
-#   image: ami-e565ba8c
-#   size: Micro Instance
-#   os: Ubuntu
-#   AWS:
-#     - securitygroup:
-#       - versal
-#   minion:
-#     master: mcp.vrsl.net
-#     log_level: debug
-#   grains:
-#     environment: production
-
-# base_ubuntu_aws_staging:
-#   provider: aws
-#   image: ami-e565ba8c
-#   size: Micro Instance
-#   os: Ubuntu
-#   AWS:
-#     - securitygroup:
-#       - versal
-#   minion:
-#     master: mcp.vrsl.net
-#     log_level: debug
-#   grains:
-#     environment: production
-
-# base_ubuntu_aws_dev:
-#   provider: aws
-#   image: ami-e565ba8c
-#   size: Micro Instance
-#   os: Ubuntu
-#   AWS:
-#     - securitygroup:
-#       - versal
-#   minion:
-#     master: mcp.vrsl.net
-#     log_level: debug
-# 	grains:
-# 	    role: webserver

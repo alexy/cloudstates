@@ -1,7 +1,7 @@
 # staging servers pillar
 
 domain: staging.vrsl.net
-
+salt_master: mcp-staging.vrsl.net
 environment: staging
 
 # api1-staging.vrsl.net

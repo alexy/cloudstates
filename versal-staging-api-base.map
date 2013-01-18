@@ -26,6 +26,7 @@ servernum = 0
 base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
   % for x in range(instance["number"]):
   - ${servernames[servernum]}-${pillar["domain"]}:
+      master: ${pillar["salt_master"]}
       grains:
         roles:
           - ${servergroup["role"]}
