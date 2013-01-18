@@ -13,18 +13,18 @@ api:
   tenant: 'single'
   dns: 'dynamic'
   instances:
-    - {number: 2, provider: 'aws', region: 'west-2b'}
-    - {number: 2, provider: 'aws', region: 'west-2c'}
+    - {number: 2, region: 1}
+    - {number: 2, region: 2}
 
 
 lb:
   role: 'lb'
   size: 'small'
   tenant: 'single'
-  dns: 'static'
+  dns: 'dynamic'
   instances: 
-    - {number: 1, provider: 'aws', region: 'west-2b'}
-    - {number: 1, provider: 'aws', region: 'west-2c'}
+    - {number: 1, region: 1}
+    - {number: 1, region: 2}
 
 api_names:
   - apple

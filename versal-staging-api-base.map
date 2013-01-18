@@ -10,7 +10,6 @@ except ImportError:
 import inspect,os
 
 environment='staging'
-#stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
 basedirectory=os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) # script directory
 
 stream = file(basedirectory+'/pillar/'+environment+'/servers.sls', 'r')
@@ -23,7 +22,7 @@ servernames = pillar["api_names"]
 servernum = 0
 %>
 % for instance in servergroup["instances"]:
-base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
+${environment}_${servergroup["size"]}_region-${instance["region"]}:
   % for x in range(instance["number"]):
   - ${servernames[servernum]}-${pillar["domain"]}:
       master: ${pillar["salt_master"]}
