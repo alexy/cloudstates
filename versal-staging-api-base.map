@@ -12,11 +12,9 @@ except ImportError:
 import os
 
 environment='staging'
-#stream = file(os.getcwd()+'/'+environment+'/servers.sls','r')
-#stream = file(os.path.abspath(__file__)+'/pillar/'+environment+'/servers.sls','r')
 
 #stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
-stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
+stream = file('/srv/cloudstate/pillar/'+environment+'/servers.sls', 'r')
 pillar = load(stream, Loader=Loader)
 %>
 
