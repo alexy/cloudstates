@@ -1,7 +1,5 @@
 #!mako|yaml
-
 #versal staging environment map file
-
 <%
 ## load the pillar file.
 from yaml import load, dump
@@ -12,28 +10,24 @@ except ImportError:
 import os
 
 environment='staging'
-
 #stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
 stream = file('/srv/cloudstate/pillar/'+environment+'/servers.sls', 'r')
 pillar = load(stream, Loader=Loader)
 %>
-
 ## setup api servers
-
 <% 
 servergroup = pillar["api"]
 servernames = pillar["api_names"]
 servernum = 0
 %>
-
 % for instance in servergroup["instances"]:
 base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
   % for x in range(instance["number"]):
   - ${servernames[servernum]}-${pillar["domain"]}:
-    grains:
-      roles:
-        - ${servergroup["role"]}
-      environment: ${pillar["environment"]}
+      grains:
+        roles:
+          - ${servergroup["role"]}
+        environment: ${pillar["environment"]}
   <% servernum = servernum + 1 %>
   % endfor
 % endfor 

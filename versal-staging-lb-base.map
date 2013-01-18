@@ -1,7 +1,5 @@
 #!mako|yaml
-
 #versal staging environment map file
-
 <%
 ## load the pillar file.
 from yaml import load, dump
@@ -12,34 +10,29 @@ except ImportError:
 import os
 
 environment='staging'
-
 #stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
-stream = file('/srv/cloudstate/pillar/'+environment+'/servers.sls', 'r')
-
+stream = file('/srv/cqloudstate/pillar/'+environment+'/servers.sls', 'r')
 pillar = load(stream, Loader=Loader)
 %>
 
 ## setup lb servers
-
 <%
 servergroup = pillar["lb"]
 servernames = pillar["lb_names"]
 serverips = pillar["lb_static_ips"]
 servernum = 0
 %>
-
 % for instance in servergroup["instances"]:
   % for x in range(instance["number"]):
 base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
   - ${servernames[servernum]}-${pillar["domain"]}:
-    grains:
-      roles:
-        - ${servergroup["role"]}
-      environment: ${pillar["environment"]}
+      grains:
+        roles:
+          - ${servergroup["role"]}
+        environment: ${pillar["environment"]}
     % if servergroup["dns"] == 'static':
-      static: ${serverips[servernum]}
+        static: ${serverips[servernum]}
     % endif
-
   <% servernum = servernum + 1 %>
   % endfor
 % endfor 
