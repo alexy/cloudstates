@@ -29,11 +29,11 @@ servernum = 0
 % for instance in servergroup["instances"]:
 base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
   % for x in range(instance["number"]):
-  - ${servernames[servernum]}-${pillar["domain"]}
-      grains:
-        roles:
-          - ${servergroup["role"]}
-        environment: ${pillar["environment"]}
+  - ${servernames[servernum]}-${pillar["domain"]}:
+    grains:
+      roles:
+        - ${servergroup["role"]}
+      environment: ${pillar["environment"]}
   <% servernum = servernum + 1 %>
   % endfor
 % endfor 

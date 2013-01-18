@@ -32,12 +32,12 @@ servernum = 0
   % for x in range(instance["number"]):
 base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
   - ${servernames[servernum]}-${pillar["domain"]}:
-      grains:
-        roles:
-          - ${servergroup["role"]}
-        environment: ${pillar["environment"]}
+    grains:
+      roles:
+        - ${servergroup["role"]}
+      environment: ${pillar["environment"]}
     % if servergroup["dns"] == 'static':
-        static: ${serverips[servernum]}
+      static: ${serverips[servernum]}
     % endif
 
   <% servernum = servernum + 1 %>
