@@ -6,6 +6,9 @@ log_level: debug
 minion:
   master: mcp.vrsl.net
 
+## renderer: mako_yaml
+
+
 
 ## AWS-Specific Setup
 

@@ -9,10 +9,14 @@ try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
+import os
 
 environment='staging'
-stream = file('/srv/cloudstate/pillar/'+environment+'/servers.sls', 'r')
+#stream = file(os.getcwd()+'/'+environment+'/servers.sls','r')
+#stream = file(os.path.abspath(__file__)+'/pillar/'+environment+'/servers.sls','r')
+
 #stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
+stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
 pillar = load(stream, Loader=Loader)
 %>
 
@@ -48,7 +52,7 @@ servernum = 0
 % for instance in servergroup["instances"]:
   % for x in range(instance["number"]):
 base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
-  - ${servernames[servernum]}-${pillar["domain"]}
+  - ${servernames[servernum]}-${pillar["domain"]}:
     grains:
       roles:
         - ${servergroup["role"]}

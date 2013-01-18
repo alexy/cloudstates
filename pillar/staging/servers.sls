@@ -4,7 +4,7 @@ domain: staging.vrsl.net
 
 environment: staging
 
-#api1-staging.vrsl.net
+# api1-staging.vrsl.net
 
 
 api:
