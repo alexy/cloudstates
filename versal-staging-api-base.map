@@ -1,0 +1,55 @@
+#!mako|yaml
+
+#versal staging environment map file
+
+<%
+## load the pillar file.
+from yaml import load, dump
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+import os
+
+environment='staging'
+#stream = file(os.getcwd()+'/'+environment+'/servers.sls','r')
+#stream = file(os.path.abspath(__file__)+'/pillar/'+environment+'/servers.sls','r')
+
+#stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
+stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
+pillar = load(stream, Loader=Loader)
+%>
+
+## setup api servers
+
+<% 
+servergroup = pillar["api"]
+servernames = pillar["api_names"]
+servernum = 0
+%>
+
+% for instance in servergroup["instances"]:
+base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
+  % for x in range(instance["number"]):
+  - ${servernames[servernum]}-${pillar["domain"]}
+    grains:
+      roles:
+        - ${servergroup["role"]}
+      environment: ${pillar["environment"]}
+  <% servernum = servernum + 1 %>
+  % endfor
+% endfor 
+
+
+# Necessary patches for salt-cloud to make this work...
+# from mako.template import Template
+# import yaml
+
+# environment='staging'
+# fp_ = '/srv/cloudstate/pillar/'+environment+'/servers.sls'
+# #fp_ = '/srv/cloudstate/pillar/'+environment+'/servers.sls'
+# #fp_ = '/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls'
+# #fp_ = '/Users/mini/Versal/cloudstate/versal-staging.map'
+
+# temp_ = Template(open(fp_, 'r').read())
+# map_ = temp_.render()

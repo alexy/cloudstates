@@ -20,27 +20,7 @@ stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls'
 pillar = load(stream, Loader=Loader)
 %>
 
-## setup api servers
-
-<% 
-servergroup = pillar["api"]
-servernames = pillar["api_names"]
-servernum = 0
-%>
-
-% for instance in servergroup["instances"]:
-  % for x in range(instance["number"]):
-base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}:
-  - ${servernames[servernum]}-${pillar["domain"]}
-    grains:
-      roles:
-        - ${servergroup["role"]}
-      environment: ${pillar["environment"]}
-  <% servernum = servernum + 1 %>
-  % endfor
-% endfor 
-
-# ## setup lb servers
+## setup lb servers
 
 <%
 servergroup = pillar["lb"]
