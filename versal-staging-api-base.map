@@ -7,11 +7,13 @@ try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
-import os
+import inspect,os
 
 environment='staging'
 #stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
-stream = file('/srv/cloudstate/pillar/'+environment+'/servers.sls', 'r')
+basedirectory=os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) # script directory
+
+stream = file(basedirectory+'/pillar/'+environment+'/servers.sls', 'r')
 pillar = load(stream, Loader=Loader)
 %>
 ## setup api servers
@@ -31,17 +33,3 @@ base_ubuntu_${servergroup["size"]}_${instance["provider"]}_${instance["region"]}
   <% servernum = servernum + 1 %>
   % endfor
 % endfor 
-
-
-# Necessary patches for salt-cloud to make this work...
-# from mako.template import Template
-# import yaml
-
-# environment='staging'
-# fp_ = '/srv/cloudstate/pillar/'+environment+'/servers.sls'
-# #fp_ = '/srv/cloudstate/pillar/'+environment+'/servers.sls'
-# #fp_ = '/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls'
-# #fp_ = '/Users/mini/Versal/cloudstate/versal-staging.map'
-
-# temp_ = Template(open(fp_, 'r').read())
-# map_ = temp_.render()

@@ -9,7 +9,7 @@ environment: staging
 
 api:
   role: 'api'
-  size: 'small'
+  size: 'medium'
   tenant: 'single'
   dns: 'dynamic'
   instances:
@@ -24,7 +24,7 @@ lb:
   dns: 'static'
   instances: 
     - {number: 1, provider: 'aws', region: 'west-2b'}
-    - {number: 4, provider: 'aws', region: 'west-2c'}
+    - {number: 1, provider: 'aws', region: 'west-2c'}
 
 api_names:
   - apple
