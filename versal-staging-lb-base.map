@@ -11,7 +11,7 @@ import os
 
 environment='staging'
 #stream = file('/Users/mini/Versal/cloudstate/pillar/'+environment+'/servers.sls', 'r')
-stream = file('/srv/cqloudstate/pillar/'+environment+'/servers.sls', 'r')
+stream = file('/srv/cloudstate/pillar/'+environment+'/servers.sls', 'r')
 pillar = load(stream, Loader=Loader)
 %>
 
