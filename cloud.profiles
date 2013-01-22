@@ -6,7 +6,7 @@ staging_micro_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: Micro Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -19,7 +19,7 @@ staging_micro_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: Micro Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -32,7 +32,7 @@ staging_small_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: Small Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -45,7 +45,7 @@ staging_small_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: Small Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -58,7 +58,7 @@ staging_medium_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: High-CPU Medium Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -71,7 +71,7 @@ staging_medium_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: High-CPU Medium Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -84,7 +84,7 @@ staging_large_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: Large Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -97,7 +97,7 @@ staging_large_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: Large Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
     log_level: debug
@@ -110,7 +110,7 @@ prod_micro_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: Micro Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -123,7 +123,7 @@ prod_micro_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: Micro Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -136,7 +136,7 @@ prod_small_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: Small Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -149,7 +149,7 @@ prod_small_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: Small Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -162,7 +162,7 @@ prod_medium_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: High-CPU Medium Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -175,7 +175,7 @@ prod_medium_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: High-CPU Medium Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -188,7 +188,7 @@ prod_large_region-1:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2b
   size: Large Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
@@ -201,7 +201,7 @@ prod_large_region-2:
   image: ami-7e2da54e
   AWS.availability_zone: us-west-2c
   size: Large Instance
-  os: Ubuntu
+  script: Ubuntu
   minion:
     master: mcp.vrsl.net
     log_level: debug
