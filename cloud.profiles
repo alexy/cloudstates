@@ -12,7 +12,7 @@ staging_micro_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 staging_micro_region-2:
   provider: aws
@@ -25,7 +25,7 @@ staging_micro_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 staging_small_region-1:
   provider: aws
@@ -38,7 +38,7 @@ staging_small_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako    
+      - common.services.mako    
 
 staging_small_region-2:
   provider: aws
@@ -51,7 +51,7 @@ staging_small_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako    
+      - common.services.mako    
 
 staging_medium_region-1:
   provider: aws
@@ -64,7 +64,7 @@ staging_medium_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 staging_medium_region-2:
   provider: aws
@@ -77,7 +77,7 @@ staging_medium_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 staging_large_region-1:
   provider: aws
@@ -90,7 +90,7 @@ staging_large_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 staging_large_region-2:
   provider: aws
@@ -103,7 +103,7 @@ staging_large_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_micro_region-1:
   provider: aws
@@ -116,7 +116,7 @@ prod_micro_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_micro_region-2:
   provider: aws
@@ -129,7 +129,7 @@ prod_micro_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_small_region-1:
   provider: aws
@@ -142,7 +142,7 @@ prod_small_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_small_region-2:
   provider: aws
@@ -155,7 +155,7 @@ prod_small_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_medium_region-1:
   provider: aws
@@ -168,7 +168,7 @@ prod_medium_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_medium_region-2:
   provider: aws
@@ -181,7 +181,7 @@ prod_medium_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_large_region-1:
   provider: aws
@@ -194,7 +194,7 @@ prod_large_region-1:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
 
 prod_large_region-2:
   provider: aws
@@ -207,4 +207,4 @@ prod_large_region-2:
     log_level: debug
     startup_states: sls
     sls_list:
-      - mako
+      - common.services.mako
