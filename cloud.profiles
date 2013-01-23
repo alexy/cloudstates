@@ -79,6 +79,32 @@ staging_small_region-2:
     sls_list:
       - common.services.mako    
 
+staging_small_region-3:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-1b
+  size: Small Instance
+  script: Ubuntu
+  minion:
+    master: mcp-staging.vrsl.net
+    log_level: debug
+    startup_states: sls
+    sls_list:
+      - common.services.mako    
+
+staging_small_region-4:
+  provider: aws
+  image: ami-7e2da54e
+  AWS.availability_zone: us-west-1c
+  size: Small Instance
+  script: Ubuntu
+  minion:
+    master: mcp-staging.vrsl.net
+    log_level: debug
+    startup_states: sls
+    sls_list:
+      - common.services.mako    
+
 staging_medium_region-1:
   provider: aws
   image: ami-7e2da54e

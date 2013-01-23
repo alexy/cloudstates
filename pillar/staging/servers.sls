@@ -13,8 +13,8 @@ api:
   tenant: 'single'
   dns: 'dynamic'
   instances:
-    - {number: 2, region: 1}
-    - {number: 2, region: 2}
+    - {number: 2, region: 3}
+    - {number: 2, region: 4}
 
 
 lb:

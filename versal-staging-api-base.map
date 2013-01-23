@@ -24,7 +24,7 @@ servernum = 0
 % for instance in servergroup["instances"]:
 ${environment}_${servergroup["size"]}_region-${instance["region"]}:
   % for x in range(instance["number"]):
-  - ${servernames[servernum]}-${pillar["domain"]}:
+  - ${servernames[servernum]}-r${instance["region"]}-${pillar["domain"]}:
       master: ${pillar["salt_master"]}
       grains:
         roles:
