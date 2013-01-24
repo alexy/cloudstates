@@ -1,10 +1,12 @@
+#!yaml
 #/etc/salt/cloud.profiles
 #http://cloud-images.ubuntu.com/releases/precise/release/
 
-staging_micro_region-1:
+staging_micro_region-1-1:
   provider: aws
   image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
+  location: us-west-2
+  availability_zone: us-west-2b
   size: Micro Instance
   script: Ubuntu
   minion:
@@ -14,10 +16,11 @@ staging_micro_region-1:
     sls_list:
       - common.services.mako
 
-staging_micro_region-2:
+staging_micro_region-1-2:
   provider: aws
   image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
+  location: us-west-2
+  availability_zone: us-west-2c
   size: Micro Instance
   script: Ubuntu
   minion:
@@ -27,10 +30,11 @@ staging_micro_region-2:
     sls_list:
       - common.services.mako
 
-staging_micro_region-3:
+staging_micro_region-2-1:
   provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1b
+  image: ami-b87252fd
+  location: us-west-1
+  availability_zone: us-west-1b
   size: Micro Instance
   script: Ubuntu
   minion:
@@ -40,10 +44,11 @@ staging_micro_region-3:
     sls_list:
       - common.services.mako
 
-staging_micro_region-4:
+staging_micro_region-2-2:
   provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1c
+  image: ami-b87252fd
+  location: us-west-1
+  availability_zone: us-west-1c
   size: Micro Instance
   script: Ubuntu
   minion:
@@ -53,10 +58,11 @@ staging_micro_region-4:
     sls_list:
       - common.services.mako
 
-staging_small_region-1:
+staging_small_region-1-1:
   provider: aws
   image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
+  location: us-west-2
+  availability_zone: us-west-2b
   size: Small Instance
   script: Ubuntu
   minion:
@@ -66,10 +72,11 @@ staging_small_region-1:
     sls_list:
       - common.services.mako    
 
-staging_small_region-2:
+staging_small_region-2-1:
   provider: aws
   image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
+  location: us-west-2
+  availability_zone: us-west-2c
   size: Small Instance
   script: Ubuntu
   minion:
@@ -79,10 +86,11 @@ staging_small_region-2:
     sls_list:
       - common.services.mako    
 
-staging_small_region-3:
+staging_small_region-2-1:
   provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1b
+  image: ami-b87252fd
+  location: us-west-1
+  availability_zone: us-west-1b
   size: Small Instance
   script: Ubuntu
   minion:
@@ -92,10 +100,11 @@ staging_small_region-3:
     sls_list:
       - common.services.mako    
 
-staging_small_region-4:
+staging_small_region-2-2:
   provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1c
+  image: ami-b87252fd
+  location: us-west-1
+  availability_zone: us-west-1c
   size: Small Instance
   script: Ubuntu
   minion:
@@ -105,10 +114,11 @@ staging_small_region-4:
     sls_list:
       - common.services.mako    
 
-staging_medium_region-1:
+staging_medium_region-1-2:
   provider: aws
   image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
+  location: us-west-2
+  availability_zone: us-west-2b
   size: High-CPU Medium Instance
   script: Ubuntu
   minion:
@@ -121,7 +131,7 @@ staging_medium_region-1:
 staging_medium_region-2:
   provider: aws
   image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
+  availability_zone: us-west-2c
   size: High-CPU Medium Instance
   script: Ubuntu
   minion:
@@ -133,8 +143,8 @@ staging_medium_region-2:
 
 staging_medium_region-3:
   provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1b
+  image: ami-b87252fd
+  availability_zone: us-west-1b
   size: High-CPU Medium Instance
   script: Ubuntu
   minion:
@@ -146,168 +156,12 @@ staging_medium_region-3:
 
 staging_medium_region-4:
   provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1c
+  image: ami-b87252fd
+  availability_zone: us-west-1c
   size: High-CPU Medium Instance
   script: Ubuntu
   minion:
     master: mcp-staging.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-staging_large_region-1:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
-  size: Large Instance
-  script: Ubuntu
-  minion:
-    master: mcp-staging.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-staging_large_region-2:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
-  size: Large Instance
-  script: Ubuntu
-  minion:
-    master: mcp-staging.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-staging_large_region-3:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1b
-  size: Large Instance
-  script: Ubuntu
-  minion:
-    master: mcp-staging.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-staging_large_region-4:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-1c
-  size: Large Instance
-  script: Ubuntu
-  minion:
-    master: mcp-staging.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_micro_region-1:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
-  size: Micro Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_micro_region-2:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
-  size: Micro Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_small_region-1:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
-  size: Small Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_small_region-2:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
-  size: Small Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_medium_region-1:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
-  size: High-CPU Medium Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_medium_region-2:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
-  size: High-CPU Medium Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_large_region-1:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2b
-  size: Large Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
-    log_level: debug
-    startup_states: sls
-    sls_list:
-      - common.services.mako
-
-prod_large_region-2:
-  provider: aws
-  image: ami-7e2da54e
-  AWS.availability_zone: us-west-2c
-  size: Large Instance
-  script: Ubuntu
-  minion:
-    master: mcp.vrsl.net
     log_level: debug
     startup_states: sls
     sls_list:
