@@ -16,12 +16,10 @@ region_mapping:
       location: us-west-2
       availability_zone: us-west-2c
   - # California
-    - aws-1b:
-      provider: aws
+    - provider: aws
       location: us-west-1
       availability_zone: us-west-1b
-    - aws-1c:
-      provider: aws
+    - provider: aws
       location: us-west-2
       availability_zone: us-west-1c
 
