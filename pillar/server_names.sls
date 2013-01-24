@@ -4,7 +4,7 @@
 # roles. 
 
 server_names:
-  api_names:
+  api:
     - apple
     - banana
     - cherry
@@ -31,7 +31,7 @@ server_names:
     - xigua
     - yumberry
     - zucchini
-  lb_names:
+  lb:
     - agnon
     - beckett
     - camus
