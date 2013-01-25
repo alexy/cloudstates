@@ -63,10 +63,13 @@ $>
 
 server_status:
 % for server in server_salt_cloud:
+  ${serverparams = servername.split('-')} # servername / region / subregion+domain
+  ${param_region = serverparams[1]} # region
+  ${param_subregion = serverparams[2].split('.')[0]} # subregion
   - name: ${server['name']}
     roles: ${get_role(server['name'],server_names)}
-  % if get_region_provider(serverparams[1],serverparams[2]) == 'aws':
-    ${aws_region = get_aws_location(serverparams[1],serverparams[2])}
+  % if get_region_provider(param_region, param_subregion) == 'aws':
+    ${aws_region = get_aws_location(param_region, param_subregion)}
     public_dns: ${generate_aws_cname(server[public_dns],aws_region)}
     private_dns: ${generate_aws_cname(server[private_dns],aws_region, 'private_dns')}
   % else: # everyone but aws
@@ -74,6 +77,4 @@ server_status:
     private_dns: ${server[private_dns]}
   % endif
     state: ${server[state]}
-    ${serverparams = servername.split('-')}
-     # region / subregion
 % endfor
