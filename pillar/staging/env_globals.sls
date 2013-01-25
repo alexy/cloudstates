@@ -13,5 +13,4 @@ minion:
   startup_states: sls
   sls_list:
     - common.services.mako
-    - taco
 
