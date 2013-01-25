@@ -11,7 +11,7 @@ cloud_images:
     # http://cloud-images.ubuntu.com/releases/precise/release/
     # Example usage: pillar['cloud_images']['aws']['ubuntu']['1204_LTS']
 
-    ubuntu:
+    Ubuntu:
       12_04_LTS:
         us-west-1: ami-b87252fd
         us-west-2: ami-7e2da54e

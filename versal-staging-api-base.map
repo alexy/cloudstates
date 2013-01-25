@@ -12,8 +12,10 @@ import inspect,os
 environment='staging'
 basedirectory=os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) # script directory
 
-stream = file(basedirectory+'/pillar/'+environment+'/servers.sls', 'r')
-pillar = load(stream, Loader=Loader)
+# pillar = [] see if we need this
+with file(basedirectory+'/pillar/'+environment+'/server_roles.sls', 'r') as f:
+  pillar = load(f, Loader=Loader)
+
 %>
 ## setup api servers
 <% 

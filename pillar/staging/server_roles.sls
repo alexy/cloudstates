@@ -12,11 +12,11 @@ server_roles:
     size: 'medium'
     tenant: 'single'
     dns: 'dynamic'
-    os: ubuntu
+    os: Ubuntu
     os-version: 12_04_LTS
     instances:
-      - {number: 2, region: 1, subregion: 1}
-      - {number: 2, region: 1, subregion: 1}
+      - {number: 2, region: 0, subregion: 1}
+      - {number: 2, region: 0, subregion: 2}
 
 
   lb:
@@ -24,8 +24,8 @@ server_roles:
     size: 'small'
     tenant: 'single'
     dns: 'dynamic'
-    os: ubuntu
+    os: Ubuntu
     os-version: 12_04_LTS
     instances: 
-      - {number: 1, region: 1, subregion: 1}
-      - {number: 1, region: 1, subregion: 2}
+      - {number: 1, region: 0, subregion: 1}
+      - {number: 1, region: 0, subregion: 2}
