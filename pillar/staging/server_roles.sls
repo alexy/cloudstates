@@ -15,7 +15,7 @@ server_roles:
     os: ubuntu
     os-version: 12_04_LTS
     instances:
-      - {number: 2, region: 1, subregion: 1}
+      - {number: 2, region: 0, subregion: 0}
       - {number: 2, region: 1, subregion: 1}
 
 
@@ -27,5 +27,5 @@ server_roles:
     os: ubuntu
     os-version: 12_04_LTS
     instances: 
+      - {number: 1, region: 0, subregion: 0}
       - {number: 1, region: 1, subregion: 1}
-      - {number: 1, region: 1, subregion: 2}
