@@ -43,7 +43,7 @@ def load_pillar():
 
 
 def name_instance_kind(env, instance_kind, region_index, subregion_index):
-  return "%s-%s-%d-%d" % (env, instance_kind, region_index, subregion_index)
+  return "%s_%s_region-%d-%d" % (env, instance_kind, region_index, subregion_index)
 
 
 def generate_cloud_profiles(p, envs, os_name="Ubuntu", os_version="12_04_LTS"):
