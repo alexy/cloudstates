@@ -2,7 +2,7 @@
 
 # Include the GLOBAL region mapping pillar data here.
 # For example: 
-# pillar["region_mapping"][0][1]
+# pillar["region_mapping"][0][1]["location"]
 
 region_mapping:
   - # Oregon
