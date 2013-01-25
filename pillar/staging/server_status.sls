@@ -52,14 +52,15 @@ def get_aws_location(region, subregion):
   '''
   return pillar["region_mapping"][region][subregion]["location"]
 
-$>
-
 #format:
 #- name: apple-0-1.vrsl.net
 #  id: i-32141ja
 #  public_dns: 192.168.1.1
 #  private_dns: 127.0.0.1
 #  state: RUNNING
+$>
+
+
 
 server_status:
 % for server in server_salt_cloud:
