@@ -3,7 +3,7 @@
 # When a server is started, the server is added to servers_status. If a server is terminated, 
 # it is removed. If a server is 'stopped', it shows as state: STOPPED
 
-<$
+<$!
 
 server_salt_cloud = pillar['aws']
 server_names = pillar['server_names']
