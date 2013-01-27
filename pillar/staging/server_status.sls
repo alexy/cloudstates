@@ -46,7 +46,8 @@ def load_pillar():
           # TODO barf profusely
           print "KEY CONFLICT on '%s' reading %s" % (k, pathname)
         else:
-          p[k] = d_[k]
+          # set the pillars!
+          global k = d_[k]
 
   return p
 
@@ -109,6 +110,7 @@ def get_aws_location(region, subregion):
 server_status:
 % for server in server_salt_cloud:
   <%
+  load_pillar()
   serverparams = server['name'].split('-') # servername / region / subregion+domain
   param_region = serverparams[2] # region
   param_subregion = serverparams[3]

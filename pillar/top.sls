@@ -13,11 +13,11 @@
 
 base:
   '*':
-    - server_names
-    - static_ips
-    - region_mapping
-    - instance_kinds
-    - cloud_images
+    # - server_names
+    # - static_ips
+    # - region_mapping
+    # - instance_kinds
+    # - cloud_images
 
 localdev:
   'environment:localdev':
