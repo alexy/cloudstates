@@ -6,7 +6,7 @@ log_level: debug
 renderer: mako|yaml
 state_verbose: true
 state_output: full
-
+worker_threads: 2
 failhard: False # if true, will stop salt execution after first failure.
 
 file_roots:
