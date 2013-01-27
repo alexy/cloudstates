@@ -13,4 +13,6 @@ minion:
   startup_states: sls
   sls_list:
     - common.services.mako
+  grains:
+    environment: staging
 
