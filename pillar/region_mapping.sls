@@ -20,6 +20,6 @@ region_mapping:
       location: us-west-1
       availability_zone: us-west-1b
     - provider: aws
-      location: us-west-2
+      location: us-west-1
       availability_zone: us-west-1c
 
