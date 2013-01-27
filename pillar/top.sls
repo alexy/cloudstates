@@ -33,7 +33,8 @@ staging:
     - match: grain
     - env_globals
     - server_roles
-    - server_status    
+    - server_status
+    - salt_cloud    
 
 prod:
   'environment:prod':
