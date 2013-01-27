@@ -3,10 +3,10 @@
 # When a server is started, the server is added to servers_status. If a server is terminated, 
 # it is removed. If a server is 'stopped', it shows as state: STOPPED
 
-<%
-server_names = pillar['server_names']
-server_salt_cloud = pillar['aws']
+${server_names = pillar['server_names']}
+${server_salt_cloud = pillar['aws']}
 
+<%
 def get_role(server_search_name, server_names_local):
   '''
   Searches the passed python object for an entry with the designated name.
