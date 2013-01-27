@@ -23,7 +23,10 @@ def load_pillar():
   # environment   = 'staging'
   # envdirectory  = basedirectory+environment+'/'
 
-  envdirectory= os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+  basedirectory = '/srv/cloudstate/pillar/'
+  environment   = 'staging'
+  envdirectory  = basedirectory+environment+'/'
+
   pillar_env_files    = ['server_names', 'salt_cloud_live_instances', 'region_mapping']
 
   pillar_files = []
