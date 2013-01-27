@@ -4,7 +4,7 @@ log_level: debug
 
 # Set up the location of the salt master
 minion:
-  master: mcp.vrsl.net
+  master: mcp-staging.vrsl.net
 
 ## renderer: mako_yaml
 
@@ -24,7 +24,7 @@ AWS.securitygroup:
 AWS.private_key: /root/keys/versal1or.pem
 
 # Set up an optional default cloud provider
-provider: AWS
+provider: aws
 
 # Optionally configure default region
 AWS.location: us-west-2
