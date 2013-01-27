@@ -1,3 +1,5 @@
+#!yaml
+
 #https://salt.readthedocs.org/en/latest/topics/pillar/index.html
 #pillar data is available GLOBALLY to all scripts and minions!
 #to sync pillar data with minions manually, do:
@@ -11,7 +13,6 @@
 
 base:
   '*':
-    - packagenames
     - server_names
     - static_ips
     - region_mapping
