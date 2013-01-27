@@ -9,7 +9,7 @@
 server_roles:
   api:
     role: 'api'
-    size: 'medium'
+    size: 'medium_cpu'
     tenant: 'single'
     dns: 'dynamic'
     os: Ubuntu
