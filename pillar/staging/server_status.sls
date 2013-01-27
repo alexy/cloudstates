@@ -4,9 +4,8 @@
 # it is removed. If a server is 'stopped', it shows as state: STOPPED
 
 <%
-
-server_salt_cloud = pillar['aws']
 server_names = pillar['server_names']
+server_salt_cloud = pillar['aws']
 
 def get_role(server_search_name, server_names_local):
   '''
