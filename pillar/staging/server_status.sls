@@ -137,6 +137,6 @@ server_status:
     public_dns: ${server_salt_cloud[server]['public_ips'][0]}
     private_dns: ${server_salt_cloud[server]['private_ips'][0]}
   % endif
-    state: ${server['state']}
+    state: ${server_salt_cloud[server]['state']}
   % endif
 % endfor
