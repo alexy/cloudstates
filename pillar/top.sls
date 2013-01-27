@@ -15,7 +15,7 @@ base:
     - server_names
     - static_ips
     - region_mapping
-    - instance-kinds
+    - instance_kinds
     - cloud_images
 
 localdev:
