@@ -12,23 +12,32 @@
 base:
   '*':
     - packagenames
+    - server_names
+    - static_ips
+    - region_mapping
+    - instance-kinds
+    - cloud_images
 
 localdev:
   'environment:localdev':
     - match: grain  
-    - servers
+    - env_globals
 
 dev:
   'environment:dev':
     - match: grain  
-    - servers
+    - env_globals
 
 staging:
   'environment:staging':
-    - match: grain  
-    - servers            
+    - match: grain
+    - env_globals
+    - server_roles
+    - server_status    
 
 prod:
   'environment:prod':
-    - match: grain 
-    - servers
+    - match: grain  
+    - env_globals
+
+
