@@ -3,6 +3,8 @@ staging_medium_cpu_region-0-0:
   image: ami-7e2da54e
   location: us-west-2
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -16,6 +18,8 @@ staging_medium_cpu_region-0-1:
   image: ami-7e2da54e
   location: us-west-2
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -29,6 +33,8 @@ staging_medium_cpu_region-0-2:
   image: ami-7e2da54e
   location: us-west-2
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -42,6 +48,8 @@ staging_medium_cpu_region-1-0:
   image: ami-b87252fd
   location: us-west-1
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -52,9 +60,11 @@ staging_medium_cpu_region-1-0:
   size: High-CPU Medium Instance
 staging_medium_cpu_region-1-1:
   availability_zone: us-west-1c
-  image: ami-7e2da54e
-  location: us-west-2
+  image: ami-b87252fd
+  location: us-west-1
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -68,6 +78,8 @@ staging_small_region-0-0:
   image: ami-7e2da54e
   location: us-west-2
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -81,6 +93,8 @@ staging_small_region-0-1:
   image: ami-7e2da54e
   location: us-west-2
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -94,6 +108,8 @@ staging_small_region-0-2:
   image: ami-7e2da54e
   location: us-west-2
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -107,6 +123,8 @@ staging_small_region-1-0:
   image: ami-b87252fd
   location: us-west-1
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
@@ -117,9 +135,11 @@ staging_small_region-1-0:
   size: Small Instance
 staging_small_region-1-1:
   availability_zone: us-west-1c
-  image: ami-7e2da54e
-  location: us-west-2
+  image: ami-b87252fd
+  location: us-west-1
   minion:
+    grains:
+      environment: staging
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
