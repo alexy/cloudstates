@@ -6,7 +6,15 @@ log_level: debug
 renderer: mako|yaml
 state_verbose: true
 state_output: full
+
+#http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
+schedule:
+  highstate:
+    function: state.highstate
+    minutes: 10
+
 worker_threads: 2
+
 failhard: False # if true, will stop salt execution after first failure.
 
 file_roots:
