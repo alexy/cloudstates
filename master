@@ -23,6 +23,7 @@ file_roots:
     - /srv/cloudconf/salt/base
     - /srv/cloudconf/salt/base/services
     - /srv/cloudconf/salt/base/states
+    - /srv/cloudstate/util
   localdev:
     - /srv/cloudconf/salt/localdev/services
     - /srv/cloudconf/salt/localdev/states
