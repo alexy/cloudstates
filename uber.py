@@ -71,7 +71,8 @@ def generate_cloud_profiles(p, envs, os_name="Ubuntu", os_version="12_04_LTS"):
           instance_props           = subregion.copy() # TODO fields are only for AWS
           instance_props['image']  = image
           instance_props['size']   = instance_size
-          instance_props['script'] = os_name # TODO map Ubuntu to ubuntu and rename os back to the latter
+  # salt-cloud reverted John's change, not using script, falling on bootstrap for now
+  #        instance_props['script'] = os_name # TODO map Ubuntu to ubuntu and rename os back to the latter
           instance_props['minion'] = minion
 
           r[instance_key] = instance_props
