@@ -1,13 +1,55 @@
-#!jinja|mako|yaml
+#!mako|yaml
 
 # When a server is started, the server is added to servers_status. If a server is terminated, 
 # it is removed. If a server is 'stopped', it shows as state: STOPPED
 
-{% set server_salt_cloud = pillar['aws'] %}
-{% set server_names = pillar['server_names'] %}
-
-
 <%
+
+#!/usr/bin/env python
+from yaml import load, dump
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
+import inspect,os
+
+from copy import deepcopy
+
+import sys, argparse
+
+
+def load_pillar():
+  # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
+  # environment   = 'staging'
+  # envdirectory  = basedirectory+environment+'/'
+  envdirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+
+  pillar_env_files    = ['env_globals', 'server_roles','server_names','server_status', 'salt_cloud_live_instances']
+  pillar_global_files = ['instance_kinds','cloud_images', 'region_mapping', 'server_names', 'static_ips']
+
+  pillar_files = []
+
+  for filename in pillar_env_files:
+    pillar_files.append(envdirectory + filename + '.sls')
+
+  for filename in pillar_global_files:
+    pillar_files.append('../' + filename + '.sls')
+
+  p = {}
+
+
+  for pathname in pillar_files:  
+    with file(pathname, 'r') as f:
+      d_ = load(f, Loader=Loader)
+      for k in d_:
+        if p.has_key(k):
+          # TODO barf profusely
+          print "KEY CONFLICT on '%s' reading %s" % (k, pathname)
+        else:
+          p[k] = d_[k]
+
+  return p
+
 def get_role(server_search_name, server_names_local):
   '''
   Searches the passed python object for an entry with the designated name.
