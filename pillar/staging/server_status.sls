@@ -110,19 +110,20 @@ def get_aws_location(region, subregion):
   p = load_pillar()
   server_names = p['server_names']
   server_salt_cloud = p['aws']
-  region_mapping=p['region_mapping']
+  server_region_mapping=p['region_mapping']
 %>
 server_status:
 % for server in server_salt_cloud:
   <%
-  server_names = p['server_names']
-  server_salt_cloud = p['aws']
-  server_region_mapping = p['region_mapping']
-  serverparams = server['name'].split('-') # servername / region / subregion+domain
-  param_region = serverparams[2] # region
-  param_subregion = serverparams[3]
-  ##param_subregion = serverparams[2].split('.')[0] # subregion
+  serverparams = server.split('-') # servername / region / subregion+domain
+  #must have split properly E.G. apple-region-0-0-staging.vrsl.net
   %>
+
+  % if len(serverparams) == 5:
+    <% 
+    param_region = int(serverparams[2]) # region
+    param_subregion = int(serverparams[3])
+    %>
 
   - name: ${server}
     roles: ${get_role(server,server_names)}
@@ -137,4 +138,5 @@ server_status:
     private_dns: ${server['private_dns']}
   % endif
     state: ${server['state']}
+  % endif
 % endfor
