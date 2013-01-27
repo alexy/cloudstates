@@ -66,11 +66,13 @@ def get_aws_location(region, subregion):
 
 server_status:
 % for server in server_salt_cloud:
-  ${serverparams = server['name'].split('-')} # servername / region / subregion+domain
-  ${param_region = serverparams[2]} # region
-  ${param_subregion = serverparams[3]}
+  <%
+  serverparams = server['name'].split('-') # servername / region / subregion+domain
+  param_region = serverparams[2] # region
+  param_subregion = serverparams[3]
   ##param_subregion = serverparams[2].split('.')[0] # subregion
-
+  %>
+  
   - name: ${server['name']}
     roles: ${get_role(server['name'],server_names)}
   % if get_region_provider(param_region, param_subregion) == 'aws':
