@@ -23,7 +23,7 @@ def load_pillar():
   # envdirectory  = basedirectory+environment+'/'
 
   envdirectory= os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-  pillar_env_files    = ['server_names', 'salt_cloud_live_instances']
+  pillar_env_files    = ['server_names', 'salt_cloud_live_instances', 'region_mapping']
 
   pillar_files = []
 
@@ -86,13 +86,13 @@ def get_region_provider(region, subregion):
   '''
   Given a `region` and `subregion`, this function will return the provider type.
   '''
-  return pillar["region_mapping"][region][subregion]["provider"]
+  return server_region_mapping[region][subregion]["provider"]
 
 def get_aws_location(region, subregion):
   '''
   Given a `region` and `subregion`, this function will return the name of the aws location.
   '''
-  return pillar["region_mapping"][region][subregion]["location"]
+  return server_region_mapping[region][subregion]["location"]
 
 #format:
 #- name: apple-region-0-1-staging.vrsl.net
@@ -109,6 +109,7 @@ server_status:
   <%
   server_names = p['server_names']
   server_salt_cloud = p['aws']
+  server_region_mapping = p['region_mapping']
   serverparams = server['name'].split('-') # servername / region / subregion+domain
   param_region = serverparams[2] # region
   param_subregion = serverparams[3]
