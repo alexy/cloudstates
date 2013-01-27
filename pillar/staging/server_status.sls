@@ -5,7 +5,7 @@
 
 <$
 
-server_salt_cloud = pillar['salt-cloud-output']
+server_salt_cloud = pillar['aws']
 server_names = pillar['server_names']
 
 def get_role(server_search_name, server_names_local):
@@ -19,6 +19,7 @@ def get_role(server_search_name, server_names_local):
         return role_name
       
   return 'none'  
+  #TODO print error message. raise exception
 
 def generate_aws_cname(ip_address, region='us-west-2', dns_type='public_dns'):
   '''
@@ -39,6 +40,7 @@ def generate_aws_cname(ip_address, region='us-west-2', dns_type='public_dns'):
     return temp_cname
   else:
     return 'error. unknown dns_type.' 
+  #TODO print error message. raise exception
 
 def get_region_provider(region, subregion):
   '''
@@ -53,7 +55,7 @@ def get_aws_location(region, subregion):
   return pillar["region_mapping"][region][subregion]["location"]
 
 #format:
-#- name: apple-0-1.vrsl.net
+#- name: apple-region-0-1-staging.vrsl.net
 #  id: i-32141ja
 #  public_dns: 192.168.1.1
 #  private_dns: 127.0.0.1
@@ -65,8 +67,10 @@ $>
 server_status:
 % for server in server_salt_cloud:
   ${serverparams = servername.split('-')} # servername / region / subregion+domain
-  ${param_region = serverparams[1]} # region
-  ${param_subregion = serverparams[2].split('.')[0]} # subregion
+  ${param_region = serverparams[2]} # region
+  ${param_subregion = serverparams[3]}
+  ##param_subregion = serverparams[2].split('.')[0] # subregion
+
   - name: ${server['name']}
     roles: ${get_role(server['name'],server_names)}
   % if get_region_provider(param_region, param_subregion) == 'aws':
