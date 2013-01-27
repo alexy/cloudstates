@@ -15,8 +15,9 @@ import inspect,os
 from copy import deepcopy
 
 import sys, argparse
+%>
 
-
+<%
 def load_pillar():
   # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
   # environment   = 'staging'
@@ -102,8 +103,12 @@ def get_aws_location(region, subregion):
 #  state: RUNNING
 %>
 
-
-#
+<%
+  p = load_pillar()
+  server_names = p['server_names']
+  server_salt_cloud = p['aws']
+  region_mapping=p['region_mapping']
+%>
 server_status:
 % for server in server_salt_cloud:
   <%
@@ -116,8 +121,8 @@ server_status:
   ##param_subregion = serverparams[2].split('.')[0] # subregion
   %>
 
-  - name: ${server['name']}
-    roles: ${get_role(server['name'],server_names)}
+  - name: ${server}
+    roles: ${get_role(server,server_names)}
   % if get_region_provider(param_region, param_subregion) == 'aws':
     <%
     aws_region = get_aws_location(param_region, param_subregion)
