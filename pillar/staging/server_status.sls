@@ -131,11 +131,11 @@ server_status:
     <%
     aws_region = get_aws_location(param_region, param_subregion)
     %>
-    public_dns: ${generate_aws_cname(server['public_dns'],aws_region)}
-    private_dns: ${generate_aws_cname(server['private_dns'],aws_region, 'private_dns')}
+    public_dns: ${generate_aws_cname(server['public_ips'][0],aws_region)}
+    private_dns: ${generate_aws_cname(server['private_ips'][0],aws_region, 'private_dns')}
   % else: # everyone but aws
-    public_dns: ${server['public_dns']}
-    private_dns: ${server['private_dns']}
+    public_dns: ${server['public_ips'][0]}
+    private_dns: ${server['private_ips'][0]}
   % endif
     state: ${server['state']}
   % endif
