@@ -15,16 +15,17 @@ import inspect,os
 from copy import deepcopy
 
 import sys, argparse
+%>
 
-
+<%
 def load_pillar():
-  # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
-  # environment   = 'staging'
-  # envdirectory  = basedirectory+environment+'/'
+  basedirectory = '/srv/cloudstate/pillar/'
+ # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
+  environment   = 'staging'
+  envdirectory  = basedirectory+environment+'/'
 
-  envdirectory= os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-  pillar_env_files    = ['server_names', 'salt_cloud_live_instances']
-
+  #envdirectory= os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+  pillar_env_files    = ['server_names', 'region_mapping', 'salt_cloud_live_instances']
   pillar_files = []
 
   for filename in pillar_env_files:
@@ -86,13 +87,15 @@ def get_region_provider(region, subregion):
   '''
   Given a `region` and `subregion`, this function will return the provider type.
   '''
-  return pillar["region_mapping"][region][subregion]["provider"]
+  #try except here
+  return region_mapping[region][subregion]['provider']
 
 def get_aws_location(region, subregion):
   '''
   Given a `region` and `subregion`, this function will return the name of the aws location.
   '''
-  return pillar["region_mapping"][region][subregion]["location"]
+  #try except here. the region mapping has to be looped through.
+  return region_mapping[region][subregion]['location']
 
 #format:
 #- name: apple-region-0-1-staging.vrsl.net
@@ -104,19 +107,23 @@ def get_aws_location(region, subregion):
 
 
 #
+<%
+  p = load_pillar()
+  server_names = p['server_names']
+  server_salt_cloud = p['aws']
+  region_mapping=p['region_mapping']
+%>
 server_status:
 % for server in server_salt_cloud:
   <%
-  server_names = p['server_names']
-  server_salt_cloud = p['aws']
-  serverparams = server['name'].split('-') # servername / region / subregion+domain
+  serverparams = server.split('-') # servername / region / subregion+domain
   param_region = serverparams[2] # region
   param_subregion = serverparams[3]
   ##param_subregion = serverparams[2].split('.')[0] # subregion
   %>
 
-  - name: ${server['name']}
-    roles: ${get_role(server['name'],server_names)}
+  - name: ${server}
+    roles: ${get_role(server,server_names)}
   % if get_region_provider(param_region, param_subregion) == 'aws':
     <%
     aws_region = get_aws_location(param_region, param_subregion)

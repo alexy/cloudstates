@@ -11,8 +11,8 @@
 #To target minions based on pillar data...
 # salt -I 'somekey:specialvalue' test.ping
 
-base:
-  '*':
+#base:
+#  '*':
     # - server_names
     # - static_ips
     # - region_mapping
@@ -34,8 +34,8 @@ staging:
     - match: grain
     - env_globals
     - server_roles
+    - salt_cloud_live_instances
     - server_status
-    - salt_cloud_live_instances    
 
 prod:
   'environment:prod':
