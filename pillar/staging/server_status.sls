@@ -97,7 +97,8 @@ def get_aws_location(region, subregion):
 #  private_dns: 127.0.0.1
 #  state: RUNNING
 
-if __name__ == '__main__':
+#if __name__ == '__main__':
+def run():
   p = load_pillar()
   server_names = p['server_names']
   server_salt_cloud = p['aws']
