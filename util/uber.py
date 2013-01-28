@@ -11,10 +11,10 @@ from copy import deepcopy
 import sys, argparse
 
 
-def load_pillar():
-  basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
-  environment   = 'staging'
-  envdirectory  = basedirectory+environment+'/'
+def load_pillar(basedir='/srv/cloudstate/', environment='staging'):
+  saltdir   = basedir if basedir else os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '../'
+  pillardir = saltdir + 'pillar/'
+  envdir    = pillardir + environment + '/'
 
   pillar_env_files    = ['env_globals', 'server_roles']
   pillar_global_files = ['instance_kinds','cloud_images', 'region_mapping', 'server_names', 'static_ips']
@@ -22,10 +22,10 @@ def load_pillar():
   pillar_files = []
 
   for filename in pillar_env_files:
-    pillar_files.append(envdirectory + filename + '.sls')
+    pillar_files.append(envdir + filename + '.sls')
 
   for filename in pillar_global_files:
-    pillar_files.append(basedirectory + filename + '.sls')
+    pillar_files.append(pillardir + filename + '.sls')
 
   p = {}
 
@@ -115,34 +115,77 @@ def generate_role(p, role):
   return r
 
 
+def generate_roles(pillar, rolesOpt=None):
+  roles = rolesOpt if rolesOpt else pillar['server_roles'].keys()
+  r = {}
+  for role in roles:
+    r[role] = generate_role(pillar, role)
+  return r
 
-def main():
-  parser = argparse.ArgumentParser(description='Versal salt-cloud YAML generator')
-  parser.add_argument('--profiles', action="store_true")
-  # TODO generate the role choices from pillar
-  parser.add_argument('--role', choices=('api', 'lb'))
-  parser.add_argument('--env', default='staging')
 
-  args = parser.parse_args()
+# this function is callable from update-dns right away
+def generate_role_instances(pillarOpt=None, rolesOpt=None):
+  pillar = pillarOpt if pillarOpt else load_pillar()
+  role_names = rolesOpt if rolesOpt else pillar['server_roles'].keys()
+  roles      = generate_roles(pillar, role_names)
+  profiles   = generate_cloud_profiles(pillar, [pillar['environment']])
 
+  r = {}
+  for role in roles:
+    for kind in roles[role]:
+      location = profiles[kind]['location']
+      for instance in roles[role][kind]:
+        instance_name  = instance.keys()[0]
+        instance_props = {'location': location, 'roles': role}
+        # TODO if we have multiple roles per instance,
+        # the instance name key may have been already present
+        # and we'd need to 
+        # (1) validate location equality and 
+        # (2) merge the roles into an array
+        r[instance_name] = instance_props
+  return r
+
+
+
+def __main__():
   p = load_pillar()
+  all_roles = p['server_roles'].keys()
 
-  if args.profiles:
+  parser = argparse.ArgumentParser(description='Versal salt-cloud YAML generator')
+  parser.add_argument('--profiles',     action="store_true")
+  parser.add_argument('--allroles',     action="store_true")
+  parser.add_argument('--allinstances', action="store_true")
+  parser.add_argument('--role',         choices=all_roles)
+  parser.add_argument('--env',          default='staging')
+
+  arg = parser.parse_args()
+
+
+  if arg.profiles:
     print >>sys.stderr, "generating cloud.profiles"
     r = generate_cloud_profiles(p, ['staging'])
     # TODO we need to make this a function,
     # dump to a stream,
     # and possibly set default_flow_style=False 'globally'
     print dump(r, default_flow_style=False)
-  elif args.role:
-    print >>sys.stderr, "generating the %s roles map" % args.role
-    r = generate_role(p, args.role)
+  elif arg.role:
+    print >>sys.stderr, "generating the %s roles map" % arg.role
+    r = generate_role(p, arg.role)
+    print dump(r, default_flow_style=False)
+  elif arg.allroles:
+    print >>sys.stderr, "generating all roles"
+    r = generate_roles(p, all_roles)
+    print dump(r, default_flow_style=False)
+  elif arg.allinstances:
+    print >>sys.stderr, "generating all instances"
+    r = generate_role_instances(p, all_roles)
     print dump(r, default_flow_style=False)
   else:
     print "you want something which doesn't seem to exist, eh?"
 
 
-main()
+if __name__ == '__main__':
+  __main__()
 
 
 
