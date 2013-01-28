@@ -48,10 +48,6 @@ def load_pillar():
 
   return p
   
-%>
-
-<%
-
 def get_role(server_search_name, server_names_local):
   '''
   Searches the passed python object for an entry with the designated name.
@@ -104,14 +100,13 @@ def get_aws_location(region, subregion):
 #  public_dns: 192.168.1.1
 #  private_dns: 127.0.0.1
 #  state: RUNNING
-%>
 
-<%
   p = load_pillar()
   server_names = p['server_names']
   server_salt_cloud = p['aws']
   server_region_mapping=p['region_mapping']
 %>
+
 server_status:
 % for server in server_salt_cloud:
   <%
@@ -127,17 +122,17 @@ server_status:
     %>
 
   ${server}:
-    - roles: ${get_role(param_name,server_names)}
+    roles: ${get_role(param_name,server_names)}
     % if get_region_provider(param_region, param_subregion) == 'aws':
     <%
     aws_region = get_aws_location(param_region, param_subregion)
     %>
-    - public_dns: ${generate_aws_cname(server_salt_cloud[server]['public_ips'][0],aws_region)}
-    - private_dns: ${generate_aws_cname(server_salt_cloud[server]['private_ips'][0],aws_region, 'private_dns')}
+    public_dns: ${generate_aws_cname(server_salt_cloud[server]['public_ips'][0],aws_region)}
+    private_dns: ${generate_aws_cname(server_salt_cloud[server]['private_ips'][0],aws_region, 'private_dns')}
     % else: # everyone but aws
-    - public_dns: ${server_salt_cloud[server]['public_ips'][0]}
-    - private_dns: ${server_salt_cloud[server]['private_ips'][0]}
+    public_dns: ${server_salt_cloud[server]['public_ips'][0]}
+    private_dns: ${server_salt_cloud[server]['private_ips'][0]}
     % endif
-    - state: ${server_salt_cloud[server]['state']}
+    state: ${server_salt_cloud[server]['state']}
   % endif
 % endfor
