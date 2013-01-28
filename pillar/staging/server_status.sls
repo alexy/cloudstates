@@ -100,7 +100,9 @@ def get_aws_location(region, subregion):
 #  public_dns: 192.168.1.1
 #  private_dns: 127.0.0.1
 #  state: RUNNING
+%>
 
+<%
   p = load_pillar()
   server_names = p['server_names']
   server_salt_cloud = p['aws']
