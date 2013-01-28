@@ -20,7 +20,7 @@ def load_running_status(status_file, provider, box_pattern):
   else:
   	print >>sys.stderr, "no data for provider %s in live server status file!" % provider
 
-  records = [(k, r[k]['public_ips'][0], r[k]['private_ips'][0]) for k in r.keys() if re.match(box_pattern, k)]
+  records = [(k, r[k]['public_ips'][0], r[k]['private_ips'][0]) for k in r.keys() if re.match(box_pattern, k) and r[k]['state'] == 'RUNNING']
 
   role_instances = uber.generate_role_instances()
 
