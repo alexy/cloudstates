@@ -1,5 +1,6 @@
 import route53
 import unittest
+import time
 
 class TestRoute53(unittest.TestCase):
 
@@ -19,12 +20,16 @@ class TestRoute53(unittest.TestCase):
         self.assertDeleted(self.CNAME_DOMAIN)
 
         print 'Creating new records...'
-        self.assertAssigned(self.A_DOMAIN, self.A_VALUES[0], self.TTLS[0])
-        self.assertAssigned(
-            self.CNAME_DOMAIN,
-            self.CNAME_VALUES[0],
-            self.TTLS[1]
-        )
+        start_interval = time.time()
+        self.assignFirstValues()
+        create_time = time.time() - start_interval
+
+        print 'Assigning the same values (should be fast)...'
+        start_interval = time.time()
+        self.assignFirstValues()
+        duplicate_time = time.time() - start_interval
+        # Arbitrary requirement for redundant assignment to be 10x faster
+        self.assertLess(10 * duplicate_time, create_time)
 
         print 'Changing existing record values...'
         self.assertAssigned(self.A_DOMAIN, self.A_VALUES[1], self.TTLS[2])
@@ -52,6 +57,14 @@ class TestRoute53(unittest.TestCase):
         route53.delete(self.ZONE_NAME, domain_name)
         info = route53.query(self.ZONE_NAME, domain_name)
         self.assertEqual(None, info)
+
+    def assignFirstValues(self):
+        self.assertAssigned(self.A_DOMAIN, self.A_VALUES[0], self.TTLS[0])
+        self.assertAssigned(
+            self.CNAME_DOMAIN,
+            self.CNAME_VALUES[0],
+            self.TTLS[1]
+        )
 
 if __name__ == '__main__':
     unittest.main()
