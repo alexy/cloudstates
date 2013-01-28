@@ -35,7 +35,7 @@ staging:
     - env_globals
     - server_roles
     - salt_cloud_live_instances
-    - server_status
+    - server_status-TESTING
 
 prod:
   'environment:prod':
