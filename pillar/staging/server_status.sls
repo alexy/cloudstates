@@ -1,8 +1,8 @@
-#!py|yaml
+#!mako|yaml
 
 # When a server is started, the server is added to servers_status. If a server is terminated, 
 # it is removed. If a server is 'stopped', it shows as state: STOPPED
-
+<%
 from yaml import load, dump
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -97,8 +97,7 @@ def get_aws_location(region, subregion):
 #  private_dns: 127.0.0.1
 #  state: RUNNING
 
-#if __name__ == '__main__':
-def run():
+if __name__ == '__main__':
   p = load_pillar()
   server_names = p['server_names']
   server_salt_cloud = p['aws']
@@ -125,3 +124,4 @@ def run():
         print '    public_dns: ' + server_salt_cloud[server]['public_ips'][0]
         print '    private_dns: ' + server_salt_cloud[server]['private_ips'][0]
       print '    state: ' + server_salt_cloud[server]['state']
+%>
