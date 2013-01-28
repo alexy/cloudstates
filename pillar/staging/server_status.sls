@@ -128,16 +128,16 @@ server_status:
 
   - name: ${server}
     roles: ${get_role(param_name,server_names)}
-  % if get_region_provider(param_region, param_subregion) == 'aws':
+    % if get_region_provider(param_region, param_subregion) == 'aws':
     <%
     aws_region = get_aws_location(param_region, param_subregion)
     %>
     public_dns: ${generate_aws_cname(server_salt_cloud[server]['public_ips'][0],aws_region)}
     private_dns: ${generate_aws_cname(server_salt_cloud[server]['private_ips'][0],aws_region, 'private_dns')}
-  % else: # everyone but aws
+    % else: # everyone but aws
     public_dns: ${server_salt_cloud[server]['public_ips'][0]}
     private_dns: ${server_salt_cloud[server]['private_ips'][0]}
-  % endif
+    % endif
     state: ${server_salt_cloud[server]['state']}
   % endif
 % endfor
