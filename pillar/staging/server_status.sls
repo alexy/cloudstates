@@ -19,13 +19,16 @@ import sys, argparse
 
 <%
 def load_pillar():
+  # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
+  # environment   = 'staging'
+  # envdirectory  = basedirectory+environment+'/'
+
   basedirectory = '/srv/cloudstate/pillar/'
- # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
   environment   = 'staging'
   envdirectory  = basedirectory+environment+'/'
 
-  #envdirectory= os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-  pillar_env_files    = ['server_names', 'region_mapping', 'salt_cloud_live_instances']
+  pillar_env_files    = ['server_names', 'salt_cloud_live_instances', 'region_mapping']
+
   pillar_files = []
 
   for filename in pillar_env_files:
@@ -45,10 +48,6 @@ def load_pillar():
 
   return p
   
-%>
-
-<%
-
 def get_role(server_search_name, server_names_local):
   '''
   Searches the passed python object for an entry with the designated name.
@@ -87,15 +86,13 @@ def get_region_provider(region, subregion):
   '''
   Given a `region` and `subregion`, this function will return the provider type.
   '''
-  #try except here
-  return region_mapping[region][subregion]['provider']
+  return server_region_mapping[region][subregion]["provider"]
 
 def get_aws_location(region, subregion):
   '''
   Given a `region` and `subregion`, this function will return the name of the aws location.
   '''
-  #try except here. the region mapping has to be looped through.
-  return region_mapping[region][subregion]['location']
+  return server_region_mapping[region][subregion]["location"]
 
 #format:
 #- name: apple-region-0-1-staging.vrsl.net
@@ -105,34 +102,39 @@ def get_aws_location(region, subregion):
 #  state: RUNNING
 %>
 
-
-#
 <%
   p = load_pillar()
   server_names = p['server_names']
   server_salt_cloud = p['aws']
-  region_mapping=p['region_mapping']
+  server_region_mapping=p['region_mapping']
 %>
+
 server_status:
 % for server in server_salt_cloud:
   <%
   serverparams = server.split('-') # servername / region / subregion+domain
-  param_region = serverparams[2] # region
-  param_subregion = serverparams[3]
-  ##param_subregion = serverparams[2].split('.')[0] # subregion
+  #must have split properly E.G. apple-region-0-0-staging.vrsl.net
   %>
 
-  - name: ${server}
-    roles: ${get_role(server,server_names)}
-  % if get_region_provider(param_region, param_subregion) == 'aws':
+  % if len(serverparams) == 5: #only error checking currently... TODO Add more
+    <%
+    param_name = serverparams[0] # name 
+    param_region = int(serverparams[2]) # region
+    param_subregion = int(serverparams[3]) # subregion / datacenter
+    %>
+
+  ${server}:
+    roles: ${get_role(param_name,server_names)}
+    % if get_region_provider(param_region, param_subregion) == 'aws':
     <%
     aws_region = get_aws_location(param_region, param_subregion)
     %>
-    public_dns: ${generate_aws_cname(server['public_dns'],aws_region)}
-    private_dns: ${generate_aws_cname(server['private_dns'],aws_region, 'private_dns')}
-  % else: # everyone but aws
-    public_dns: ${server['public_dns']}
-    private_dns: ${server['private_dns']}
+    public_dns: ${generate_aws_cname(server_salt_cloud[server]['public_ips'][0],aws_region)}
+    private_dns: ${generate_aws_cname(server_salt_cloud[server]['private_ips'][0],aws_region, 'private_dns')}
+    % else: # everyone but aws
+    public_dns: ${server_salt_cloud[server]['public_ips'][0]}
+    private_dns: ${server_salt_cloud[server]['private_ips'][0]}
+    % endif
+    state: ${server_salt_cloud[server]['state']}
   % endif
-    state: ${server['state']}
 % endfor
