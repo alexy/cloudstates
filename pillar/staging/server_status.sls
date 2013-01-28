@@ -1,8 +1,8 @@
-#!mako|yaml
+#!py|yaml
 
 # When a server is started, the server is added to servers_status. If a server is terminated, 
 # it is removed. If a server is 'stopped', it shows as state: STOPPED
-<%
+
 from yaml import load, dump
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -97,30 +97,30 @@ def get_aws_location(region, subregion):
 #  private_dns: 127.0.0.1
 #  state: RUNNING
 
-p = load_pillar()
-server_names = p['server_names']
-server_salt_cloud = p['aws']
-server_region_mapping=p['region_mapping']
+if __name__ == '__main__':
+  p = load_pillar()
+  server_names = p['server_names']
+  server_salt_cloud = p['aws']
+  server_region_mapping=p['region_mapping']
 
-print 'server_status:'
-
-for server in server_salt_cloud:
-  serverparams = server.split('-') # servername / region / subregion+domain
-#must have split properly E.G. apple-region-0-0-staging.vrsl.net
-  if len(serverparams) == 5: #only error checking currently... TODO Add more
-    param_name = serverparams[0] # name 
-    param_region = int(serverparams[2]) # region
-    param_subregion = int(serverparams[3]) # subregion / datacenter
-    
-    print '  - name: ' + server
-    print '    roles: ' + get_role(param_name,server_names)
-    
-    if get_region_provider(param_region, param_subregion) == 'aws':
-      aws_region = get_aws_location(param_region, param_subregion)
-      print '    public_dns: ' + generate_aws_cname(server_salt_cloud[server]['public_ips'][0],aws_region)
-      print '    private_dns: ' + generate_aws_cname(server_salt_cloud[server]['private_ips'][0],aws_region, 'private_dns')
-    else: # everyone but aws
-      print '    public_dns: ' + server_salt_cloud[server]['public_ips'][0]
-      print '    private_dns: ' + server_salt_cloud[server]['private_ips'][0]
-    print '    state: ' + server_salt_cloud[server]['state']
-%>
+  print 'server_status:'
+  
+  for server in server_salt_cloud:
+    serverparams = server.split('-') # servername / region / subregion+domain
+  #must have split properly E.G. apple-region-0-0-staging.vrsl.net
+    if len(serverparams) == 5: #only error checking currently... TODO Add more
+      param_name = serverparams[0] # name 
+      param_region = int(serverparams[2]) # region
+      param_subregion = int(serverparams[3]) # subregion / datacenter
+      
+      print '  - name: ' + server
+      print '    roles: ' + get_role(param_name,server_names)
+      
+      if get_region_provider(param_region, param_subregion) == 'aws':
+        aws_region = get_aws_location(param_region, param_subregion)
+        print '    public_dns: ' + generate_aws_cname(server_salt_cloud[server]['public_ips'][0],aws_region)
+        print '    private_dns: ' + generate_aws_cname(server_salt_cloud[server]['private_ips'][0],aws_region, 'private_dns')
+      else: # everyone but aws
+        print '    public_dns: ' + server_salt_cloud[server]['public_ips'][0]
+        print '    private_dns: ' + server_salt_cloud[server]['private_ips'][0]
+      print '    state: ' + server_salt_cloud[server]['state']

@@ -5,18 +5,23 @@
 # When a server is started, the server is added to servers_status. If a server is # terminated, it is removed. If a server is 'stopped', it shows as state: STOPPED
 
 server_status:
-  - name: apple-0-1.vrsl.net
-    roles: api
-    public_dns: 192.168.1.1
-    private_dns: 127.0.0.1
+  - name: agnon-region-0-0-staging.vrsl.net
+    roles: lb
+    public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-58-225.us-west-2.compute.internal
     state: RUNNING
-  - name: banana-0-1.vrsl.net
+  - name: apple-region-0-0-staging.vrsl.net
     roles: api
+    public_dns: ec2-50-112-28-75.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-12-77.us-west-2.compute.internal
     state: RUNNING
-    public_dns: 192.168.1.1
-    private_dns: 127.0.0.1
-  - name: cherry-0-1.vrsl.net
+  - name: banana-region-0-0-staging.vrsl.net
     roles: api
+    public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-58-225.us-west-2.compute.internal
     state: RUNNING
-    public_dns: 192.168.1.1
-    private_dns: 127.0.0.1
+  - name: cherry-region-0-0-staging.vrsl.net
+    roles: api
+    public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-58-225.us-west-2.compute.internal
+    state: RUNNING
