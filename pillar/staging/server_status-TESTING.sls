@@ -6,23 +6,24 @@
 
 server_status:
   agnon-region-0-0-staging.vrsl.net:
-    - roles: lb
-    - public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
-    - private_dns: ip-10-249-58-225.us-west-2.compute.internal
-    - state: RUNNING
+    roles: lb
+    public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-58-225.us-west-2.compute.internal
+    state: RUNNING
   apple-region-0-0-staging.vrsl.net:
-    - roles: api
-    - public_dns: ec2-50-112-28-75.us-west-2.compute.amazonaws.com
-    - private_dns: ip-10-249-12-77.us-west-2.compute.internal
-    - state: RUNNING
+    roles: api
+    public_dns: ec2-50-112-28-75.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-12-77.us-west-2.compute.internal
+    state: RUNNING
   banana-region-0-0-staging.vrsl.net:
-    - roles: api
-    - public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
-    - private_dns: ip-10-249-58-225.us-west-2.compute.internal
-    - state: RUNNING
+    roles: api
+    public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-58-225.us-west-2.compute.internal
+    state: RUNNING
   cherry-region-0-0-staging.vrsl.net:
-    - roles: api
-    - public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
-    - private_dns: ip-10-249-58-225.us-west-2.compute.internal
-    - state: RUNNING
+    roles: api
+    public_dns: ec2-54-245-178-203.us-west-2.compute.amazonaws.com
+    private_dns: ip-10-249-58-225.us-west-2.compute.internal
+    state: RUNNING
+
 
