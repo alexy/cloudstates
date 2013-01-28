@@ -119,14 +119,15 @@ server_status:
   #must have split properly E.G. apple-region-0-0-staging.vrsl.net
   %>
 
-  % if len(serverparams) == 5:
-    <% 
+  % if len(serverparams) == 5: #only error checking currently... TODO Add more
+    <%
+    param_name = serverparams[0] # name 
     param_region = int(serverparams[2]) # region
-    param_subregion = int(serverparams[3])
+    param_subregion = int(serverparams[3]) # subregion / datacenter
     %>
 
   - name: ${server}
-      roles: ${get_role(server,server_names)}
+      roles: ${get_role(param_name,server_names)}
   % if get_region_provider(param_region, param_subregion) == 'aws':
     <%
     aws_region = get_aws_location(param_region, param_subregion)
