@@ -152,11 +152,11 @@ def __main__():
   all_roles = p['server_roles'].keys()
 
   parser = argparse.ArgumentParser(description='Versal salt-cloud YAML generator')
-  parser.add_argument('--profiles',     action="store_true")
-  parser.add_argument('--allroles',     action="store_true")
-  parser.add_argument('--allinstances', action="store_true")
-  parser.add_argument('--role',         choices=all_roles)
-  parser.add_argument('--env',          default='staging')
+  parser.add_argument('--profiles',     action="store_true", help="generate cloud.profiles")
+  parser.add_argument('--allroles',     action="store_true", help="generate all roles for inspection")
+  parser.add_argument('--allinstances', action="store_true", help="generate all instances for DNS and running status")
+  parser.add_argument('--role',         choices=all_roles,   help="generate a specific role from the list of all roles")
+  parser.add_argument('--env',          default='staging',   help="use a given environment")
 
   arg = parser.parse_args()
 
