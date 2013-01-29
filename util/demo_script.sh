@@ -52,7 +52,7 @@ pause
 # show the instances don't yet exist.
 salt-cloud -m demo_api.map -Q
 
-echo Inspect the status of the Load Balancer (HAProxy) servers
+echo Inspect the status of the Load Balancer servers
 
 pause
 
