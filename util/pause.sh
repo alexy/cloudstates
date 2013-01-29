@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function pause { 
+	echo '(continue)'
 	read -n 1 -s 
 }
 
