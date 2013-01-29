@@ -15,6 +15,8 @@ function pause {
 ## Create new map file
 cd /srv/cloudstate/util
 
+echo Welcome to Versal DevOps
+
 pause
 
 # show/create profiles file...
