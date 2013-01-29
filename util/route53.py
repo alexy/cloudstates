@@ -23,13 +23,21 @@ def assign(zone_name, domain_name, value, ttl):
     the given values."""
     zone = CONNECTION.get_zone(zone_name)
     record = _find_record(zone, domain_name)
+    record_type = 'A' if _is_ip_address(value) else 'CNAME'
+
+    if record:
+        record_info = _query(record)
+        if record_info['type'] == record_type and \
+               record_info['value'] == value and \
+               record_info['ttl'] == ttl:
+           # No need to assign the same values again
+           return
 
     # There's no way to change the type of an existing record in one operation.
     # Instead, we first DELETE if necessary and then CREATE a new record.
     change_set = r53.record.ResourceRecordSets(CONNECTION, zone.id)
     if record:
         change_set.add_change_record('DELETE', record)
-    record_type = 'A' if _is_ip_address(value) else 'CNAME'
     change = change_set.add_change('CREATE', domain_name, record_type, ttl)
     change.add_value(value)
     change = change_set.commit()
@@ -54,11 +62,18 @@ def query(zone_name, domain_name):
     zone = CONNECTION.get_zone(zone_name)
     record = _find_record(zone, domain_name)
 
-    if record is not None:
-        if len(record.resource_records) == 1:
-            return {'value': record.resource_records[0], 'ttl': int(record.ttl)}
-        elif len(record.resource_records) > 1:
-            raise Exception('Multiple values for domain: ' + domain_name)
+    if record:
+        return _query(record)
+
+def _query(record):
+    if len(record.resource_records) == 1:
+        return {
+            'type': record.type,
+            'value': record.resource_records[0],
+            'ttl': int(record.ttl)
+        }
+    elif len(record.resource_records) > 1:
+        raise Exception('Multiple values for domain: ' + record.name)
 
 def _find_record(zone, domain_name):
     records = zone.get_records()
