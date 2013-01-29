@@ -11,7 +11,6 @@ staging_medium_cpu_region-0-0:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: High-CPU Medium Instance
 staging_medium_cpu_region-0-1:
   availability_zone: us-west-2b
@@ -26,7 +25,6 @@ staging_medium_cpu_region-0-1:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: High-CPU Medium Instance
 staging_medium_cpu_region-0-2:
   availability_zone: us-west-2c
@@ -41,7 +39,6 @@ staging_medium_cpu_region-0-2:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: High-CPU Medium Instance
 staging_medium_cpu_region-1-0:
   availability_zone: us-west-1b
@@ -56,7 +53,6 @@ staging_medium_cpu_region-1-0:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: High-CPU Medium Instance
 staging_medium_cpu_region-1-1:
   availability_zone: us-west-1c
@@ -71,7 +67,6 @@ staging_medium_cpu_region-1-1:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: High-CPU Medium Instance
 staging_small_region-0-0:
   availability_zone: us-west-2a
@@ -86,7 +81,6 @@ staging_small_region-0-0:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: Small Instance
 staging_small_region-0-1:
   availability_zone: us-west-2b
@@ -101,7 +95,6 @@ staging_small_region-0-1:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: Small Instance
 staging_small_region-0-2:
   availability_zone: us-west-2c
@@ -116,7 +109,6 @@ staging_small_region-0-2:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: Small Instance
 staging_small_region-1-0:
   availability_zone: us-west-1b
@@ -131,7 +123,6 @@ staging_small_region-1-0:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: Small Instance
 staging_small_region-1-1:
   availability_zone: us-west-1c
@@ -146,6 +137,5 @@ staging_small_region-1-1:
     - common.services.mako
     startup_states: sls
   provider: aws
-  
   size: Small Instance
 
