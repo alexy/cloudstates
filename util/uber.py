@@ -149,15 +149,12 @@ def generate_role_instances(pillarOpt=None, rolesOpt=None):
 
 
 def __main__():
-  # TODO the full list of available roles only makes sense in an environment
-
-  all_roles = ('api', 'lb')
 
   parser = argparse.ArgumentParser(description='Versal salt-cloud YAML generator')
   parser.add_argument('--profiles',     action="store_true", help="generate cloud.profiles")
   parser.add_argument('--allroles',     action="store_true", help="generate all roles for inspection")
   parser.add_argument('--allinstances', action="store_true", help="generate all instances for DNS and running status")
-  parser.add_argument('--role',         choices=all_roles,   help="generate a specific role from the list of all roles")
+  parser.add_argument('--role',                              help="generate a specific role from the list of all roles")
   parser.add_argument('--env',          default='staging',   help="use a given environment")
 
   arg = parser.parse_args()
