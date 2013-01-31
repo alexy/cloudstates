@@ -13,19 +13,20 @@ import sys, argparse
 
 def load_pillar(basedir='/srv/cloudstate/', environment='staging'):
   saltdir   = basedir if basedir else os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '../'
-  pillardir = saltdir + 'pillar/'
+  pillardir = saltdir   + 'pillar/'
+  commondir = pillardir + 'common/'
   envdir    = pillardir + environment + '/'
 
   pillar_env_files    = ['env_globals', 'server_roles']
-  pillar_global_files = ['instance_kinds','cloud_images', 'region_mapping', 'server_names', 'static_ips']
+  pillar_common_files = ['instance_kinds','cloud_images', 'region_mapping', 'server_names', 'static_ips']
 
   pillar_files = []
 
   for filename in pillar_env_files:
     pillar_files.append(envdir + filename + '.sls')
 
-  for filename in pillar_global_files:
-    pillar_files.append(pillardir + filename + '.sls')
+  for filename in pillar_common_files:
+    pillar_files.append(commondir + filename + '.sls')
 
   p = {}
 
@@ -103,7 +104,7 @@ def generate_role(p, role):
         'grains': {
           'roles': [server_group['role']]
           }, 
-        'environment': environment # TODO should we store and retrieve it from p['env']?
+        'environment': environment
       }
 
       instance_list.append({instance_name: instance_props})
@@ -148,8 +149,9 @@ def generate_role_instances(pillarOpt=None, rolesOpt=None):
 
 
 def __main__():
-  p = load_pillar()
-  all_roles = p['server_roles'].keys()
+  # TODO the full list of available roles only makes sense in an environment
+
+  all_roles = ('api', 'lb')
 
   parser = argparse.ArgumentParser(description='Versal salt-cloud YAML generator')
   parser.add_argument('--profiles',     action="store_true", help="generate cloud.profiles")
@@ -160,10 +162,13 @@ def __main__():
 
   arg = parser.parse_args()
 
+  p = load_pillar(environment=arg.env)
+
+  print >> sys.stderr, "generating salt-cloud configuration for environment: %s" % arg.env
 
   if arg.profiles:
     print >>sys.stderr, "generating cloud.profiles"
-    r = generate_cloud_profiles(p, ['staging'])
+    r = generate_cloud_profiles(p, [arg.env])
     # TODO we need to make this a function,
     # dump to a stream,
     # and possibly set default_flow_style=False 'globally'
