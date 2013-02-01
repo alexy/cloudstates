@@ -6,7 +6,7 @@ instance_kinds:
     aws: Small Instance
 
   medium:
-    aws: Medium
+    aws: Medium Instance
 
   medium_cpu:
     aws: High-CPU Medium Instance
