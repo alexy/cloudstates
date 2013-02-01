@@ -1,10 +1,11 @@
+# TODO mako-ficate the env through domain, grain
 # global variables for use in this environment
 
 # Example usage: pillar['environment'] == 'stack'
 
 environment: stack
 
-domain: loadtest.vrsl.net
+domain: stack.vrsl.net
 
 salt_master: mcp-staging.vrsl.net
 
