@@ -44,3 +44,7 @@ server_names:
     - jensen
     - kipling
     - lewis
+  stack:
+    - andromeda
+    - betelgeuse
+    - cassiopeia
