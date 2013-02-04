@@ -1,3 +1,5 @@
+#!yaml
+
 #https://salt.readthedocs.org/en/latest/topics/pillar/index.html
 #pillar data is available GLOBALLY to all scripts and minions!
 #to sync pillar data with minions manually, do:
@@ -9,22 +11,35 @@
 #To target minions based on pillar data...
 # salt -I 'somekey:specialvalue' test.ping
 
-base:
-  '*':
-    - packagenames
+#base:
+#  '*':
+    # - server_names
+    # - static_ips
+    # - region_mapping
+    # - instance_kinds
+    # - cloud_images
 
 localdev:
-  '*':
-    - servers
+  'environment:localdev':
+    - match: grain  
+    - env_globals
 
 dev:
-  '*':
-    - servers
+  'environment:dev':
+    - match: grain  
+    - env_globals
 
 staging:
-  '*':
-    - servers            
+  'environment:staging':
+    - match: grain
+    - env_globals
+    - server_roles
+    - salt_cloud_live_instances
+    - server_status
 
 prod:
-  '*':
-    - servers
+  'environment:prod':
+    - match: grain  
+    - env_globals
+
+

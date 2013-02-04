@@ -2,12 +2,28 @@ interface: 0.0.0.0
 user: root
 state_top: top.sls
 log_level: debug
+#renderer: yaml_jinja #this is the default
+renderer: mako|yaml
+state_verbose: true
+state_output: full
+
+#http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
+schedule:
+  highstate:
+    function: state.highstate
+    minutes: 10
+
+worker_threads: 2
+
+failhard: False # if true, will stop salt execution after first failure.
+
 file_roots:
   base:
     - /srv/cloudconf/salt
     - /srv/cloudconf/salt/base
     - /srv/cloudconf/salt/base/services
     - /srv/cloudconf/salt/base/states
+    - /srv/cloudstate/util
   localdev:
     - /srv/cloudconf/salt/localdev/services
     - /srv/cloudconf/salt/localdev/states

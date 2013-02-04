@@ -1,5 +1,7 @@
 #/bin/bash
 
+#This should be automated by the salt overlord...
+
 unlink /etc/salt/cloud
 ln -s /srv/cloudstate/cloud /etc/salt/cloud
 
