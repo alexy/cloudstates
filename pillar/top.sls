@@ -36,10 +36,16 @@ staging:
     - server_roles
     - salt_cloud_live_instances
     - server_status
+    - openstack
+    # TODO update this to auto-load based on the sls files in each pillar
 
 prod:
   'environment:prod':
     - match: grain  
     - env_globals
 
-
+test:
+  'environment:test':
+    - match: grain  
+    - env_globals
+    - server_roles
