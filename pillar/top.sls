@@ -23,6 +23,8 @@ localdev:
   'environment:localdev':
     - match: grain  
     - env_globals
+    - openstack
+
 
 dev:
   'environment:dev':
@@ -36,10 +38,15 @@ staging:
     - server_roles
     - salt_cloud_live_instances
     - server_status
+    # TODO update this to auto-load based on the sls files in each pillar
 
 prod:
   'environment:prod':
     - match: grain  
     - env_globals
 
-
+test:
+  'environment:test':
+    - match: grain  
+    - env_globals
+    - server_roles

@@ -1,10 +1,10 @@
 # global variables for use in this environment
 
-# Example usage: pillar['environment'] == 'loadtest'
+# Example usage (mako): test = pillar.get('test')
 
-environment: loadtest
+environment: test
 
-domain: loadtest.vrsl.net
+domain: test.vrsl.net
 
 salt_master: mcp-staging.vrsl.net
 
@@ -14,5 +14,5 @@ minion:
   sls_list:
     - common.services.mako
   grains:
-    environment: loadtest
+    environment: test
 
