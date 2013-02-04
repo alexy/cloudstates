@@ -44,9 +44,3 @@ prod:
   'environment:prod':
     - match: grain  
     - env_globals
-
-test:
-  'environment:test':
-    - match: grain  
-    - env_globals
-    - server_roles
