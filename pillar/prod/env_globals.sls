@@ -2,6 +2,8 @@
 
 # Example usage: pillar['environment'] == 'staging'
 
+provisioner: salt-cloud
+
 environment: prod
 
 domain: staging.vrsl.net

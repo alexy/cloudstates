@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # update-dns.py
 
-import route53, uber
+import route53, mapper
 
 import sys, re, argparse
 
@@ -22,7 +22,7 @@ def load_running_status(status_file, provider, box_pattern):
 
   records = [(k, r[k]['public_ips'][0], r[k]['private_ips'][0]) for k in r.keys() if re.match(box_pattern, k) and r[k]['state'] == 'RUNNING']
 
-  role_instances = uber.generate_role_instances()
+  role_instances = mapper.generate_role_instances()
 
   r = {}
   for name,public_ip,private_ip in records:

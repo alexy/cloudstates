@@ -2,6 +2,7 @@
 
 # Example usage (mako): localdev = pillar.get('localdev')
 
+provisioner: vagrant
 
 environment: localdev
 
