@@ -49,3 +49,5 @@ prod:
   'environment:prod':
     - match: grain  
     - env_globals
+    - server_roles
+
