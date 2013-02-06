@@ -1,6 +1,5 @@
-# salt master file for staging & production mcp minions
-interface: 0.0.0.0
-#interface: 127.0.0.1
+#salt master file for the localdev salt master servers
+interface: 127.0.0.1
 user: root
 state_top: top.sls
 log_level: debug
@@ -10,10 +9,10 @@ state_verbose: true
 state_output: full
 
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
-schedule:
-  overstate:
-    function: state.over
-    minutes: 10
+#schedule:
+#  overstate:
+#    function: state.over
+#    minutes: 10
 
 worker_threads: 2
 
