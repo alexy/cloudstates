@@ -18,21 +18,27 @@ import sys, argparse
 %>
 
 <%
+environment = grains.get('environment')
+%>
+
+<%
 def load_pillar():
-  # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
-  # environment   = 'staging'
-  # envdirectory  = basedirectory+environment+'/'
+  basedirectory          = '/srv/cloudstate/pillar/'
+  envdirectory           = basedirectory+environment+'/'
+  commondirectory        = basedirectory+'common/'
 
-  basedirectory = '/srv/cloudstate/pillar/'
-  environment   = 'staging'
-  envdirectory  = basedirectory+environment+'/'
-
-  pillar_env_files    = ['server_names', 'salt_cloud_live_instances', 'region_mapping']
+  pillar_env_files       = ['salt_cloud_live_instances']
+  pillar_common_files    = ['server_names', 'region_mapping']
 
   pillar_files = []
 
+  # some pillars are in env.
   for filename in pillar_env_files:
     pillar_files.append(envdirectory + filename + '.sls')
+
+  # some pillars are in common.
+  for filename in pillar_common_files:
+    pillar_files.append(commondirectory + filename + '.sls')
 
   p = {}
 

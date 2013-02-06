@@ -19,6 +19,11 @@
     # - instance_kinds
     # - cloud_images
 
+base:
+  '*':
+    - common.server_status
+
+
 localdev:
   'environment:localdev':
     - match: grain  
@@ -37,7 +42,7 @@ staging:
     - env_globals
     - server_roles
     - salt_cloud_live_instances
-    - server_status
+#    - server_status
     # TODO update this to auto-load based on the sls files in each pillar
 
 prod:
