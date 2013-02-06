@@ -10,8 +10,8 @@ state_output: full
 
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
 schedule:
-  highstate:
-    function: state.highstate
+  overstate:
+    function: state.over
     minutes: 10
 
 worker_threads: 2
