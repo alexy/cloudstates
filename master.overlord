@@ -15,7 +15,7 @@ state_output: full
 #    function: state.over
 #    minutes: 10
 
-worker_threads: 2
+worker_threads: 5
 
 failhard: False # if true, will stop salt execution after first failure.
 
