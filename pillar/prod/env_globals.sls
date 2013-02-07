@@ -6,7 +6,7 @@ provisioner: salt-cloud
 
 environment: prod
 
-domain: dmv.vrsl.net
+domain: dmv-prod.vrsl.net
 salt_master: mcp-prod.vrsl.net
 username: ubuntu
 
