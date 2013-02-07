@@ -56,7 +56,7 @@ def __main__():
   parser = argparse.ArgumentParser(description='Versal DNS updater')
   parser.add_argument('--provider', default="aws", help="cloud provider id recognized by libcloud")
   parser.add_argument('--domain', default="vrsl.net", help="domain which must be contained in the instances names")
-  parser.add_argument('--env', default='staging', help="environment which must be contained in the instance names")
+  parser.add_argument('--environment', default='staging', help="environment which must be contained in the instance names")
   parser.add_argument('status_file', help="the salt-cloud -Q yaml output file")
   parser.add_argument('-e', '--ensure', action="store_true", help="when supplied, actually assign everything")
   parser.add_argument('-q', '--query',  action="store_true", help="when supplied, query DNS for the running instances")

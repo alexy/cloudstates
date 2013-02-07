@@ -155,7 +155,7 @@ def __main__():
   parser.add_argument('-R', '--allroles',     action="store_true", help="generate all roles for inspection")
   parser.add_argument('-I', '--allinstances', action="store_true", help="generate all instances for DNS and running status")
   parser.add_argument('-r', '--role',                              help="generate a specific role from the list of all roles")
-  parser.add_argument('-e', '--env',          default='staging',   help="use a given environment")
+  parser.add_argument('-e', '--environment',  default='staging',   help="use a given environment")
 
   arg = parser.parse_args()
 
