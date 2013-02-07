@@ -1,11 +1,19 @@
 # global variables for use in this environment
 
-# Example usage: pillar['environment'] == 'staging'
+# Example usage: pillar['environment'] == 'prod-dmv'
 
 provisioner: salt-cloud
 
 environment: prod
 
-domain: staging.vrsl.net
-salt_master: mcp-staging.vrsl.net
+domain: dmv.vrsl.net
+salt_master: mcp-prod.vrsl.net
 username: ubuntu
+
+minion:
+  log_level: debug
+  startup_states: sls
+  sls_list:
+    - common.services.mako
+  grains:
+    environment: prod
