@@ -122,7 +122,7 @@ server_status:
   #must have split properly E.G. apple-region-0-0-staging.vrsl.net
   %>
 
-  % if len(serverparams) == 5: #only error checking currently... TODO Add more
+  % if len(serverparams) > 5: #only error checking currently... TODO Add more
     <%
     param_name = serverparams[0] # name 
     param_region = int(serverparams[2]) # region
