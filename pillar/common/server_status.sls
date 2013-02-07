@@ -127,7 +127,7 @@ server_status:
     param_name = serverparams[0] # name 
     param_region = int(serverparams[2]) # region
     param_subregion = int(serverparams[3]) # subregion / datacenter
-    param_environment = serverparams[-1]
+    param_environment = serverparams[-1].split('.')[0] #environment is the last item before the dots 
     %>
 
   ${server}:
