@@ -125,8 +125,8 @@ def generate_roles(pillar, rolesOpt=None):
 
 
 # this function is callable from update-dns right away
-def generate_role_instances(pillarOpt=None, rolesOpt=None):
-  pillar = pillarOpt if pillarOpt else load_pillar()
+def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None):
+  pillar = pillarOpt if pillarOpt else load_pillar(environment=environment)
   role_names = rolesOpt if rolesOpt else pillar['server_roles'].keys()
   roles      = generate_roles(pillar, role_names)
   profiles   = generate_cloud_profiles(pillar, [pillar['environment']])
@@ -180,7 +180,7 @@ def __main__():
     print dump(r, default_flow_style=False)
   elif arg.allinstances:
     print >>sys.stderr, "generating all instances"
-    r = generate_role_instances(p, all_roles)
+    r = generate_role_instances(p)
     print dump(r, default_flow_style=False)
   else:
     print "you want something which doesn't seem to exist, eh?"

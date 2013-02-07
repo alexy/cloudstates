@@ -12,7 +12,7 @@ except ImportError:
     from yaml import Loader, Dumper
 
 
-def load_running_status(status_file, provider, box_pattern):
+def load_running_status(status_file, provider, environment, box_pattern):
   with open(status_file) as f:
   	y = load(f, Loader=Loader)
   if y.has_key(provider):
@@ -22,7 +22,7 @@ def load_running_status(status_file, provider, box_pattern):
 
   records = [(k, r[k]['public_ips'][0], r[k]['private_ips'][0]) for k in r.keys() if re.match(box_pattern, k) and r[k]['state'] == 'RUNNING']
 
-  role_instances = mapper.generate_role_instances()
+  role_instances = mapper.generate_role_instances(environment=environment)
 
   r = {}
   for name,public_ip,private_ip in records:
@@ -66,7 +66,7 @@ def __main__():
 
   print >>sys.stderr, "updating DNS records of the hosts on %s matching %s" % (arg.provider, box_pattern)
 
-  records = load_running_status(arg.status_file, arg.provider, box_pattern)
+  records = load_running_status(arg.status_file, arg.provider, arg.environment, box_pattern)
   print >>sys.stderr, "working with records ", records
 
   if arg.query:
