@@ -127,9 +127,11 @@ server_status:
     param_name = serverparams[0] # name 
     param_region = int(serverparams[2]) # region
     param_subregion = int(serverparams[3]) # subregion / datacenter
+    param_environment = serverparams[-1]
     %>
 
   ${server}:
+    environment: ${param_environment}
     roles: ${get_role(param_name,server_names)}
     % if get_region_provider(param_region, param_subregion) == 'aws':
     <%

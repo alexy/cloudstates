@@ -1,6 +1,5 @@
 #salt master file for the overlord server
 interface: 0.0.0.0
-#interface: 127.0.0.1
 user: root
 state_top: top.sls
 log_level: debug
