@@ -159,13 +159,13 @@ def __main__():
 
   arg = parser.parse_args()
 
-  p = load_pillar(environment=arg.env)
+  p = load_pillar(environment=arg.environment)
 
-  print >> sys.stderr, "generating salt-cloud configuration for environment: %s" % arg.env
+  print >> sys.stderr, "generating salt-cloud configuration for environment: %s" % arg.environment
 
   if arg.profiles:
     print >>sys.stderr, "generating cloud.profiles"
-    r = generate_cloud_profiles(p, [arg.env])
+    r = generate_cloud_profiles(p, [arg.environment])
     # TODO we need to make this a function,
     # dump to a stream,
     # and possibly set default_flow_style=False 'globally'

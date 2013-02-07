@@ -62,7 +62,7 @@ def __main__():
   parser.add_argument('-q', '--query',  action="store_true", help="when supplied, query DNS for the running instances")
   arg = parser.parse_args()
 
-  box_pattern = ".*%s.%s" % (arg.env, arg.domain)
+  box_pattern = ".*%s.%s" % (arg.environment, arg.domain)
 
   print >>sys.stderr, "updating DNS records of the hosts on %s matching %s" % (arg.provider, box_pattern)
 
