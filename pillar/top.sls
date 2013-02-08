@@ -1,4 +1,4 @@
-#!yaml
+#!mako|yaml
 
 #https://salt.readthedocs.org/en/latest/topics/pillar/index.html
 #pillar data is available GLOBALLY to all scripts and minions!
@@ -11,43 +11,21 @@
 #To target minions based on pillar data...
 # salt -I 'somekey:specialvalue' test.ping
 
-#base:
-#  '*':
-    # - server_names
-    # - static_ips
-    # - region_mapping
-    # - instance_kinds
-    # - cloud_images
+# First, get the grain of the server based on the 
+# 'environment' grain. Possible update would verify
+# this or use the server name also.
+
+<%
+environment=grains.get('environment')
+%>
 
 base:
   '*':
-    - common.server_status
+    - base
+# pillar loading for all environments. 
+# Check the init.sls for each pillar.
 
-
-localdev:
-  'environment:localdev':
-    - match: grain  
-    - env_globals
-    - openstack
-
-
-dev:
-  'environment:dev':
-    - match: grain  
-    - env_globals
-
-staging:
-  'environment:staging':
-    - match: grain
-    - env_globals
-    - server_roles
-    - salt_cloud_live_instances
-#    - server_status
-    # TODO update this to auto-load based on the sls files in each pillar
-
-prod:
-  'environment:prod':
-    - match: grain  
-    - env_globals
-    - server_roles
+% if environment in ['localdev', 'dev', 'staging', 'prod']:
+    - ${environment}
+% endif
 

@@ -41,11 +41,12 @@ file_roots:
 pillar_roots:
   base:
     - /srv/cloudstate/pillar
-  localdev:
-    - /srv/cloudstate/pillar/localdev
-  dev:
-    - /srv/cloudstate/pillar/dev
-  staging:
-    - /srv/cloudstate/pillar/staging
-  prod:
-    - /srv/cloudstate/pillar/prod
+  #   - /srv/cloudstate/pillar/base
+  # localdev:
+  #   - /srv/cloudstate/pillar/localdev
+  # dev:
+  #   - /srv/cloudstate/pillar/dev
+  # staging:
+  #   - /srv/cloudstate/pillar/staging
+  # prod:
+  #   - /srv/cloudstate/pillar/prod
