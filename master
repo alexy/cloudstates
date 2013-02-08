@@ -10,10 +10,10 @@ state_verbose: true
 state_output: full
 
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
-schedule:
-  overstate:
-    function: state.over
-    minutes: 10
+#schedule:
+#  overstate:
+#    function: state.over
+#    minutes: 10
 
 worker_threads: 5
 
