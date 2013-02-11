@@ -4,7 +4,7 @@
 # these can be overwritten in individual environments.
 
 <%
-environment=grains.get('environment')
+environment=grains['environment']
 %>
 
 provisioner: salt-cloud
@@ -18,6 +18,9 @@ username: vagrant
 % else:
 username: ubuntu
 % endif
+
+salt_basedir: '/srv/cloudconf/salt'
+war_basedir: 'common/states/role-api'
 
 domain: ${environment}.vrsl.net
 s3war_bucket: 's3://com.vrsl.net'
@@ -35,6 +38,6 @@ minion:
   log_level: debug
   startup_states: sls
   sls_list:
-    - common.services.mako
+    - saltmine.services.mako
   grains:
     environment: ${environment}

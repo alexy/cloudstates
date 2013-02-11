@@ -1,6 +1,7 @@
 #!yaml
 
-# Config settings for different server roles in this environment
+# dmv staging group
+# Config settings for servers in the dmv group in this environment
 
 server_roles:
   api:
@@ -11,8 +12,8 @@ server_roles:
     os: Ubuntu
     os-version: 12_04_LTS
     instances:
-      - {number: 2, region: 0, subregion: 0}
-      - {number: 2, region: 0, subregion: 1}
+      - {number: 4, region: 0, subregion: 0}
+      - {number: 4, region: 0, subregion: 1}
 
   lb:
     role: 'lb'
