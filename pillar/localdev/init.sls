@@ -12,11 +12,3 @@ include:
 provisioner: vagrant
 domain: localhost
 salt_master: 10.0.2.2
-
-minion:
-  log_level: debug
-  startup_states: sls
-  sls_list:
-    - common.services.mako
-  grains:
-    environment: localdev

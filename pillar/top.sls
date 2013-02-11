@@ -16,7 +16,8 @@
 # this or use the server name also.
 
 <%
-environment=grains.get('environment')
+environment=grains['environment']
+group=grains['group']
 %>
 
 base:
@@ -29,3 +30,6 @@ base:
     - ${environment}
 % endif
 
+% if group:
+    - ${environment}.group.${group}
+% endif

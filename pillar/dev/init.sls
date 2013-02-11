@@ -1,3 +1,5 @@
+#!yaml
+
 include:
   - common.env_globals
 
