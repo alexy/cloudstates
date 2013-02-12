@@ -125,8 +125,8 @@ def generate_roles(pillar, rolesOpt=None):
 
 
 # this function is callable from update-dns right away
-def generate_role_instances(pillarOpt=None, rolesOpt=None):
-  pillar = pillarOpt if pillarOpt else load_pillar()
+def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None):
+  pillar = pillarOpt if pillarOpt else load_pillar(environment=environment)
   role_names = rolesOpt if rolesOpt else pillar['server_roles'].keys()
   roles      = generate_roles(pillar, role_names)
   profiles   = generate_cloud_profiles(pillar, [pillar['environment']])
@@ -155,17 +155,17 @@ def __main__():
   parser.add_argument('-R', '--allroles',     action="store_true", help="generate all roles for inspection")
   parser.add_argument('-I', '--allinstances', action="store_true", help="generate all instances for DNS and running status")
   parser.add_argument('-r', '--role',                              help="generate a specific role from the list of all roles")
-  parser.add_argument('-e', '--env',          default='staging',   help="use a given environment")
+  parser.add_argument('-e', '--environment',  default='staging',   help="use a given environment")
 
   arg = parser.parse_args()
 
-  p = load_pillar(environment=arg.env)
+  p = load_pillar(environment=arg.environment)
 
-  print >> sys.stderr, "generating salt-cloud configuration for environment: %s" % arg.env
+  print >> sys.stderr, "generating salt-cloud configuration for environment: %s" % arg.environment
 
   if arg.profiles:
     print >>sys.stderr, "generating cloud.profiles"
-    r = generate_cloud_profiles(p, [arg.env])
+    r = generate_cloud_profiles(p, [arg.environment])
     # TODO we need to make this a function,
     # dump to a stream,
     # and possibly set default_flow_style=False 'globally'
@@ -180,7 +180,7 @@ def __main__():
     print dump(r, default_flow_style=False)
   elif arg.allinstances:
     print >>sys.stderr, "generating all instances"
-    r = generate_role_instances(p, all_roles)
+    r = generate_role_instances(p)
     print dump(r, default_flow_style=False)
   else:
     print "you want something which doesn't seem to exist, eh?"

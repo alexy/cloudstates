@@ -1,0 +1,10 @@
+grains:
+  roles:
+  - mcp
+  environment: prod
+id: mcp-prod.vrsl.net
+log_level: debug
+master: mcp-overlord.vrsl.net
+sls_list:
+- common.services.mako
+startup_states: sls

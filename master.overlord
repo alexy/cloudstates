@@ -1,6 +1,5 @@
-# salt master file for staging & production mcp minions
+#salt master file for the overlord server
 interface: 0.0.0.0
-#interface: 127.0.0.1
 user: root
 state_top: top.sls
 log_level: debug
@@ -10,10 +9,10 @@ state_verbose: true
 state_output: full
 
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
-schedule:
-  overstate:
-    function: state.over
-    minutes: 10
+#schedule:
+#  overstate:
+#    function: state.over
+#    minutes: 10
 
 worker_threads: 5
 
@@ -43,3 +42,11 @@ file_roots:
 pillar_roots:
   base:
     - /srv/cloudstate/pillar
+  # localdev:
+  #   - /srv/cloudstate/pillar/localdev
+  # dev:
+  #   - /srv/cloudstate/pillar/dev
+  # staging:
+  #   - /srv/cloudstate/pillar/staging
+  # prod:
+  #   - /srv/cloudstate/pillar/prod

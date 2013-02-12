@@ -1,0 +1,28 @@
+#salt master file for the localdev salt master servers
+interface: 127.0.0.1
+user: root
+state_top: top.sls
+log_level: debug
+#renderer: yaml_jinja #this is the default
+renderer: mako|yaml
+state_verbose: true
+state_output: full
+
+#http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
+#schedule:
+#  overstate:
+#    function: state.over
+#    minutes: 10
+
+worker_threads: 2
+
+failhard: False # if true, will stop salt execution after first failure.
+
+file_roots:
+  base:
+    - /srv/cloudconf/salt
+    - /srv/saltmine
+
+pillar_roots:
+  base:
+    - /srv/cloudstate/pillar

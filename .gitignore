@@ -1,3 +1,3 @@
-*compiled.map
 *.pyc
 salt-cloud.sls
+*live_instances.sls

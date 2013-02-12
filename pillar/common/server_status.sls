@@ -18,21 +18,27 @@ import sys, argparse
 %>
 
 <%
+environment = grains['environment']
+%>
+
+<%
 def load_pillar():
-  # basedirectory = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))+'/pillar/'
-  # environment   = 'staging'
-  # envdirectory  = basedirectory+environment+'/'
+  basedirectory          = '/srv/cloudstate/pillar/'
+  envdirectory           = basedirectory+environment+'/'
+  commondirectory        = basedirectory+'common/'
 
-  basedirectory = '/srv/cloudstate/pillar/'
-  environment   = 'staging'
-  envdirectory  = basedirectory+environment+'/'
-
-  pillar_env_files    = ['server_names', 'salt_cloud_live_instances', 'region_mapping']
+  pillar_env_files       = ['salt_cloud_live_instances']
+  pillar_common_files    = ['server_names', 'region_mapping']
 
   pillar_files = []
 
+  # some pillars are in env.
   for filename in pillar_env_files:
     pillar_files.append(envdirectory + filename + '.sls')
+
+  # some pillars are in common.
+  for filename in pillar_common_files:
+    pillar_files.append(commondirectory + filename + '.sls')
 
   p = {}
 
@@ -50,8 +56,8 @@ def load_pillar():
   
 def get_role(server_search_name, server_names_local):
   '''
-  Searches the passed python object for an entry with the designated name.
-  If it finds the name, it returns the role for that name.
+  Searches an object for a designated name. If it finds the name, 
+  it returns the role_name for that name.
   '''
   for role_name in server_names_local:
     for server_name in server_names_local[role_name]:
@@ -63,7 +69,8 @@ def get_role(server_search_name, server_names_local):
 
 def generate_aws_cname(ip_address, region='us-west-2', dns_type='public_dns'):
   '''
-  Given the ip address of a minion, turn that into a aws cname.
+  Given the ip address of a minion, return a valid aws private or public cname.
+
   This function will only be called if the server region is an aws region.
   You can pass in a specific region, and you can also specify either `public_dns` 
   or `private_dns` to specify the type of dns entry to create. 
@@ -84,15 +91,27 @@ def generate_aws_cname(ip_address, region='us-west-2', dns_type='public_dns'):
 
 def get_region_provider(region, subregion):
   '''
-  Given a `region` and `subregion`, this function will return the provider type.
+  Given a `region` and `subregion`, return the provider type.
   '''
   return server_region_mapping[region][subregion]["provider"]
 
 def get_aws_location(region, subregion):
   '''
-  Given a `region` and `subregion`, this function will return the name of the aws location.
+  Given a `region` and `subregion`, return the name of the aws location.
   '''
   return server_region_mapping[region][subregion]["location"]
+
+def valid_servername(splitservername):
+  '''
+  return true if passed object represents a valid servername
+  '''
+  if len(serverparams) > 5:
+    return True
+
+  #TODO add more and better checks... 
+  ## validate the region against the regions allowed in the current environment / group.
+
+  return False
 
 #format:
 #- name: apple-region-0-1-staging.vrsl.net
@@ -113,17 +132,19 @@ server_status:
 % for server in server_salt_cloud:
   <%
   serverparams = server.split('-') # servername / region / subregion+domain
-  #must have split properly E.G. apple-region-0-0-staging.vrsl.net
+  #must have split properly E.G. apple-region-0-0-dmv-staging.vrsl.net
   %>
 
-  % if len(serverparams) == 5: #only error checking currently... TODO Add more
+  % if valid_servername(serverparams): #only error checking currently... TODO Add more
     <%
     param_name = serverparams[0] # name 
     param_region = int(serverparams[2]) # region
     param_subregion = int(serverparams[3]) # subregion / datacenter
+    param_environment = serverparams[-1].split('.')[0] #environment is the last item before the dots 
     %>
 
   ${server}:
+    environment: ${param_environment}
     roles: ${get_role(param_name,server_names)}
     % if get_region_provider(param_region, param_subregion) == 'aws':
     <%
