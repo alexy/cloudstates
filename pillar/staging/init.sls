@@ -1,5 +1,7 @@
 #!yaml
 
+# defaults for servers without group grains set
+
 include:
   - common.env_globals
   - staging.server_roles

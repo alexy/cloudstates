@@ -24,12 +24,14 @@ base:
   '*':
     - base
 # pillar loading for all environments. 
-# Check the init.sls for each pillar.
-
+# if the group grain is set, load the group init.sls
+# if not, load the environment init.sls
 % if environment in ['localdev', 'dev', 'staging', 'prod']:
+  % if group:
+    - ${environment}.group.${group}
+  % else:
     - ${environment}
+  % endif
 % endif
 
-% if group:
-    - ${environment}.group.${group}
-% endif
+
