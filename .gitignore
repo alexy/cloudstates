@@ -1,4 +1,3 @@
 *compiled.map
 *.pyc
 salt-cloud.sls
-*.map

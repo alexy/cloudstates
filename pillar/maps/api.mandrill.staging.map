@@ -1,0 +1,8 @@
+staging_small_region-0-0:
+- apple-region-0-0-mandrill-staging.vrsl.net:
+    environment: staging
+    grains:
+      group: mandrill
+      roles:
+      - lb
+    master: mcp-staging.vrsl.net
