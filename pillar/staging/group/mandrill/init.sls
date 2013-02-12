@@ -4,5 +4,5 @@ include:
 
 # insert new globals here...
 
-s3war_bucket: 's3://com.versal-mandrill.war'
-api_war:       api.staging-mandrill.war
+s3war_bucket: 's3://net.vrsl.war'
+api_war:       api.mandrill.war
