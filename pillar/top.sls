@@ -17,7 +17,10 @@
 
 <%
 environment=grains['environment']
-group=grains['group']
+if 'group' in grains:
+  group=grains['group']
+else:
+  group=''
 %>
 
 base:
@@ -27,7 +30,7 @@ base:
 # if the group grain is set, load the group init.sls
 # if not, load the environment init.sls
 % if environment in ['localdev', 'dev', 'staging', 'prod']:
-  % if group:
+  % if group is not None:
     - ${environment}.group.${group}
   % else:
     - ${environment}
