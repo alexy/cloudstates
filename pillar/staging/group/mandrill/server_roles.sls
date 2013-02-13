@@ -10,5 +10,6 @@ server_roles:
     dns: 'dynamic'
     os: Ubuntu
     os-version: 12_04_LTS
+    group: mandrill
     instances:
       - {number: 1, region: 0, subregion: 0}

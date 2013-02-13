@@ -23,8 +23,8 @@ salt_basedir: '/srv/cloudconf/salt'
 war_basedir: 'common/states/role-api'
 
 domain: ${environment}.vrsl.net
-s3war_bucket: 's3://com.vrsl.net'
-api_war:      api.default.war
+s3war_bucket: 's3://net.vrsl.war'
+api_war:      api.staging.war
 
 backend_static_servers:
   server1:
