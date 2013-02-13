@@ -34,6 +34,8 @@ backend_static_servers:
     name: net.vrsl.web.s3-website-us-west-2.amazonaws.com
     dns: net.vrsl.web.s3-website-us-west-2.amazonaws.com
 
+crontab_path: 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
 minion:
   log_level: debug
   startup_states: sls

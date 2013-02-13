@@ -10,8 +10,8 @@ state_output: full
 max_open_files: 10000
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
 
-
 worker_threads: 5
+pillar_opts: False
 
 failhard: False # if true, will stop salt execution after first failure.
 
