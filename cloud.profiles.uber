@@ -1,3 +1,17 @@
+staging_medium_region-0-0:
+  availability_zone: us-west-2a
+  image: ami-7e2da54e
+  location: us-west-2
+  minion:
+    grains:
+      environment: staging
+    log_level: debug
+    master: mcp-staging.vrsl.net
+    sls_list:
+    - common.services.mako
+    startup_states: sls
+  provider: aws
+  size: Medium Instance
 staging_medium_cpu_region-0-0:
   availability_zone: us-west-2a
   image: ami-7e2da54e
