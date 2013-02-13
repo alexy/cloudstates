@@ -126,6 +126,8 @@ def valid_servername(splitservername):
   server_names = p['server_names']
   server_salt_cloud = p['aws']
   server_region_mapping=p['region_mapping']
+
+  # TODO Error checking if server_names file is blank. Currently barfs.
 %>
 
 server_status:
