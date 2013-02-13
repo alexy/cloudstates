@@ -10,10 +10,10 @@ state_verbose: true
 state_output: full
 max_open_files: 10000
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
-schedule:
-  overstate:
-    function: state.over
-    minutes: 10
+#schedule:
+#  overstate:
+#    function: state.over
+#    minutes: 10
 
 worker_threads: 5
 
@@ -23,22 +23,7 @@ file_roots:
   base:
     - /srv/cloudconf/salt
     - /srv/saltmine
-  #   - /srv/cloudconf/salt/base
-  #   - /srv/cloudconf/salt/base/services
-  #   - /srv/cloudconf/salt/base/states
-  #   - /srv/cloudstate/util
-  # localdev:
-  #   - /srv/cloudconf/salt/localdev/services
-  #   - /srv/cloudconf/salt/localdev/states
-  # dev:
-  #   - /srv/cloudconf/salt/dev/services
-  #   - /srv/cloudconf/salt/dev/states
-  # staging:
-  #   - /srv/cloudconf/salt/staging/services
-  #   - /srv/cloudconf/salt/staging/states
-  # prod:
-  #   - /srv/cloudconf/salt/prod/services
-  #   - /srv/cloudconf/salt/prod/states
+    - /srv/cloudstate/util
 
 pillar_roots:
   base:

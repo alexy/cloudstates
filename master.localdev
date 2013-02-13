@@ -22,6 +22,8 @@ file_roots:
   base:
     - /srv/cloudconf/salt
     - /srv/saltmine
+    - /srv/cloudstate/util
+
 
 pillar_roots:
   base:
