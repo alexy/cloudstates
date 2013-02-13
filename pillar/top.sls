@@ -20,7 +20,7 @@ environment=grains['environment']
 if 'group' in grains:
   group=grains['group']
 else:
-  group=''
+  group=None
 %>
 
 base:
