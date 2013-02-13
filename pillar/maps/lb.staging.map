@@ -1,0 +1,15 @@
+staging_small_region-0-0:
+- agnon-region-0-0-staging.vrsl.net:
+    environment: staging
+    grains:
+      roles:
+      - lb
+    master: mcp-staging.vrsl.net
+staging_small_region-0-1:
+- beckett-region-0-1-staging.vrsl.net:
+    environment: staging
+    grains:
+      roles:
+      - lb
+    master: mcp-staging.vrsl.net
+
