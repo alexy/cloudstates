@@ -1,13 +1,12 @@
 #!yaml
 
+# This file should ONLY include 'include' files. To set custom keys, 
+# include them in a custom.sls file. Do NOT include keys in this file.
+# The pillar dictionary is compiled in the order that they appear in this list.
+# Newer keys OVERWRITE older keys.
+
 include:
   - common.env_globals
   - prod.server_roles
+  - prod.custom
 
-s3war_bucket: 's3://net.vrsl.war'
-api_war:      api.dmv.war
-
-backend_static_servers:
-  server1:
-    name: com.versal.web.s3-website-us-west-2.amazonaws.com
-    dns:  com.versal.web.s3-website-us-west-2.amazonaws.com

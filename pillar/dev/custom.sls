@@ -1,0 +1,3 @@
+#!yaml
+
+provisioner: openstack
