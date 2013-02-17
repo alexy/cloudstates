@@ -11,39 +11,6 @@ from copy import deepcopy
 import sys, argparse
 
 
-def load_pillar(basedir='/srv/cloudstate/', environment='staging'):
-  saltdir   = basedir if basedir else os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '../'
-  pillardir = saltdir   + 'pillar/'
-  commondir = pillardir + 'common/'
-  envdir    = pillardir + environment + '/'
-
-  pillar_env_files    = ['env_globals', 'server_roles']
-  pillar_common_files = ['instance_kinds','cloud_images', 'region_mapping', 'server_names', 'static_ips']
-
-  pillar_files = []
-
-  for filename in pillar_env_files:
-    pillar_files.append(envdir + filename + '.sls')
-
-  for filename in pillar_common_files:
-    pillar_files.append(commondir + filename + '.sls')
-
-  p = {}
-
-
-  for pathname in pillar_files:  
-    with file(pathname, 'r') as f:
-      d_ = load(f, Loader=Loader)
-      for k in d_:
-        if p.has_key(k):
-          # TODO barf profusely
-          print "KEY CONFLICT on '%s' reading %s" % (k, pathname)
-        else:
-          p[k] = d_[k]
-
-  return p
-
-
 def name_instance_kind(env, instance_kind, region_index, subregion_index):
   return "%s_%s_region-%d-%d" % (env, instance_kind, region_index, subregion_index)
 
@@ -125,7 +92,7 @@ def generate_roles(pillar, rolesOpt=None):
 
 
 # this function is callable from update-dns right away
-def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None):
+def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None,):
   pillar = pillarOpt if pillarOpt else load_pillar(environment=environment)
   role_names = rolesOpt if rolesOpt else pillar['server_roles'].keys()
   roles      = generate_roles(pillar, role_names)
@@ -156,10 +123,11 @@ def __main__():
   parser.add_argument('-I', '--allinstances', action="store_true", help="generate all instances for DNS and running status")
   parser.add_argument('-r', '--role',                              help="generate a specific role from the list of all roles")
   parser.add_argument('-e', '--environment',  default='staging',   help="use a given environment")
+  parser.add_argument('-g', '--group',        default='test',      help="use a given group")
 
   arg = parser.parse_args()
 
-  p = load_pillar(environment=arg.environment)
+  p = load_pillar(environment=arg.environment, group=arg.group)
 
   print >> sys.stderr, "generating salt-cloud configuration for environment: %s" % arg.environment
 
