@@ -68,8 +68,7 @@ def load_pillar(environment, group, basedir=base_dir(),
         if k in p:
           # TODO log to rsyslog for salt -- set it up
           print >>stderr, "KEY OVERRIDE on '%s' reading %s" % (k, pathname)
-        else:
-          p[k] = d_[k]
+        p[k] = d_[k]
       print >>stderr, "loaded %s into pillar" % pathname
   
   if 'environment' not in p:
