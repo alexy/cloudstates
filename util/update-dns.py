@@ -11,18 +11,22 @@ try:
 except ImportError:
     from yaml import Loader, Dumper
 
+from sys import stderr
 
-def load_running_status(status_file, provider, environment, box_pattern):
+
+def load_running_status(status_file, provider, environment, group, box_pattern):
   with open(status_file) as f:
-  	y = load(f, Loader=Loader)
-  if y.has_key(provider):
-  	r = y[provider]
+    y = load(f, Loader=Loader)
+  if provider in y:
+    r = y[provider]
+    print >>stderr, r
   else:
-  	print >>sys.stderr, "no data for provider %s in live server status file!" % provider
+    print >>stderr, "no data for provider %s in live server status file!" % provider
 
-  records = [(k, r[k]['public_ips'][0], r[k]['private_ips'][0]) for k in r.keys() if re.match(box_pattern, k) and r[k]['state'] == 'RUNNING']
+  records = [(k, r[k]['public_ips'][0], r[k]['private_ips'][0]) for k in r if re.match(box_pattern, k) and r[k]['state'] == 'RUNNING']
 
-  role_instances = mapper.generate_role_instances(environment=environment)
+  role_instances = mapper.generate_role_instances(environment=environment, group=group)
+  print >>stderr, role_instances
 
   r = {}
   for name,public_ip,private_ip in records:
@@ -55,10 +59,11 @@ def ensure_running_dns(records, zone):
 def __main__():
   parser = argparse.ArgumentParser(description='Versal DNS updater')
   parser.add_argument('--provider', default="aws", help="cloud provider id recognized by libcloud")
-  parser.add_argument('--domain', default="vrsl.net", help="domain which must be contained in the instances names")
-  parser.add_argument('--environment', default='staging', help="environment which must be contained in the instance names")
+  parser.add_argument('-d', '--domain', default="vrsl.net", help="domain which must be contained in the instances names")
+  parser.add_argument('-e', '--environment', default='staging', help="environment which must be contained in the instance names")
+  parser.add_argument('-g', '--group', help="named group")
   parser.add_argument('status_file', help="the salt-cloud -Q yaml output file")
-  parser.add_argument('-e', '--ensure', action="store_true", help="when supplied, actually assign everything")
+  parser.add_argument('-E', '--ensure', action="store_true", help="when supplied, actually assign everything")
   parser.add_argument('-q', '--query',  action="store_true", help="when supplied, query DNS for the running instances")
   arg = parser.parse_args()
 
@@ -66,7 +71,7 @@ def __main__():
 
   print >>sys.stderr, "updating DNS records of the hosts on %s matching %s" % (arg.provider, box_pattern)
 
-  records = load_running_status(arg.status_file, arg.provider, arg.environment, box_pattern)
+  records = load_running_status(arg.status_file, arg.provider, arg.environment, arg.group, box_pattern)
   print >>sys.stderr, "working with records ", records
 
   if arg.query:
