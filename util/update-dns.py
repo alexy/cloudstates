@@ -30,9 +30,10 @@ def load_running_status(status_file, provider, environment, group, box_pattern):
 
   r = {}
   for name,public_ip,private_ip in records:
-  	r[name] = role_instances[name].copy()
-  	r[name]['public_ip']  = public_ip
-  	r[name]['private_ip'] = private_ip
+    if name in role_instances:
+      r[name] = role_instances[name].copy()
+      r[name]['public_ip']  = public_ip
+      r[name]['private_ip'] = private_ip
   return r
 
 
