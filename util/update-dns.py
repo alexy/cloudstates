@@ -19,13 +19,17 @@ def load_running_status(status_file, provider, environment, group, box_pattern):
     y = load(f, Loader=Loader)
   if provider in y:
     r = y[provider]
-    print >>stderr, r
+    #print >>stderr, r
   else:
     print >>stderr, "no data for provider %s in live server status file!" % provider
 
   records = [(k, r[k]['public_ips'][0], r[k]['private_ips'][0]) for k in r if re.match(box_pattern, k) and r[k]['state'] == 'RUNNING']
 
-  role_instances = mapper.generate_role_instances(environment=environment, group=group)
+  if group:
+    role_instances = mapper.generate_group_instances(environment=environment, group=group)
+  else:
+    role_instances = mapper.generate_environment_instances(environment)
+    
   print >>stderr, role_instances
 
   r = {}
@@ -40,7 +44,7 @@ def load_running_status(status_file, provider, environment, group, box_pattern):
 def query_running_dns(records, zone):
   for rec in records:
     assigned = route53.query(zone, rec)
-    print >>sys.stderr, "%s => " % rec, assigned
+    print >>stderr, "%s => " % rec, assigned
 
 
 # TODO this only works for amazon
@@ -52,9 +56,10 @@ def ensure_running_dns(records, zone):
   for rec in records:
 	# TODO place the default TTL somewhere central
 	host = records[rec]
+  # TODO have assign report actual assignment vs same ang log it
 	route53.assign(zone, rec, aws_public_dns_from_ip(host['public_ip'],host['location']), 60)
 	assigned = route53.query(zone, rec)
-	print >>sys.stderr, "just assigned %s => " % rec, assigned
+	print >>stderr, "just assigned %s => " % rec, assigned
 
 
 def __main__():
@@ -62,18 +67,23 @@ def __main__():
   parser.add_argument('--provider', default="aws", help="cloud provider id recognized by libcloud")
   parser.add_argument('-d', '--domain', default="vrsl.net", help="domain which must be contained in the instances names")
   parser.add_argument('-e', '--environment', default='staging', help="environment which must be contained in the instance names")
-  parser.add_argument('-g', '--group', help="named group")
-  parser.add_argument('status_file', help="the salt-cloud -Q yaml output file")
+  parser.add_argument('-g', '--group', help="named group; when absent, all groups in group/init.sls will be updated jointly")
   parser.add_argument('-E', '--ensure', action="store_true", help="when supplied, actually assign everything")
   parser.add_argument('-q', '--query',  action="store_true", help="when supplied, query DNS for the running instances")
+  parser.add_argument('status_file', help="the salt-cloud -Q yaml output file")
   arg = parser.parse_args()
 
   box_pattern = ".*%s.%s" % (arg.environment, arg.domain)
 
-  print >>sys.stderr, "updating DNS records of the hosts on %s matching %s" % (arg.provider, box_pattern)
+  print >>stderr, "updating DNS records of the hosts on %s matching %s" % (arg.provider, box_pattern)
+
+  if arg.group:
+    print >>stderr, "  in environment %s only for group %s" % (arg.environment, arg.group)
+  else:
+    print >>stderr, "  for all group/init groups in environment %s" % (arg.environment)
 
   records = load_running_status(arg.status_file, arg.provider, arg.environment, arg.group, box_pattern)
-  print >>sys.stderr, "working with records ", records
+  print >>stderr, "working with records ", records
 
   if arg.query:
   	query_running_dns(records, arg.domain)

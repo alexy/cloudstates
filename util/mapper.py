@@ -10,7 +10,7 @@ from copy import deepcopy
 
 import sys, argparse
 
-from load_pillar import load_pillar
+from load_pillar import load_pillar, load_mako_yaml, groups_top_init
 
 def name_instance_kind(env, instance_kind, region_index, subregion_index):
   return "%s_%s_region-%d-%d" % (env, instance_kind, region_index, subregion_index)
@@ -94,7 +94,7 @@ def generate_roles(pillar, rolesOpt=None):
 
 
 # this function is callable from update-dns right away
-def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None, group=None):
+def generate_group_instances(pillarOpt=None, rolesOpt=None, environment=None, group=None):
   pillar = pillarOpt if pillarOpt else load_pillar(environment=environment, group=group)
   role_names = rolesOpt if rolesOpt else pillar['server_roles'].keys()
   roles      = generate_roles(pillar, role_names)
@@ -115,7 +115,20 @@ def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None, gro
         r[instance_name] = instance_props
   return r
 
-
+def generate_environment_instances(environment):
+  # TODO error well if the key is missing!
+  group_init_path = groups_top_init(environment) 
+  group_init = load_mako_yaml(group_init_path, environment)
+  print group_init
+  groups = group_init['groups']
+  combined = {}
+  for group in groups:
+    g = generate_group_instances(environment=environment, group=group)
+    for instance_name in g:
+      if instance_name in combined:
+        print >>stderr, "INSTANCE NAME OVERRIDE in environment %, group %s" % (environment, group)
+      combined[instance_name] = g[instance_name]
+  return combined
 
 def __main__():
 
