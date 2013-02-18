@@ -12,8 +12,8 @@ server_roles:
     os: Ubuntu
     os-version: 12_04_LTS
     instances:
-      - {number: 4, region: 0, subregion: 0}
-      - {number: 4, region: 0, subregion: 1}
+      - {number: 2, region: 0, subregion: 0}
+      - {number: 2, region: 0, subregion: 1}
 
   lb:
     role: 'lb'

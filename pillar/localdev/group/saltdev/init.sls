@@ -7,4 +7,4 @@
 
 include:
   - localdev
-  - localdev.group.dmv.server_roles
+  - localdev.group.saltdev.server_roles

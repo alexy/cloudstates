@@ -5,6 +5,10 @@
 
 <%
 environment=grains['environment']
+if 'group' in grains:
+	group = grains['group']
+else:
+	group = None
 %>
 
 provisioner: salt-cloud
@@ -22,7 +26,12 @@ username: ubuntu
 salt_basedir: '/srv/cloudconf/salt'
 war_basedir: 'common/states/role-api'
 
+% if group:
+domain: ${group}-${environment}.vrsl.net
+% else:
 domain: ${environment}.vrsl.net
+% endif
+
 s3war_bucket: 's3://net.vrsl.war'
 api_war:      api.staging.war
 
@@ -41,3 +50,6 @@ minion:
     - saltmine.services.mako
   grains:
     environment: ${environment}
+% if group:
+    group: ${group}
+% endif
