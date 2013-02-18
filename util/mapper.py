@@ -10,6 +10,7 @@ from copy import deepcopy
 
 import sys, argparse
 
+from load_pillar import load_pillar
 
 def name_instance_kind(env, instance_kind, region_index, subregion_index):
   return "%s_%s_region-%d-%d" % (env, instance_kind, region_index, subregion_index)
@@ -69,6 +70,7 @@ def generate_role(p, role):
       instance_props = {
         'master': p['salt_master'],
         'grains': {
+          'group': p['group'],
           'roles': [server_group['role']]
           }, 
         'environment': environment
@@ -92,8 +94,8 @@ def generate_roles(pillar, rolesOpt=None):
 
 
 # this function is callable from update-dns right away
-def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None,):
-  pillar = pillarOpt if pillarOpt else load_pillar(environment=environment)
+def generate_role_instances(pillarOpt=None, rolesOpt=None, environment=None, group=None):
+  pillar = pillarOpt if pillarOpt else load_pillar(environment=environment, group=group)
   role_names = rolesOpt if rolesOpt else pillar['server_roles'].keys()
   roles      = generate_roles(pillar, role_names)
   profiles   = generate_cloud_profiles(pillar, [pillar['environment']])
@@ -128,8 +130,9 @@ def __main__():
   arg = parser.parse_args()
 
   p = load_pillar(environment=arg.environment, group=arg.group)
+  #print p
 
-  print >> sys.stderr, "generating salt-cloud configuration for environment: %s" % arg.environment
+  print >> sys.stderr, "generating salt-cloud configuration for environment: %s, group: %s" % (arg.environment, arg.group)
 
   if arg.profiles:
     print >>sys.stderr, "generating cloud.profiles"
@@ -144,6 +147,7 @@ def __main__():
     print dump(r, default_flow_style=False)
   elif arg.allroles:
     print >>sys.stderr, "generating all roles"
+    all_roles = p['server_roles'].keys()
     r = generate_roles(p, all_roles)
     print dump(r, default_flow_style=False)
   elif arg.allinstances:
