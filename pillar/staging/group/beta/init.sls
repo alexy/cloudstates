@@ -7,5 +7,5 @@
 
 include:
   - staging
-  - staging.group.dmv.server_roles
-  - staging.group.dmv.custom
+  - staging.group.beta.server_roles
+  - staging.group.beta.custom
