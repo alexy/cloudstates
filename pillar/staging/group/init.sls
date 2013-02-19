@@ -10,5 +10,6 @@ group=grains['group']
 domain: ${group}-${environment}.vrsl.net
 
 groups:
+  - beta
   - hybrid
   - mandrill
