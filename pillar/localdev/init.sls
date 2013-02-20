@@ -7,8 +7,8 @@
 
 include:
   - common.env_globals
+  - saltmine.pillar.env_globals
   - localdev.salt_cloud_live_instances
   - localdev.server_roles
-  - localdev.openstack
   - localdev.custom
 
