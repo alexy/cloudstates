@@ -1,5 +1,7 @@
 #salt master file for the localdev salt master servers
-interface: 127.0.0.1
+#interface: 10.0.2.15
+interface: 0.0.0.0
+#interface: 127.0.0.1
 user: root
 state_top: top.sls
 log_level: debug
