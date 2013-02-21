@@ -27,7 +27,7 @@ aws:
     - 50.112.28.75
     size: null
     state: RUNNING
-  demo1:
+  agnon-region-0-0-demo-localdev.vrsl.net:
     id: i-e2cc26d0
     image: null
     private_ips:
@@ -37,7 +37,7 @@ aws:
     - 54.245.237.33
     size: null
     state: RUNNING
-  jenkins:
+  apple-region-0-0-demo-localdev.vrsl.net:
     id: i-9786bba4
     image: null
     private_ips:
