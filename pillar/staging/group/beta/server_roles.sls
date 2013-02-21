@@ -25,3 +25,15 @@ server_roles:
     group: beta
     instances: 
       - {number: 1, region: 0, subregion: 0}
+
+  auth:
+    role: auth
+    size: small
+    tenant: single
+    dns: dynamic
+    os: Ubuntu
+    os-version: 12_04_LTS
+    group: beta
+    instances: 
+      - {number: 1, region: 0, subregion: 0}
+
