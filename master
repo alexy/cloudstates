@@ -28,4 +28,5 @@ file_roots:
 
 pillar_roots:
   base:
+    - /srv/saltmine
     - /srv/cloudstate/pillar

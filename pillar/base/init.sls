@@ -7,3 +7,5 @@
 
 include:
   - common.server_status
+  - saltmine.pillar.env_globals
+
