@@ -52,7 +52,7 @@ minion:
   log_level: debug
   startup_states: sls
   sls_list:
-    - saltmine.services.mako
+    - saltmine.pkgs.mako
   grains:
     environment: ${environment}
 % if group:
