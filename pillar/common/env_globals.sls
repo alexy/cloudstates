@@ -24,7 +24,7 @@ username: ubuntu
 % endif
 
 salt_basedir: '/srv/cloudconf/salt'
-war_basedir: 'common/states/role-api'
+war_basedir:  'common/states/share/role-war'
 
 % if group:
 domain: ${group}-${environment}.vrsl.net
@@ -33,7 +33,10 @@ domain: ${environment}.vrsl.net
 % endif
 
 s3war_bucket: 's3://net.vrsl.war'
-api_war:      api.staging.war
+war:      
+  api:
+    source: api.staging.war
+    target: api.war
 
 backend_static_servers:
   server1:
