@@ -51,3 +51,7 @@ server_names:
   auth:
     - zebra
     - yak
+  nodejs:
+    - anchoridge
+    - baltimore
+    - cincinnati
