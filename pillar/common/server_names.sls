@@ -48,3 +48,6 @@ server_names:
     - andromeda
     - betelgeuse
     - cassiopeia
+  auth:
+    - zebra
+    - yak
