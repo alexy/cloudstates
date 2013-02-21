@@ -37,3 +37,14 @@ server_roles:
     instances: 
       - {number: 1, region: 0, subregion: 0}
 
+  nodejs:
+    role: nodejs
+    size: medium
+    tenant: single
+    dns: dynamic
+    os: Ubuntu
+    os-version: 12_04_LTS
+    group: beta
+    instances: 
+      - {number: 1, region: 0, subregion: 0}
+
