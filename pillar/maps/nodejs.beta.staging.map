@@ -1,8 +1,9 @@
 staging_medium_region-0-0:
-- apple-region-0-0-mandrill-staging.vrsl.net:
+- anchoridge-region-0-0-beta-staging.vrsl.net:
     environment: staging
     grains:
-      group: mandrill
+      group: beta
       roles:
-      - api
+      - nodejs
     master: mcp-staging.vrsl.net
+
