@@ -52,6 +52,6 @@ server_names:
     - zebra
     - yak
   nodejs:
-    - anchoridge
+    - anchoradge
     - baltimore
     - cincinnati
