@@ -7,6 +7,5 @@
 
 include:
   - common.env_globals
-  - staging.salt_cloud_live_instances
   - staging.server_roles
   - staging.custom
