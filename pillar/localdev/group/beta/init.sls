@@ -6,6 +6,6 @@
 # Newer keys OVERWRITE older keys.
 
 include:
-  - staging
-  - staging.group.beta.server_roles
-  - staging.group.beta.custom
+  - localdev
+  - localdev.group.beta.server_roles
+  - localdev.group.beta.custom

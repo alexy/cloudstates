@@ -6,6 +6,6 @@
 # Newer keys OVERWRITE older keys.
 
 include:
-  - staging
-  - staging.group.dmv.server_roles
-  - staging.group.dmv.custom
+  - localdev
+  - localdev.group.dmv.server_roles
+  - localdev.group.dmv.custom
