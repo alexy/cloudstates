@@ -52,7 +52,7 @@ server_names:
     - zebra
     - yak
   nodejs:
-    - anchoradge
+    - anchorage
     - baltimore
     - cincinnati
     - denver
