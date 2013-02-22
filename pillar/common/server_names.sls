@@ -52,6 +52,22 @@ server_names:
     - zebra
     - yak
   nodejs:
-    - anchoridge
+    - anchorage
     - baltimore
     - cincinnati
+    - denver
+    - elcerrito
+    - fresno
+    - graceland
+    - hicksville
+    - indianapolis
+    - jamestown
+    - kansascity
+    - london
+    - montreal
+    - neworleans
+    - orlando
+    - philadelphia
+    - quincy
+    - richmond
+    - sacramento

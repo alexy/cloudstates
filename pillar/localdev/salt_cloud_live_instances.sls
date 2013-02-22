@@ -47,7 +47,7 @@ aws:
     - 54.245.92.227
     size: null
     state: RUNNING
-  mcp-master:
+  apple-region-0-0-beta-localdev.vrsl.net:
     id: i-da9936e8
     image: null
     private_ips:
@@ -57,7 +57,7 @@ aws:
     - 54.245.227.52
     size: null
     state: RUNNING
-  mcp-overlord:
+  agnon-region-0-0-beta-localdev.vrsl.net:
     id: i-1e933c2c
     image: null
     private_ips:
@@ -67,7 +67,7 @@ aws:
     - 54.245.227.55
     size: null
     state: RUNNING
-  mcp-staging:
+  banana-region-0-0-beta-localdev.vrsl.net:
     id: i-1806df2a
     image: null
     private_ips:
@@ -77,7 +77,7 @@ aws:
     - 54.245.225.140
     size: null
     state: RUNNING
-  production:
+  anchorage-region-0-0-beta-localdev.vrsl.net:
     id: i-2d86bb1e
     image: null
     private_ips:
@@ -87,7 +87,7 @@ aws:
     - 54.245.92.221
     size: null
     state: RUNNING
-  staging1:
+  baltimore-region-0-0-beta-localdev.vrsl.net:
     id: i-b987ba8a
     image: null
     private_ips:
@@ -97,7 +97,7 @@ aws:
     - 54.245.92.219
     size: null
     state: RUNNING
-  staging2:
+  zebra-region-0-0-beta-localdev.vrsl.net:
     id: i-3e93670c
     image: null
     private_ips:
@@ -107,7 +107,7 @@ aws:
     - 54.245.237.177
     size: null
     state: RUNNING
-  testing:
+  yak-region-0-0-beta-localdev.vrsl.net:
     id: i-2387ba10
     image: null
     private_ips:
