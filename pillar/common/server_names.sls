@@ -52,7 +52,7 @@ server_names:
     - zebra
     - yak
   nodejs:
-    - anchorage
+    - anchoradge
     - baltimore
     - cincinnati
     - denver
@@ -71,3 +71,5 @@ server_names:
     - quincy
     - richmond
     - sacramento
+    - tucson
+
