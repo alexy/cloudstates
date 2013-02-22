@@ -55,3 +55,21 @@ server_names:
     - anchoradge
     - baltimore
     - cincinnati
+    - denver
+    - elcerrito
+    - fresno
+    - graceland
+    - hicksville
+    - indianapolis
+    - jamestown
+    - kansascity
+    - london
+    - montreal
+    - neworleans
+    - orlando
+    - philadelphia
+    - quincy
+    - richmond
+    - sacramento
+    - tucson
+
