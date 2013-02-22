@@ -40,10 +40,6 @@ war:
 
 message_do_not_modify: 'This file is managed by Salt. Do Not Modify.'
 
-backend_static_servers:
-  server1:
-    name: net.vrsl.web.s3-website-us-west-2.amazonaws.com
-    dns: net.vrsl.web.s3-website-us-west-2.amazonaws.com
 
 saltmine_crontab_file_root: '/root/crontab_file_root'
 saltmine_crontab_path: 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
