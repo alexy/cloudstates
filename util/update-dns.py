@@ -15,7 +15,7 @@ from sys import stderr
 
 
 def load_running_status(status_file, provider, environment, group, box_pattern):
-  with open(status_file) as f:
+  with open(status_file, 'r') as f:
     y = load(f, Loader=Loader)
   if provider in y:
     r = y[provider]
