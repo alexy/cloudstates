@@ -3,7 +3,7 @@
 
 import route53, mapper
 
-import sys, re, argparse
+import sys, re, argparse, time
 
 from yaml import load, dump
 try:
@@ -89,6 +89,8 @@ def __main__():
   	query_running_dns(records, arg.domain)
 
   if arg.ensure:
+    print >>stderr, "sleeping while cron updates the --ensure argument or it will be empty"
+    time.sleep(10)
   	ensure_running_dns(records, arg.domain)
 
 
