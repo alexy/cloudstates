@@ -5,10 +5,11 @@ staging_medium_cpu_region-0-0:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: High-CPU Medium Instance
@@ -19,10 +20,11 @@ staging_medium_cpu_region-0-1:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: High-CPU Medium Instance
@@ -33,10 +35,11 @@ staging_medium_cpu_region-0-2:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: High-CPU Medium Instance
@@ -47,10 +50,11 @@ staging_medium_cpu_region-1-0:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: High-CPU Medium Instance
@@ -61,13 +65,89 @@ staging_medium_cpu_region-1-1:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: High-CPU Medium Instance
+staging_medium_region-0-0:
+  availability_zone: us-west-2a
+  image: ami-7e2da54e
+  location: us-west-2
+  minion:
+    grains:
+      environment: staging
+      group: test
+    log_level: debug
+    master: mcp-staging.vrsl.net
+    sls_list:
+    - saltmine.pkgs.mako
+    startup_states: sls
+  provider: aws
+  size: Medium Instance
+staging_medium_region-0-1:
+  availability_zone: us-west-2b
+  image: ami-7e2da54e
+  location: us-west-2
+  minion:
+    grains:
+      environment: staging
+      group: test
+    log_level: debug
+    master: mcp-staging.vrsl.net
+    sls_list:
+    - saltmine.pkgs.mako
+    startup_states: sls
+  provider: aws
+  size: Medium Instance
+staging_medium_region-0-2:
+  availability_zone: us-west-2c
+  image: ami-7e2da54e
+  location: us-west-2
+  minion:
+    grains:
+      environment: staging
+      group: test
+    log_level: debug
+    master: mcp-staging.vrsl.net
+    sls_list:
+    - saltmine.pkgs.mako
+    startup_states: sls
+  provider: aws
+  size: Medium Instance
+staging_medium_region-1-0:
+  availability_zone: us-west-1b
+  image: ami-b87252fd
+  location: us-west-1
+  minion:
+    grains:
+      environment: staging
+      group: test
+    log_level: debug
+    master: mcp-staging.vrsl.net
+    sls_list:
+    - saltmine.pkgs.mako
+    startup_states: sls
+  provider: aws
+  size: Medium Instance
+staging_medium_region-1-1:
+  availability_zone: us-west-1c
+  image: ami-b87252fd
+  location: us-west-1
+  minion:
+    grains:
+      environment: staging
+      group: test
+    log_level: debug
+    master: mcp-staging.vrsl.net
+    sls_list:
+    - saltmine.pkgs.mako
+    startup_states: sls
+  provider: aws
+  size: Medium Instance
 staging_small_region-0-0:
   availability_zone: us-west-2a
   image: ami-7e2da54e
@@ -75,10 +155,11 @@ staging_small_region-0-0:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: Small Instance
@@ -89,10 +170,11 @@ staging_small_region-0-1:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: Small Instance
@@ -103,10 +185,11 @@ staging_small_region-0-2:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: Small Instance
@@ -117,10 +200,11 @@ staging_small_region-1-0:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: Small Instance
@@ -131,10 +215,11 @@ staging_small_region-1-1:
   minion:
     grains:
       environment: staging
+      group: test
     log_level: debug
     master: mcp-staging.vrsl.net
     sls_list:
-    - common.services.mako
+    - saltmine.pkgs.mako
     startup_states: sls
   provider: aws
   size: Small Instance
