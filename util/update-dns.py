@@ -88,10 +88,11 @@ def __main__():
   if arg.query:
   	query_running_dns(records, arg.domain)
 
+  # TODO make the timeout an option, and/or add the lockfile from salt-cloud -Q invocation
   if arg.ensure:
     print >>stderr, "sleeping while cron updates the --ensure argument or it will be empty"
     time.sleep(10)
-  	ensure_running_dns(records, arg.domain)
+    ensure_running_dns(records, arg.domain)
 
 
 #if __name__ == __main__:
