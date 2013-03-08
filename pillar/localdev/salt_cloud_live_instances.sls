@@ -117,6 +117,35 @@ aws:
     - 54.245.92.206
     size: null
     state: RUNNING
+  yak-region-0-1-beta-localdev.vrsl.net:
+    id: i-2387ba10
+    image: null
+    private_ips:
+    - 10.248.96.125
+    public_ips:
+    - 54.245.92.206
+    - 54.245.92.206
+    size: null
+    state: TERMINATED
+  yak-region-0-2-beta-localdev.vrsl.net:
+    id: i-2387ba10
+    image: null
+    private_ips:
+    - 10.248.96.125
+    public_ips:
+    - 54.245.92.206
+    - 54.245.92.206
+    size: null
+    state: UNKNOWN
+  zebra-region-0-2-beta-localdev.vrsl.net:
+    id: i-2387ba10
+    image: null
+    private_ips:
+    - 10.248.96.125
+    public_ips:
+    - null
+    size: null
+    state: RUNNING
   versal:
     id: i-d08c6de2
     image: null
