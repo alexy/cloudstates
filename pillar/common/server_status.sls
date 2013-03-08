@@ -128,7 +128,7 @@ def instance_sane(serverpass, serverspass):
 
     if len(str(serverspass[serverpass]['private_ips'][0])) < 5:
       return False
-      
+
   except:
     return False
 
@@ -158,7 +158,7 @@ server_status:
   #must have split properly E.G. apple-region-0-0-dmv-staging.vrsl.net
   %>
 
-  % if valid_servername(serverparams) and instance_sane(server, server_salt_cloud): #only error checking currently... TODO Add more
+  % if valid_servername(serverparams) and instance_sane(server, server_salt_cloud):
     <%
     param_name = serverparams[0] # name 
     param_region = int(serverparams[2]) # region
