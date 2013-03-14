@@ -42,6 +42,10 @@ app_name='pb-express-site'
 base_dir='/home/' + username
 %>
 
+## App Version Settings
+saltmine_boto_version: '2.7.0'
+saltmine_nodejs_version: '0.9.10'
+
 node:
   name:                 ${app_name}
   curl_auth:            '-u jenkins:jenkins123!'
