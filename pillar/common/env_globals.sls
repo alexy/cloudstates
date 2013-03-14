@@ -42,8 +42,11 @@ app_name='pb-express-site'
 base_dir='/home/' + username
 %>
 
+## App Version Settings
+saltmine_boto_version: '2.7.0'
+saltmine_nodejs_version: '0.9.10'
+
 node:
-  version:              0.9.10
   name:                 ${app_name}
   curl_auth:            '-u jenkins:jenkins123!'
   base_url:             http://artifactory.versal.com/libs-snapshot-local/com/versal/${app_name}
