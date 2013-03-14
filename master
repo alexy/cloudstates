@@ -6,8 +6,8 @@ state_top: top.sls
 log_level: debug
 #renderer: yaml_jinja #this is the default
 renderer: mako|yaml
-state_verbose: true
-state_output: full
+state_verbose: True
+state_output: terse
 max_open_files: 10000
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
 #schedule:
