@@ -43,8 +43,8 @@ base_dir='/home/' + username
 %>
 
 ## App Version Settings
-saltmine_boto_version: '2.7.0'
-saltmine_nodejs_version: '0.9.10'
+saltmine_boto_version:   '2.7.0'
+saltmine_nodejs_version: '0.10.0'
 
 node:
   name:                 ${app_name}
