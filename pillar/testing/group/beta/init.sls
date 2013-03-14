@@ -6,6 +6,6 @@
 # Newer keys OVERWRITE older keys.
 
 include:
-  - common.server_status
-#  - saltmine.pillar.env_globals
-
+  - testing
+  - testing.group.beta.server_roles
+  - testing.group.beta.custom
