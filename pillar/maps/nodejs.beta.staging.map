@@ -1,0 +1,9 @@
+staging_medium_region-0-0:
+- anchoridge-region-0-0-beta-staging.vrsl.net:
+    environment: staging
+    grains:
+      group: beta
+      roles:
+      - nodejs
+    master: mcp-staging.vrsl.net
+

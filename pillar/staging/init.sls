@@ -1,8 +1,11 @@
 #!yaml
 
+# This file should ONLY include 'include' files. To set custom keys, 
+# include them in a custom.sls file. Do NOT include keys in this file.
+# The pillar dictionary is compiled in the order that they appear in this list.
+# Newer keys OVERWRITE older keys.
+
 include:
   - common.env_globals
   - staging.server_roles
-
-s3war_bucket: 's3://com.versal.war'
-api_war:       api.staging.war
+  - staging.custom

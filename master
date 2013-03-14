@@ -6,9 +6,9 @@ state_top: top.sls
 log_level: debug
 #renderer: yaml_jinja #this is the default
 renderer: mako|yaml
-state_verbose: true
-state_output: full
-
+state_verbose: True
+state_output: terse
+max_open_files: 10000
 #http://docs.saltstack.org/en/latest/topics/jobs/schedule.html
 #schedule:
 #  overstate:
@@ -16,32 +16,21 @@ state_output: full
 #    minutes: 10
 
 worker_threads: 5
+pillar_opts: False
 
 failhard: False # if true, will stop salt execution after first failure.
 
 file_roots:
   base:
     - /srv/cloudconf/salt
-    - /srv/cloudconf/salt/base
-    - /srv/cloudconf/salt/base/services
-    - /srv/cloudconf/salt/base/states
+    - /srv/saltmine
     - /srv/cloudstate/util
-  localdev:
-    - /srv/cloudconf/salt/localdev/services
-    - /srv/cloudconf/salt/localdev/states
-  dev:
-    - /srv/cloudconf/salt/dev/services
-    - /srv/cloudconf/salt/dev/states
-  staging:
-    - /srv/cloudconf/salt/staging/services
-    - /srv/cloudconf/salt/staging/states
-  prod:
-    - /srv/cloudconf/salt/prod/services
-    - /srv/cloudconf/salt/prod/states
 
 pillar_roots:
   base:
+    - /srv/saltmine
     - /srv/cloudstate/pillar
+<<<<<<< HEAD
   # localdev:
   #   - /srv/cloudstate/pillar/localdev
   # dev:
@@ -50,3 +39,5 @@ pillar_roots:
   #   - /srv/cloudstate/pillar/staging
   # prod:
   #   - /srv/cloudstate/pillar/prod
+=======
+>>>>>>> staging

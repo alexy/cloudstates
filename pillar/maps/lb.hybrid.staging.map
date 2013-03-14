@@ -1,0 +1,8 @@
+staging_small_region-0-0:
+- agnon-region-0-0-hybrid-staging.vrsl.net:
+    environment: staging
+    grains:
+      group: hybrid
+      roles:
+      - lb
+    master: mcp-staging.vrsl.net

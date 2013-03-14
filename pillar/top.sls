@@ -16,16 +16,25 @@
 # this or use the server name also.
 
 <%
-environment=grains.get('environment')
+environment=grains['environment']
+if 'group' in grains:
+  group=grains['group']
+else:
+  group=None
 %>
 
 base:
   '*':
     - base
 # pillar loading for all environments. 
-# Check the init.sls for each pillar.
-
-% if environment in ['localdev', 'dev', 'staging', 'prod']:
+# if the group grain is set, load the group init.sls
+# if not, load the environment init.sls
+% if environment in ['localdev', 'dev', 'staging', 'testing', 'prod']:
+  % if group is not None:
+    - ${environment}.group.${group}
+  % else:
     - ${environment}
+  % endif
 % endif
+
 

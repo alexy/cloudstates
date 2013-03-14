@@ -48,3 +48,28 @@ server_names:
     - andromeda
     - betelgeuse
     - cassiopeia
+  auth:
+    - zebra
+    - yak
+  nodejs:
+    - anchorage
+    - baltimore
+    - cincinnati
+    - denver
+    - elcerrito
+    - fresno
+    - graceland
+    - hicksville
+    - indianapolis
+    - jamestown
+    - kansascity
+    - london
+    - montreal
+    - neworleans
+    - orlando
+    - philadelphia
+    - quincy
+    - richmond
+    - sacramento
+    - tucson
+
