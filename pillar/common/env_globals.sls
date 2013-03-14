@@ -34,7 +34,7 @@ domain: ${environment}.vrsl.net
 s3war_bucket: 's3://net.vrsl.war'
 war:      
   api:
-    source: api.staging.war
+    source: api.${environment}.war
     target: api.war
 
 <%
@@ -54,7 +54,7 @@ node:
   curl_auth:            '-u jenkins:jenkins123!'
   base_url:             http://artifactory.versal.com/libs-snapshot-local/com/versal/${app_name}
   bundle:               ${app_name}-SNAPSHOT.tar.bz2
-  salt_bundle_dir:      staging/states/group/beta/role-nodejs
+  salt_bundle_dir:      ${environment}/states/group/beta/role-nodejs
   server_bundle_dir:    ${base_dir}
   server_app_dir:       ${base_dir}/${app_name}-salt
 
