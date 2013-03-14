@@ -43,6 +43,7 @@ base_dir='/home/' + username
 %>
 
 node:
+  version:              0.9.10
   name:                 ${app_name}
   curl_auth:            '-u jenkins:jenkins123!'
   base_url:             http://artifactory.versal.com/libs-snapshot-local/com/versal/${app_name}
