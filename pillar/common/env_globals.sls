@@ -44,6 +44,9 @@ base_dir='/home/' + username
 
 ## App Version Settings
 saltmine_boto_version:   '2.7.0'
+
+## node.js
+
 saltmine_nodejs_version: '0.10.0'
 
 node:
@@ -58,6 +61,24 @@ node:
 
 saltmine_crontab_file_root: '/root/crontab_file_root'
 saltmine_crontab_path: 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
+## cron
+
+<%
+every_ten_minutes='*/10 * * * *'
+a_minute_after_every_ten='1,11,21,31,41,51 * * * *'
+%>
+
+cron:
+  pull_api_war:      '${every_ten_minutes}'
+  pull_node_tarball: '${every_ten_minutes}'
+  highstate:
+    api:
+      times: '${a_minute_after_every_ten}'
+    nodejs:
+      times: '${a_minute_after_every_ten}'
+
+## minion
 
 minion:
   log_level: debug
