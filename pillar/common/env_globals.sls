@@ -45,6 +45,15 @@ base_dir='/home/' + username
 ## App Version Settings
 saltmine_boto_version:   '2.7.0'
 
+
+## haproxy basic auth
+haproxy_basic_auth:
+  realm:     Versal
+  acl:       AuthOkay_Versal
+  user_list: UsersFor_Versal
+  users:
+    versal: m0n0sp4c3d
+
 ## node.js
 
 saltmine_nodejs_version: '0.10.0'
