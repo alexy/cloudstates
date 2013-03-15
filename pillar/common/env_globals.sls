@@ -49,6 +49,17 @@ haproxy_basic_auth:
   users:
     versal: m0n0sp4c3d
 
+## dotversals
+
+#for_node
+% if grains['environment'] == testing:
+dotversal_api_url: "http://testbeta.versal.com/api"
+dotversal_fd_url:  "http://testbeta.versal.com/frontdoor"
+% else:
+dotversal_api_url: "http://beta.versal.com/api"
+dotversal_fd_url:  "http://beta.versal.com/frontdoor"
+% endif
+
 ## node.js
 
 saltmine_nodejs_version: '0.10.0'
