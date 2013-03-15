@@ -4,14 +4,9 @@
 # these can be overwritten in individual environments.
 
 <%
-environment=grains['environment']
-if 'group' in grains:
-	group = grains['group']
-else:
-	group = None
-
-username = 'ubuntu' if environment != 'localdev' else 'vagrant'
-
+environment = grains['environment']
+group       = grains['group'] if 'group' in grains else None
+username    = 'ubuntu' if environment != 'localdev' else 'vagrant'
 %>
 
 provisioner: salt-cloud
