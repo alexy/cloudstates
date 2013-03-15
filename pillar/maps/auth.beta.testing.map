@@ -1,0 +1,9 @@
+testing_small_region-0-0:
+- zebra-region-0-0-beta-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: beta
+      roles:
+      - auth
+    master: mcp-testing.vrsl.net
+
