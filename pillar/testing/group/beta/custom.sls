@@ -10,5 +10,5 @@ war:
 
 backend_static_servers:
   server1:
-    name: com.versal.testbeta.s3-website-us-west-2.amazonaws.com
-    dns:  com.versal.testbeta.s3-website-us-west-2.amazonaws.com
+    name: com.versal.beta.testing.s3-website-us-west-2.amazonaws.com
+    dns:  com.versal.beta.testing.s3-website-us-west-2.amazonaws.com
