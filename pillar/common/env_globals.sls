@@ -52,7 +52,7 @@ haproxy_basic_auth:
 ## dotversals
 
 #for_node
-% if grains['environment'] == testing:
+% if grains['environment'] == 'testing':
 dotversal_api_url: "http://testbeta.versal.com/api"
 dotversal_fd_url:  "http://testbeta.versal.com/frontdoor"
 % else:
