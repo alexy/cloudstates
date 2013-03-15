@@ -10,4 +10,4 @@ group=grains['group']
 domain: ${group}-${environment}.vrsl.net
 # active groups
 groups:
-	- beta
+  - beta
