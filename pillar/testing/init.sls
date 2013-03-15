@@ -7,5 +7,6 @@
 
 include:
   - common.env_globals
+  - testing.server_roles
   - testing.custom
 
