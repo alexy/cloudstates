@@ -67,16 +67,16 @@ saltmine_crontab_path: 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/
 <%
 every_ten_minutes='*/10 * * * *'
 a_minute_after_every_ten='1,11,21,31,41,51 * * * *'
+two_minutes_after_every_ten='2,12,22,32,42,52 * * * *'
 %>
 
 cron:
-  pull_api_war:      '${every_ten_minutes}'
-  pull_node_tarball: '${every_ten_minutes}'
-  highstate:
-    api:
-      times: '${a_minute_after_every_ten}'
-    nodejs:
-      times: '${a_minute_after_every_ten}'
+  api:
+    pull: '${every_ten_minutes}'
+    push: '${two_minutes_after_every_ten}'
+  nodejs:
+    pull: '${every_ten_minutes}'
+    push: '${two_minutes_after_every_ten}'
 
 ## minion
 
