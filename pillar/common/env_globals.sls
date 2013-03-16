@@ -18,7 +18,7 @@ salt_master: mcp-${environment}.vrsl.net
 username: ${username}
 
 salt_basedir: '/srv/cloudconf/salt'
-war_basedir:  'common/states/share/role-war'
+war_basedir:  'common/states/common/role-war'
 
 % if group is not None:
 domain: ${group}-${environment}.vrsl.net
@@ -59,6 +59,22 @@ dotversal_fd_url:  "http://testbeta.versal.com/frontdoor"
 dotversal_api_url: "http://beta.versal.com/api"
 dotversal_fd_url:  "http://beta.versal.com/frontdoor"
 % endif
+
+#for_roleapi
+% if grains['environment'] == 'testing':
+dotversal_roleapi_endpoint: api-beta-testing.c348djtkl0hn.us-west-2.rds.amazonaws.com
+mysql_roleapi_username: play
+mysql_roleapi_password: replay
+% elif grains['environment'] == 'prod':
+dotversal_roleapi_endpoint: dmvapi.c348djtkl0hn.us-west-2.rds.amazonaws.com
+mysql_roleapi_username: play
+mysql_roleapi_password: replay
+% elif grains['environment'] == 'staging':
+dotversal_roleapi_endpoint: beta.c348djtkl0hn.us-west-2.rds.amazonaws.com
+mysql_roleapi_username: play
+mysql_roleapi_password: replay
+% endif
+
 
 ## node.js
 
