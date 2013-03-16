@@ -18,7 +18,7 @@ salt_master: mcp-${environment}.vrsl.net
 username: ${username}
 
 salt_basedir: '/srv/cloudconf/salt'
-war_basedir:  'common/states/common/role-war'
+war_basedir:  'common/files/roles/war'
 
 % if group is not None:
 domain: ${group}-${environment}.vrsl.net
