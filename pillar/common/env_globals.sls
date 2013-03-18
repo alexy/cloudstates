@@ -49,36 +49,15 @@ haproxy_basic_auth:
   users:
     versal: m0n0sp4c3d
 
-## dotversals
-
-#for_node
-% if grains['environment'] == 'testing':
-dotversal_api_url: "http://testbeta.versal.com/api"
-dotversal_fd_url:  "http://testbeta.versal.com/frontdoor"
-% else:
-dotversal_api_url: "http://beta.versal.com/api"
-dotversal_fd_url:  "http://beta.versal.com/frontdoor"
-% endif
-
-#for_roleapi
-% if grains['environment'] == 'testing':
-dotversal_roleapi_endpoint: api-beta-testing.c348djtkl0hn.us-west-2.rds.amazonaws.com
-mysql_roleapi_username: play
-mysql_roleapi_password: replay
-% elif grains['environment'] == 'prod':
-dotversal_roleapi_endpoint: dmvapi.c348djtkl0hn.us-west-2.rds.amazonaws.com
-mysql_roleapi_username: play
-mysql_roleapi_password: replay
-% elif grains['environment'] == 'staging':
-dotversal_roleapi_endpoint: beta.c348djtkl0hn.us-west-2.rds.amazonaws.com
-mysql_roleapi_username: play
-mysql_roleapi_password: replay
-% endif
-
-
 ## node.js
 
 saltmine_nodejs_version: '0.10.0'
+
+s3nodejs_bucket: 's3://net.vrsl.beta'
+war:      
+  api:
+    source: api.${environment}.war
+    target: api.war
 
 node:
   name:                 ${app_name}
@@ -90,9 +69,6 @@ node:
   server_app_dir:       ${base_dir}/${app_name}-salt
 
 
-saltmine_crontab_file_root: '/root/crontab_file_root'
-saltmine_crontab_path: 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
-
 ## cron
 
 <%
@@ -100,6 +76,9 @@ every_ten_minutes='*/10 * * * *'
 a_minute_after_every_ten='1,11,21,31,41,51 * * * *'
 two_minutes_after_every_ten='2,12,22,32,42,52 * * * *'
 %>
+
+saltmine_crontab_file_root: '/root/crontab_file_root'
+saltmine_crontab_path: 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
 cron:
   api:
