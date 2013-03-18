@@ -32,9 +32,7 @@ node_bundle:    pb-express-site-testing.tar.bz2
 node_api_url:   "http://testbeta.versal.com/api"
 node_auth_url:  "http://testbeta.versal.com/frontdoor"
 
-# TODO start a new day with a new bucket:
-#s3cdn_bucket:   'com.versal.beta.assets.testing'
-s3cdn_bucket:   'com.versal.assets'
+s3cdn_bucket:   'com.versal.beta.assets.testing'
 
 backend_static_servers:
   server1:
