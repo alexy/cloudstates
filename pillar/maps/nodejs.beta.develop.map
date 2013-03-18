@@ -1,0 +1,9 @@
+develop_small_region-0-0:
+- anchorage-region-0-0-beta-develop.vrsl.net:
+    environment: develop
+    grains:
+      group: beta
+      roles:
+      - nodejs
+    master: mcp-develop.vrsl.net
+
