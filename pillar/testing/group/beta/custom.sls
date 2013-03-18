@@ -26,7 +26,7 @@ war:
 
 api_key: SECRET
 
-#node_bundle:    pb-express-site-SNAPSHOT.tar.bz2
+node_bundle:    pb-express-site-testing.tar.bz2
 node_api_url:   "http://testbeta.versal.com/api"
 node_auth_url:  "http://testbeta.versal.com/frontdoor"
 
