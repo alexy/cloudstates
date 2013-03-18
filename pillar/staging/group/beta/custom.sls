@@ -22,12 +22,15 @@ war:
       db_url:    users-beta-staging.c348djtkl0hn.us-west-2.rds.amazonaws.com/users
       db_user:   door
       db_pwd:    backdoor
-      api_key:   SECRET
       smtp:      localhost
+
+api_key: SECRET
 
 node_bundle:    pb-express-site-staging.tar.bz2
 node_api_url:   "http://stagebeta.versal.com/api"
 node_auth_url:  "http://stagebeta.versal.com/frontdoor"
+
+s3cdn_bucket:    'com.versal.beta.assets.staging'
 
 backend_static_servers:
   server1:

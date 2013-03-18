@@ -30,6 +30,8 @@ node_bundle:    pb-express-site-testing.tar.bz2
 node_api_url:   "http://testbeta.versal.com/api"
 node_auth_url:  "http://testbeta.versal.com/frontdoor"
 
+s3cdn_bucket:   'com.versal.beta.assets.testing'
+
 backend_static_servers:
   server1:
     name: com.versal.beta.testing.s3-website-us-west-2.amazonaws.com
