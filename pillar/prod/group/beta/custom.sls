@@ -3,7 +3,7 @@
 include:
   - saltmine.pillar.env_globals
 
-<% saltmine_tomcat7_homedir=pillar['saltmine_tomcat7_homedir'] %>
+<% saltmine_tomcat7_homedir='/usr/share/tomcat7' %>
 
 s3war_bucket:    's3://net.vrsl.war'
 s3nodejs_bucket: 's3://net.vrsl.beta'
