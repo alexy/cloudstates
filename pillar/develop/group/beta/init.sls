@@ -6,5 +6,6 @@
 # Newer keys OVERWRITE older keys.
 
 include:
-  - common.env_globals
-  - dev.custom
+  - ${grains['environment']}
+  - ${grains['environment']}.group.beta.server_roles
+  - ${grains['environment']}.group.beta.custom
