@@ -1,12 +1,32 @@
 #!yaml
 
+include:
+  - saltmine.pillar.env_globals
+
+s3war_bucket:    's3://net.vrsl.war'
+s3nodejs_bucket: 's3://net.vrsl.beta'
+
+# NB have to specify all keys, as the whole is overwritte!
 war:
     api:  
-      source: api.prod.war
-      target: api.war
+      source:    api.prod.war
+      target:    api.war
+      dotversal: ${saltmine_tomcat7_homedir}/.versal
+      db_url:    api-beta-prod.c348djtkl0hn.us-west-2.rds.amazonaws.com/api
+      db_user:   play
+      db_pwd:    replay
     auth:
-      source: frontdoor.prod.war
-      target: frontdoor.war
+      source:    frontdoor.prod.war
+      target:    frontdoor.war
+      dotversal: ${saltmine_tomcat7_homedir}/.versal-frontdoor
+      db_url:    users-beta-prod.c348djtkl0hn.us-west-2.rds.amazonaws.com/users
+      db_user:   door
+      db_pwd:    backdoor
+      api_key:   SECRET
+      smtp:      localhost
+
+node_api_url:   "http://beta.versal.com/api"
+node_auth_url:  "http://beta.versal.com/frontdoor"
 
 backend_static_servers:
   server1:

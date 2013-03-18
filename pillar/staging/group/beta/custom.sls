@@ -1,17 +1,34 @@
 #!yaml
 
-s3war_bucket: 's3://net.vrsl.war'
+include:
+  - saltmine.pillar.env_globals
+
+s3war_bucket:    's3://net.vrsl.war'
+s3nodejs_bucket: 's3://net.vrsl.beta'
 
 # NB have to specify all keys, as the whole is overwritte!
 war:
     api:  
-      source: api.testing.war
-      target: api.war
+      source:    api.staging.war
+      target:    api.war
+      dotversal: ${saltmine_tomcat7_homedir}/.versal
+      db_url:    api-beta-staging.c348djtkl0hn.us-west-2.rds.amazonaws.com/api
+      db_user:   play
+      db_pwd:    replay
     auth:
-      source: frontdoor.war
-      target: frontdoor.war
+      source:    frontdoor.staging.war
+      target:    frontdoor.war
+      dotversal: ${saltmine_tomcat7_homedir}/.versal-frontdoor
+      db_url:    users-beta-staging.c348djtkl0hn.us-west-2.rds.amazonaws.com/users
+      db_user:   door
+      db_pwd:    backdoor
+      api_key:   SECRET
+      smtp:      localhost
+
+node_api_url:   "http://stagebeta.versal.com/api"
+node_auth_url:  "http://stagebeta.versal.com/frontdoor"
 
 backend_static_servers:
   server1:
-    name: com.versal.web.s3-website-us-west-2.amazonaws.com
-    dns:  com.versal.web.s3-website-us-west-2.amazonaws.com
+    name: com.versal.beta.staging.s3-website-us-west-2.amazonaws.com
+    dns:  com.versal.beta.staging.s3-website-us-west-2.amazonaws.com
