@@ -1,0 +1,9 @@
+develop_medium_region-0-0:
+- apple-region-0-0-beta-develop.vrsl.net:
+    environment: develop
+    grains:
+      group: beta
+      roles:
+      - api
+    master: mcp-develop.vrsl.net
+

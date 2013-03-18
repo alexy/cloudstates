@@ -1,0 +1,8 @@
+staging_medium_region-0-0:
+- apple-region-0-0-fish-staging.vrsl.net:
+    environment: staging
+    grains:
+      group: fish
+      roles:
+      - api
+    master: mcp-staging.vrsl.net

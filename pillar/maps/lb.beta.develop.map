@@ -1,0 +1,9 @@
+develop_small_region-0-0:
+- agnon-region-0-0-beta-develop.vrsl.net:
+    environment: develop
+    grains:
+      group: beta
+      roles:
+      - lb
+    master: mcp-develop.vrsl.net
+
