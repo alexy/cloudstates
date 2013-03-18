@@ -20,6 +20,7 @@ username: ${username}
 salt_basedir: '/srv/cloudconf/salt'
 war_basedir:  'common/files/roles/war'
 
+
 % if group is not None:
 domain: ${group}-${environment}.vrsl.net
 % else:
@@ -60,11 +61,12 @@ war:
     target: api.war
 
 node_bundle:            ${app_name}-SNAPSHOT.tar.bz2
+node_basedir:           'common/files/roles/nodejs'
+
 node:
   name:                 ${app_name}
   curl_auth:            '-u jenkins:jenkins123!'
   base_url:             http://artifactory.versal.com/libs-snapshot-local/com/versal/${app_name}
-  salt_bundle_dir:      ${environment}/states/group/beta/role-nodejs
   server_bundle_dir:    ${base_dir}
   server_app_dir:       ${base_dir}/${app_name}-salt
 
