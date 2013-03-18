@@ -1,4 +1,4 @@
-#!yaml
+#!mako|yaml
 
 include:
   - saltmine.pillar.env_globals
