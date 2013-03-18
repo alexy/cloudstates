@@ -29,7 +29,7 @@ base:
 # pillar loading for all environments. 
 # if the group grain is set, load the group init.sls
 # if not, load the environment init.sls
-% if environment in ['localdev', 'dev', 'staging', 'testing', 'prod']:
+% if environment in ['localdev', 'develop', 'staging', 'testing', 'prod']:
   % if group is not None:
     - ${environment}.group.${group}
   % else:
