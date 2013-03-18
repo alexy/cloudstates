@@ -14,11 +14,17 @@ AWS.id: 'AKIAI432PQQEY2TABA7A'
 AWS.key: '5XPJ2TCdQ6kUuAd/SPr2yJJCz/80pQBkHKqsm5jc'
 AWS.keyname: 'versal1or'
 AWS.rename_on_destroy: True
-# Put security groups Here
+ Put security groups Here
 AWS.securitygroup: 
   - versal
 
 AWS.private_key: /root/keys/versal1or.pem
+
+EC2.id: 'AKIAI432PQQEY2TABA7A'
+EC2.key: '5XPJ2TCdQ6kUuAd/SPr2yJJCz/80pQBkHKqsm5jc'
+EC2.keyname: 'versal1or'
+EC2.securitygroup: versal
+EC2.private_key: /root/keys/versal1or.pem
 
 # Set up an optional default cloud provider
 provider: aws
