@@ -1,4 +1,4 @@
-#!yaml
+#!mako|yaml
 
 include:
   - saltmine.pillar.env_globals
@@ -30,7 +30,9 @@ node_bundle:    pb-express-site-testing.tar.bz2
 node_api_url:   "http://testbeta.versal.com/api"
 node_auth_url:  "http://testbeta.versal.com/frontdoor"
 
-s3cdn_bucket:   'com.versal.beta.assets.testing'
+# TODO start a new day with a new bucket:
+#s3cdn_bucket:   'com.versal.beta.assets.testing'
+s3cdn_bucket:   'com.versal.assets'
 
 backend_static_servers:
   server1:

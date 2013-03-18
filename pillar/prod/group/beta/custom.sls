@@ -1,4 +1,4 @@
-#!yaml
+#!mako|yaml
 
 include:
   - saltmine.pillar.env_globals
@@ -22,7 +22,6 @@ war:
       db_url:    users-beta-prod.c348djtkl0hn.us-west-2.rds.amazonaws.com/users
       db_user:   door
       db_pwd:    backdoor
-      api_key:   SECRET
       smtp:      localhost
 
 api_key: SECRET
