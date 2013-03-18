@@ -25,6 +25,7 @@ war:
       api_key:   SECRET
       smtp:      localhost
 
+node_bundle:    pb-express-site-staging.tar.bz2
 node_api_url:   "http://stagebeta.versal.com/api"
 node_auth_url:  "http://stagebeta.versal.com/frontdoor"
 

@@ -59,11 +59,11 @@ war:
     source: api.${environment}.war
     target: api.war
 
+node_bundle:            ${app_name}-SNAPSHOT.tar.bz2
 node:
   name:                 ${app_name}
   curl_auth:            '-u jenkins:jenkins123!'
   base_url:             http://artifactory.versal.com/libs-snapshot-local/com/versal/${app_name}
-  bundle:               ${app_name}-SNAPSHOT.tar.bz2
   salt_bundle_dir:      ${environment}/states/group/beta/role-nodejs
   server_bundle_dir:    ${base_dir}
   server_app_dir:       ${base_dir}/${app_name}-salt
