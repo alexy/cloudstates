@@ -25,9 +25,13 @@ war:
       api_key:   SECRET
       smtp:      localhost
 
+api_key: SECRET
+
 node_bundle:    pb-express-site-prod.tar.bz2
 node_api_url:   "http://beta.versal.com/api"
 node_auth_url:  "http://beta.versal.com/frontdoor"
+
+s3cdn_bucket:    'com.versal.beta.assets'
 
 backend_static_servers:
   server1:
