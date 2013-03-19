@@ -38,3 +38,11 @@ backend_static_servers:
   server1:
     name: com.versal.beta.s3-website-us-west-2.amazonaws.com
     dns:  com.versal.beta.s3-website-us-west-2.amazonaws.com
+
+## haproxy basic auth
+haproxy_basic_auth:
+  realm:     Versal
+  acl:       AuthOkay_Versal
+  user_list: UsersFor_Versal
+  users:
+    versal: privatebeta2013
