@@ -2,7 +2,6 @@
 
 include:
   - saltmine.pillar.env_globals
-
 # we need to get it from the saltmine somehow!
 <% saltmine_tomcat7_homedir='/usr/share/tomcat7' %>
 
@@ -33,7 +32,7 @@ node_bundle:    pb-express-site-staging.tar.bz2
 node_api_url:   "http://stagebeta.versal.com/api"
 node_auth_url:  "http://stagebeta.versal.com/frontdoor"
 
-s3cdn_bucket:    'com.versal.beta.assets.staging'
+s3cdn_bucket:   'com.versal.beta.assets.staging'
 
 backend_static_servers:
   server1:

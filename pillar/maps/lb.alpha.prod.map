@@ -1,0 +1,9 @@
+prod_small_region-0-0:
+- agnon-region-0-0-alpha-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: alpha
+      roles:
+      - lb
+    master: mcp-prod.vrsl.net
+

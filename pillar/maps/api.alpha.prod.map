@@ -1,0 +1,9 @@
+prod_medium_region-0-0:
+- apple-region-0-0-alpha-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: alpha
+      roles:
+      - api
+    master: mcp-prod.vrsl.net
+
