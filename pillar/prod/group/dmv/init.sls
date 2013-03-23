@@ -1,4 +1,4 @@
-#!yaml
+#!mako|yaml
 
 # This file should ONLY include 'include' files. To set custom keys, 
 # include them in a custom.sls file. Do NOT include keys in this file.
@@ -6,5 +6,5 @@
 # Newer keys OVERWRITE older keys.
 
 include:
-  - prod
-  - prod.group.dmv.server_roles
+  - ${grains['environment']}
+  - ${grains['environment']}.group.dmv.server_roles

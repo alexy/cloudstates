@@ -3,6 +3,8 @@
 include:
   - saltmine.pillar.env_globals
 
+<% saltmine_tomcat7_homedir='/usr/share/tomcat7' %>
+
 s3war_bucket:    's3://net.vrsl.war'
 s3nodejs_bucket: 's3://net.vrsl.beta'
 
@@ -29,6 +31,8 @@ api_key: SECRET
 node_bundle:    pb-express-site-testing.tar.bz2
 node_api_url:   "http://testbeta.versal.com/api"
 node_auth_url:  "http://testbeta.versal.com/frontdoor"
+
+s3cdn_bucket:   'com.versal.beta.assets.testing'
 
 backend_static_servers:
   server1:
