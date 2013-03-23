@@ -19,6 +19,12 @@ username: ${username}
 
 salt_basedir: '/srv/cloudconf/salt'
 war_basedir:  'common/files/roles/war'
+db_dump:
+  location: '/root/mysql_dumpfile.sql'
+  url:      'api-beta-testing.c348djtkl0hn.us-west-2.rds.amazonaws.com'
+  db:       'api'
+  user:     'play'
+  pwd:      'replay'
 
 
 % if group is not None:
