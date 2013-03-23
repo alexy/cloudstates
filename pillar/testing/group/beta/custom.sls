@@ -8,7 +8,7 @@ include:
 s3war_bucket:    's3://net.vrsl.war'
 s3nodejs_bucket: 's3://net.vrsl.beta'
 
-# NB have to specify all keys, as the whole is overwritte!
+# NB have to specify all keys, as the whole is overwritten!
 war:
     api:  
       source:    api.testing.war
