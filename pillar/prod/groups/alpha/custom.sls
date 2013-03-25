@@ -45,4 +45,4 @@ haproxy_basic_auth:
   acl:       AuthOkay_Versal
   user_list: UsersFor_Versal
   users:
-    versal: allthingsd2013
+    versal: tobetaandbeyond2013
