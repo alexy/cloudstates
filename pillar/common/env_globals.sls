@@ -102,7 +102,9 @@ cron:
   nodejs:
     pull: '${every_ten_minutes}'
     push: '${two_minutes_after_every_ten}'
-  overstate:
+
+overstate_config:    
+  cron:
     api: '${every_ten_minutes}'
     lb:  '${every_ten_minutes}'
     default: '${every_ten_minutes}'
