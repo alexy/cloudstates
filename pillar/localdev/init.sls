@@ -7,7 +7,7 @@
 
 include:
   - common.env_globals
-  - localdev.salt_cloud_live_instances
-  - localdev.server_roles
-  - localdev.custom
+  - ${grains['environment']}.salt_cloud_live_instances
+  - ${grains['environment']}.server_roles
+  - ${grains['environment']}.custom
 

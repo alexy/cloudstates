@@ -31,7 +31,7 @@ base:
 # if not, load the environment init.sls
 % if environment in ['localdev', 'develop', 'staging', 'testing', 'prod']:
   % if group is not None:
-    - ${environment}.group.${group}
+    - ${environment}.groups.${group}
   % else:
     - ${environment}
   % endif

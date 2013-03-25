@@ -6,6 +6,5 @@
 # Newer keys OVERWRITE older keys.
 
 include:
-  - staging
-  - staging.group.mandrill.server_roles
-  - staging.group.mandrill.custom
+  - ${grains['environment']}
+  - ${grains['environment']}.groups.${grains['group']}.server_roles

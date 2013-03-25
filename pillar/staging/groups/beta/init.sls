@@ -7,5 +7,5 @@
 
 include:
   - ${grains['environment']}
-  - ${grains['environment']}.group.alpha.server_roles
-  - ${grains['environment']}.group.alpha.custom
+  - ${grains['environment']}.groups.${grains['group']}.server_roles
+  - ${grains['environment']}.groups.${grains['group']}.custom
