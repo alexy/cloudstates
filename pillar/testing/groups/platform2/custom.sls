@@ -12,7 +12,7 @@ war:
     api:  
       source:    platform2.war
       target:    api.war
-      dotversal: ${saltmine_tomcat7_homedir}/.versal-platform2
+      dotversal: ${saltmine_tomcat7_homedir}/.versal
       db_url:    api-beta-testing.c348djtkl0hn.us-west-2.rds.amazonaws.com/api
       db_user:   play
       db_pwd:    replay
