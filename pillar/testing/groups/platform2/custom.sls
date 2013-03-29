@@ -5,7 +5,7 @@ include:
 
 <% saltmine_tomcat7_homedir='/usr/share/tomcat7' %>
 
-s3war_bucket:    's3://com.versal.platform2'
+s3war_bucket:    's3://net.vrsl.war'
 
 # NB have to specify all keys, as the whole is overwritten!
 war:
@@ -13,8 +13,10 @@ war:
       source:    platform2.war
       target:    api.war
       dotversal: ${saltmine_tomcat7_homedir}/.versal
-      db_url:    api-beta-testing.c348djtkl0hn.us-west-2.rds.amazonaws.com/api
-      db_user:   play
-      db_pwd:    replay
+      db_url:    platform2.c348djtkl0hn.us-west-2.rds.amazonaws.com/platform2
+      db_user:   platform2
+      db_pwd:    plotzplotz
 
 api_key: SECRET
+
+s3cdn_bucket:   'com.versal.beta.assets.staging'
