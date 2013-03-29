@@ -15,7 +15,7 @@ max_open_files: 10000
 #    function: state.over
 #    minutes: 10
 
-worker_threads: 5
+worker_threads: 3
 pillar_opts: False
 
 failhard: False # if true, will stop salt execution after first failure.

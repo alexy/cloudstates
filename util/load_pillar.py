@@ -29,7 +29,7 @@ def environment_dir(environment):
   return base_dir() + environment + '/'
 
 def groups_top_dir(environment):
-  return environment_dir(environment) + 'group/'
+  return environment_dir(environment) + 'groups/'
 
 def groups_top_init(environment):
   return groups_top_dir(environment) + 'init.sls'
