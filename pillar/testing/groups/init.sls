@@ -12,4 +12,4 @@ domain: ${group}-${environment}.vrsl.net
 # active groups that will be managed by update-dns
 groups:
   - beta
-  - testing
+  - platform2
