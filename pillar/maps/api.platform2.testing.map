@@ -1,0 +1,73 @@
+testing_medium_region-0-0:
+- apple-region-0-0-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- banana-region-0-0-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- cherry-region-0-0-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- date-region-0-0-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- etrog-region-0-0-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+testing_medium_region-0-1:
+- fig-region-0-1-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- grape-region-0-1-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- huckleberry-region-0-1-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- indianalmond-region-0-1-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+- jasmine-region-0-1-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - api
+    master: mcp-testing.vrsl.net
+

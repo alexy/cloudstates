@@ -1,0 +1,9 @@
+testing_small_region-0-0:
+- agnon-region-0-0-platform2-testing.vrsl.net:
+    environment: testing
+    grains:
+      group: platform2
+      roles:
+      - lb
+    master: mcp-testing.vrsl.net
+
