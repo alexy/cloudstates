@@ -28,4 +28,12 @@ prod_medium_region-0-1:
       roles:
       - mysqlcluster
     master: mcp-prod.vrsl.net
+prod_medium_region-0-2:
+- earwig-region-0-2-common-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: common
+      roles:
+      - mysqlcluster
+    master: mcp-prod.vrsl.net
 

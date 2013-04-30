@@ -15,6 +15,7 @@ server_roles:
     instances:
       - {number: 2, region: 0, subregion: 0}
       - {number: 2, region: 0, subregion: 1}
+      - {number: 1, region: 0, subregion: 2}
 
   log:
     role: 'log'
