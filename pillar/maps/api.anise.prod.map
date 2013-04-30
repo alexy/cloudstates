@@ -1,0 +1,31 @@
+prod_medium_region-0-0:
+- apple-region-0-0-anise-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: anise
+      roles:
+      - api
+    master: mcp-prod.vrsl.net
+- banana-region-0-0-anise-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: anise
+      roles:
+      - api
+    master: mcp-prod.vrsl.net
+prod_medium_region-0-1:
+- cherry-region-0-1-anise-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: anise
+      roles:
+      - api
+    master: mcp-prod.vrsl.net
+- date-region-0-1-anise-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: anise
+      roles:
+      - api
+    master: mcp-prod.vrsl.net
+

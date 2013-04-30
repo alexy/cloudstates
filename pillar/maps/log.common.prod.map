@@ -1,0 +1,17 @@
+prod_medium_region-0-0:
+- aspen-region-0-0-common-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: common
+      roles:
+      - log
+    master: mcp-prod.vrsl.net
+prod_medium_region-0-1:
+- birch-region-0-1-common-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: common
+      roles:
+      - log
+    master: mcp-prod.vrsl.net
+

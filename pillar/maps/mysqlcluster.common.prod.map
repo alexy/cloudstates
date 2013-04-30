@@ -1,0 +1,31 @@
+prod_medium_region-0-0:
+- aphid-region-0-0-common-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: common
+      roles:
+      - mysqlcluster
+    master: mcp-prod.vrsl.net
+- bumblebee-region-0-0-common-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: common
+      roles:
+      - mysqlcluster
+    master: mcp-prod.vrsl.net
+prod_medium_region-0-1:
+- cricket-region-0-1-common-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: common
+      roles:
+      - mysqlcluster
+    master: mcp-prod.vrsl.net
+- dragonfly-region-0-1-common-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: common
+      roles:
+      - mysqlcluster
+    master: mcp-prod.vrsl.net
+

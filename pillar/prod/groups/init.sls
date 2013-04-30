@@ -14,4 +14,5 @@ groups:
   - alpha
   - beta
   - dmv
-  - dp
+  - anise
+  - common

@@ -1,28 +1,29 @@
 #!yaml
 
-# dmv prod group
+# prod group
 # Config settings for servers in the dmv group in this environment
 
 server_roles:
-  api:
-    role: 'api'
+  mysqlcluster:
+    role: 'mysqlcluster'
     size: 'medium'
     tenant: 'single'
     dns: 'dynamic'
     os: Ubuntu
     os-version: 12_04_LTS
-    group: dmv
+    group: common
     instances:
-      - {number: 1, region: 0, subregion: 0}
-      - {number: 1, region: 0, subregion: 1}
+      - {number: 2, region: 0, subregion: 0}
+      - {number: 2, region: 0, subregion: 1}
 
-  lb:
-    role: 'lb'
-    size: 'small'
+  log:
+    role: 'log'
+    size: 'medium'
     tenant: 'single'
     dns: 'dynamic'
     os: Ubuntu
     os-version: 12_04_LTS
-    group: dmv
-    instances: 
+    group: common
+    instances:
       - {number: 1, region: 0, subregion: 0}
+      - {number: 1, region: 0, subregion: 1}

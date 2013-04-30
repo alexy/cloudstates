@@ -72,4 +72,21 @@ server_names:
     - richmond
     - sacramento
     - tucson
-
+  mysqlcluster:
+    - aphid
+    - bumblebee
+    - cricket
+    - dragonfly
+    - earwig
+    - firefly
+    - grasshopper
+    - hornet
+  log:
+    - aspen
+    - birch
+    - cedar
+    - dogwood
+    - elm
+    - fir
+    - ginkgo
+    - hemlock
