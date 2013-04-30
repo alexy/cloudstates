@@ -16,4 +16,5 @@ war:
 
 api_key: SECRET
 
-#s3cdn_bucket:   'com.versal.beta.assets.staging'
+#TODO clean this up. arg why is this required? shouldn't be here.
+s3cdn_bucket:   'com.versal.beta.assets.staging'
