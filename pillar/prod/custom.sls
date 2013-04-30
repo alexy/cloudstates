@@ -5,4 +5,5 @@
 #    name: com.versal.web.s3-website-us-west-2.amazonaws.com
 #    dns:  com.versal.web.s3-website-us-west-2.amazonaws.com
 
-saltmine_xtradb_nodes:  {'1':'54.214.14.169', '2':'54.244.113.203', '3':'54.245.225.145', '4':'54.245.226.119'}
+saltmine_xtradb_nodes:  {'1':'aphid-region-0-0-common-prod.vrsl.net', '2':'bumblebee-region-0-0-common-prod.vrsl.net', '3':'cricket-region-0-1-common-prod.vrsl.net', '4':'dragonfly-region-0-1-common-prod.vrsl.net', '5':'earwig-region-0-2-common-prod.vrsl.net'}
+saltmine_xtradb_cluster_name: 'versal_common_prod_dbs'

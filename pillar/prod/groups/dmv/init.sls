@@ -7,4 +7,4 @@
 
 include:
   - ${grains['environment']}
-  - ${grains['environment']}.groups.dmv.server_roles
+  - ${grains['environment']}.groups.${grains['group']}.server_roles
