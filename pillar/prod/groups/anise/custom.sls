@@ -22,7 +22,7 @@ saltmine_tomcat7_webappsdir: ${saltmine_tomcat7_webappsdir}
 war:
     api:
       source:    ${war_customname}_usr-share-tomcat7-webapps_${roles}_${group}_${environment}
-      target:    ${saltmine_tomcat7_homedir}/${war_customname}
+      target:    ${saltmine_tomcat7_webappsdir}/${war_customname}
       dotversal_source: ${dotversal_fullname}_usr-share-tomcat7_${roles}_${group}_${environment}
       dotversal_target: ${saltmine_tomcat7_homedir}/${dotversal_customname} #name to manage
       context_xml_source: context.xml_var-lib-tomcat7-conf_${roles}_${group}_${environment}
