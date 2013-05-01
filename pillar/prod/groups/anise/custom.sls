@@ -9,8 +9,9 @@
   roles                     = grains['roles'][0] if 'roles' in grains else None
 
   war_customname            = 'platform2.war'
-  dotversal_customname      = 'versal-platform2'
-  dotversal_fullname        = 'dot'+dotversal_customname
+  dotversal_basename      = 'versal-platform2'
+  dotversal_customname      = '.'+dotversal_basename
+  dotversal_fullname        = 'dot'+dotversal_basename
 %>
 
 s3war_bucket:    's3://net.vrsl.anise.prod'
