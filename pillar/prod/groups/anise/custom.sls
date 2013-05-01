@@ -10,7 +10,7 @@
 
   war_customname            = 'platform2.war'
   dotversal_customname      = 'versal-platform2'
-  dotversal_s3name          = 'dot'+dotversal_customname
+  dotversal_s3name          = 'dotversal-platform2'
 %>
 
 s3war_bucket:    's3://net.vrsl.anise.prod'
