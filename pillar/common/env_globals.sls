@@ -7,6 +7,8 @@
 environment = grains['environment']
 group       = grains['group'] if 'group' in grains else None
 username    = 'ubuntu' if environment != 'localdev' else 'vagrant'
+
+saltmine_tomcat7_webappsdir = '/var/lib/tomcat7/webapps'
 %>
 
 provisioner: salt-cloud
@@ -41,11 +43,13 @@ domain: ${environment}.vrsl.net
 % endif
 
 s3war_bucket: 's3://net.vrsl.war'
+saltmine_tomcat7_webappsdir: ${saltmine_tomcat7_webappsdir}
+
 
 war:      
   api:
     source: api.${environment}.war
-    target: api.war
+    target: ${saltmine_tomcat7_webappsdir}/api.war
     context_xml_target: '/etc/tomcat7/context.xml'
 
 <%

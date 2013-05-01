@@ -2,7 +2,8 @@
 
 <% 
   saltmine_tomcat7_homedir  = '/usr/share/tomcat7'
-  saltmine_tomcat7_context  = '/var/lib/tomcat7/conf'
+  saltmine_tomcat7_webappsdir = '/usr/share/tomcat/webapps'
+
   environment               = grains['environment']
   group                     = grains['group'] if 'group' in grains else None
   roles                     = grains['roles'][0] if 'roles' in grains else None
@@ -12,6 +13,7 @@
 %>
 
 s3war_bucket:    's3://net.vrsl.anise.prod'
+saltmine_tomcat7_webappsdir: ${saltmine_tomcat7_webappsdir}
 
 
 # NB have to specify all keys, as the whole is overwritten!
