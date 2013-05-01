@@ -21,7 +21,7 @@ war:
       target:    ${saltmine_tomcat7_homedir}/${war_customname}
       dotversal_source: ${dotversal_customname}_${roles}_${group}_${environment}
       dotversal_target: ${saltmine_tomcat7_homedir}/${dotversal_customname} #name to manage
-      context_xml_source: context.xml_${roles}_${group}_${environment}
+      context_xml_source: context.xml_var-lib-tomcat7-conf_${roles}_${group}_${environment}
       context_xml_target: '/var/lib/tomcat7/conf/context.xml'
       db_url:    aphid-region-0-0-common-prod.vrsl.net/platform2
       db_user:   platform2
