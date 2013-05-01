@@ -41,10 +41,12 @@ domain: ${environment}.vrsl.net
 % endif
 
 s3war_bucket: 's3://net.vrsl.war'
+
 war:      
   api:
     source: api.${environment}.war
     target: api.war
+    context_xml_target: '/etc/tomcat7/context.xml'
 
 <%
 app_name='pb-express-site'
