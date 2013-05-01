@@ -25,7 +25,8 @@ war:
       context_xml_target: '/var/lib/tomcat7/conf/context.xml'
       db_url:    aphid-region-0-0-common-prod.vrsl.net/platform2
       db_user:   platform2
-      db_pwd:    '%k&9QQ#J6~#J6~4uS'
+      db_pwd:    |
+          %k&9QQ#J6~#J6~4uS
 
 api_key: SECRET
 
