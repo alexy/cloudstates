@@ -10,7 +10,7 @@
 
   war_customname            = 'platform2.war'
   dotversal_customname      = 'versal-platform2'
-  dotversal_s3name          = 'dotversal-platform2'
+  dotversal_fullname        = 'dot'+dotversal_customname
 %>
 
 s3war_bucket:    's3://net.vrsl.anise.prod'
@@ -22,7 +22,7 @@ war:
     api:
       source:    ${war_customname}_usr-share-tomcat7-webapps_${roles}_${group}_${environment}
       target:    ${saltmine_tomcat7_homedir}/${war_customname}
-      dotversal_source: ${dotversal_s3name}_${roles}_${group}_${environment}
+      dotversal_source: ${dotversal_customname}_${roles}_${group}_${environment}
       dotversal_target: ${saltmine_tomcat7_homedir}/${dotversal_customname} #name to manage
       context_xml_source: context.xml_var-lib-tomcat7-conf_${roles}_${group}_${environment}
       context_xml_target: '/var/lib/tomcat7/conf/context.xml'
@@ -34,4 +34,3 @@ api_key: SECRET
 
 #TODO clean this up. arg why is this required? shouldn't be here.
 s3cdn_bucket:   'com.versal.beta.assets.staging'
-/var/lib/tomcat7/conf/server.xml
