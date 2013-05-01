@@ -5,7 +5,7 @@
   saltmine_tomcat7_context  = '/var/lib/tomcat7/conf'
   environment               = grains['environment']
   group                     = grains['group'] if 'group' in grains else None
-  roles                     = grains['roles'] if 'roles' in grains else None
+  roles                     = grains['roles'][0] if 'roles' in grains else None
 
   war_customname            = 'platform2.war'
   dotversal_customname      = '.versal-platform2'
