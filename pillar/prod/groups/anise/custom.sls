@@ -16,6 +16,7 @@
 
 s3war_bucket:    's3://net.vrsl.anise.prod'
 saltmine_tomcat7_webappsdir: ${saltmine_tomcat7_webappsdir}
+war_customname: ${war_customname}
 
 
 # NB have to specify all keys, as the whole is overwritten!
