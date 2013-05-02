@@ -2,7 +2,7 @@
 
 <% 
   saltmine_tomcat7_homedir  = '/usr/share/tomcat7'
-  saltmine_tomcat7_webappsdir = '/var/lib/tomcat7/webapps/'
+  saltmine_tomcat7_webappsdir = '/var/lib/tomcat7/webapps'
 
   environment               = grains['environment']
   group                     = grains['group'] if 'group' in grains else None
