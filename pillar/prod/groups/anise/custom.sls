@@ -8,7 +8,7 @@
   group                     = grains['group'] if 'group' in grains else None
   roles                     = grains['roles'][0] if 'roles' in grains else None
 
-  war_customname            = 'platform2.war'
+  war_customname            = 'api2.war'
   dotversal_basename      = 'versal-platform2'
   dotversal_customname      = '.'+dotversal_basename
   dotversal_fullname        = 'dot'+dotversal_basename
