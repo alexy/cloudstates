@@ -1,0 +1,17 @@
+prod_medium_region-0-0:
+- acdc-region-0-0-anise-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: anise
+      roles:
+      - static
+    master: mcp-prod.vrsl.net
+prod_medium_region-0-1:
+- blacksabbath-region-0-1-anise-prod.vrsl.net:
+    environment: prod
+    grains:
+      group: anise
+      roles:
+      - static
+    master: mcp-prod.vrsl.net
+
