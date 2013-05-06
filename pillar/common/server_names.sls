@@ -90,3 +90,29 @@ server_names:
     - fir
     - ginkgo
     - hemlock
+  static:
+    - acdc
+    - blacksabbath
+    - cheaptrick
+    - defleppard
+    - elo
+    - faithnomore
+    - gunsnroses
+    - hawkwind
+    - ironmaiden
+    - judaspriest
+    - kiss
+    - ledzeppelin
+    - motorhead
+    - nineinchnails
+    - ozzyosbourne
+    - pinkfloyd
+    - queen
+    - rush
+    - scorpions
+    - twistedsister
+    - uriahheep
+    - vanhalen
+    - whitezombie
+
+
