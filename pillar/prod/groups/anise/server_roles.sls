@@ -1,7 +1,7 @@
 #!yaml
 
-# dmv prod group
-# Config settings for servers in the dmv group in this environment
+# anise prod group
+# Config settings for servers in the anise group in this environment
 
 server_roles:
   api:
@@ -18,6 +18,18 @@ server_roles:
 
   lb:
     role: 'lb'
+    size: 'medium'
+    tenant: 'single'
+    dns: 'dynamic'
+    os: Ubuntu
+    os-version: 12_04_LTS
+    group: anise
+    instances: 
+      - {number: 1, region: 0, subregion: 0}
+      - {number: 1, region: 0, subregion: 1}
+
+  static:
+    role: 'static'
     size: 'medium'
     tenant: 'single'
     dns: 'dynamic'
