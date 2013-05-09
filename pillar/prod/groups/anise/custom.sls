@@ -28,6 +28,8 @@ war:
       dotversal_target: ${saltmine_tomcat7_homedir}/${dotversal_customname} #name to manage
       context_xml_source: context.xml_var-lib-tomcat7-conf_${roles}_${group}_${environment}
       context_xml_target: '/var/lib/tomcat7/conf/context.xml'
+      api_config_source: 'dotversal-versal-rest-api-config_usr-share-tomcat7_api_anise_prod'
+      api_config_target: ${saltmine_tomcat7_homedir}/.versal-rest-api-config
       db_url:    aphid-region-0-0-common-prod.vrsl.net/platform2
       db_user:   platform2
       db_pwd: 'k&9QQ#J6~#J6~4uS'
