@@ -60,6 +60,8 @@ base_dir='/home/' + username
 ## App Version Settings
 saltmine_boto_version:   '2.7.0'
 
+## rsyslog settings
+saltmine_rsyslog_server_address: 'aspen-region-0-0-common-prod.vrsl.net'
 
 ## haproxy basic auth
 haproxy_basic_auth:
