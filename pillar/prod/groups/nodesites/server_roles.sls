@@ -3,7 +3,7 @@
 # Config settings for servers in the group in this environment
 
 server_roles:
-  api:
+  nodejs:
     role: 'nodejs'
     size: 'large'
     tenant: 'single'
