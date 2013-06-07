@@ -51,10 +51,12 @@ server_names:
   auth:
     - zebra
     - yak
+
   nodejs:
+  # awesome cities
     - anchorage
-    - baltimore
-    - cincinnati
+    - berkeley
+    - cleveland
     - denver
     - elcerrito
     - fresno
@@ -72,7 +74,9 @@ server_names:
     - richmond
     - sacramento
     - tucson
+
   mysqlcluster:
+  # bugs
     - aphid
     - bumblebee
     - cricket
