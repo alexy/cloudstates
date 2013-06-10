@@ -14,11 +14,27 @@
   # dotversal_fullname        = 'dot'+dotversal_basename
 %>
 
-node_bundle:    alpha-express-site-prod.tar.bz2
+
+##---- Unused -----
+#
+node_bundle:    pb-express-site-prod.tar.bz2
+# endpoints
+node_site_url:   "http://testing.versal.com"
 node_api_url:   "http://alpha.versal.com/api"
-node_auth_url:  "http://alpha.versal.com/frontdoor"
+#
+##-----------------
 
 api_key: SECRET
+
+#database
+node_db_url:    aphid-region-0-0-common-prod.vrsl.net/platform2
+node_db_user:   nodesites
+node_db_pwd: 'jech7wez'
+
+#memcache
+node_memcache_url: 'nodesites-prod.tbbxfu.0001.usw2.cache.amazonaws.com'
+node_memcache_port: '11211'
+
 
 # #TODO clean this up. arg why is this required? shouldn't be here.
 # s3cdn_bucket:   'com.versal.beta.assets.staging'

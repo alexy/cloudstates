@@ -73,7 +73,7 @@ haproxy_basic_auth:
 
 ## node.js
 
-saltmine_nodejs_version: '0.10.0'
+saltmine_nodejs_version: '0.10.10'
 
 s3nodejs_bucket: 's3://net.vrsl.beta'
 war:      
