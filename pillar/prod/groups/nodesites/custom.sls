@@ -22,4 +22,3 @@ node_auth_url:  "http://alpha.versal.com/frontdoor"
 
 # #TODO clean this up. arg why is this required? shouldn't be here.
 # s3cdn_bucket:   'com.versal.beta.assets.staging'
-%>
