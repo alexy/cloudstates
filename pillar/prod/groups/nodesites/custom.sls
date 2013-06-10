@@ -18,7 +18,7 @@ node_bundle:    alpha-express-site-prod.tar.bz2
 node_api_url:   "http://alpha.versal.com/api"
 node_auth_url:  "http://alpha.versal.com/frontdoor"
 
-# api_key: SECRET
+api_key: SECRET
 
 # #TODO clean this up. arg why is this required? shouldn't be here.
 # s3cdn_bucket:   'com.versal.beta.assets.staging'
