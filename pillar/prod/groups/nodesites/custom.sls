@@ -27,8 +27,8 @@ node_api_url:   "http://alpha.versal.com/api"
 api_key: SECRET
 
 #database
-node_db_url:    aphid-region-0-0-common-prod.vrsl.net/platform2
-node_db_user:   nodesites
+node_db_url:    'nodesites-prod.c348djtkl0hn.us-west-2.rds.amazonaws.com'
+node_db_user:   'nodesites'
 node_db_pwd: 'jech7wez'
 
 #memcache
