@@ -26,6 +26,9 @@ node_api_url:   "http://alpha.versal.com/api"
 
 api_key: SECRET
 
+#ports
+node_app_port: '3001'
+
 #database
 node_db_url:    'nodesites-prod.c348djtkl0hn.us-west-2.rds.amazonaws.com'
 node_db_user:   'nodesites'
