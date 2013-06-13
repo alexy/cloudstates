@@ -30,3 +30,13 @@ pillar_roots:
   base:
     - /srv/saltmine
     - /srv/cloudstate/pillar
+
+client_acl:
+  root:
+    - .*
+  deploy:
+    - '*nodesites*':
+      - .*
+    - '*mcp*':
+      - s3.get
+      - test.ping
