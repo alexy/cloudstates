@@ -1,6 +1,6 @@
 # /etc/salt/cloud
 
-log_level: debug
+#log_level: debug
 
 # Set up the location of the salt master
 ## renderer: mako_yaml
@@ -10,15 +10,17 @@ log_level: debug
 ## AWS-Specific Setup
 
 # Set the AWS login data
-AWS.id: 'AKIAI432PQQEY2TABA7A'
-AWS.key: '5XPJ2TCdQ6kUuAd/SPr2yJJCz/80pQBkHKqsm5jc'
-AWS.keyname: 'versal1or'
-AWS.rename_on_destroy: True
- Put security groups Here
-AWS.securitygroup: 
-  - versal
-
-AWS.private_key: /root/keys/versal1or.pem
+my-aws-migrated-config:
+  - id: 'AKIAJNLXNR2IBSDBT7VQ'
+    key: 'hggLtXLDtiKpEXvVI6S9xsPIs5NB+MgpiN5B23Lc'
+    keyname: 'newversal1or'
+    rename_on_destroy: True
+    #Put security groups Here
+    securitygroup: versal
+    private_key: /root/keys/newversal1or.pem
+    provider: ec2
+    location: us-west-2
+    availability_zone: us-west-2b
 
 #EC2.id: 'AKIAI432PQQEY2TABA7A'
 #EC2.key: '5XPJ2TCdQ6kUuAd/SPr2yJJCz/80pQBkHKqsm5jc'
@@ -27,20 +29,20 @@ AWS.private_key: /root/keys/versal1or.pem
 #EC2.private_key: /root/keys/versal1or.pem
 
 # Set up an optional default cloud provider
-provider: aws
-
-# Optionally configure default region
-AWS.location: us-west-2
-AWS.availability_zone: us-west-2b
-
-# Specify whether to use public or private IP for deploy script 
-# private_ips or public_ips
-# https://github.com/saltstack/salt-cloud/pull/18
-
-# AWS.ssh_interface: public_ips
-AWS.ssh_interface: private_ips
-
-# Configure which user to use to run the deploy script
-AWS.ssh_username: 
-  - ubuntu
-  - ec2-user  
+#provider: ec2
+#
+## Optionally configure default region
+#AWS.location: us-west-2
+#AWS.availability_zone: us-west-2b
+#
+## Specify whether to use public or private IP for deploy script 
+## private_ips or public_ips
+## https://github.com/saltstack/salt-cloud/pull/18
+#
+## AWS.ssh_interface: public_ips
+#AWS.ssh_interface: private_ips
+#
+## Configure which user to use to run the deploy script
+#AWS.ssh_username: 
+#  - ubuntu
+#  - ec2-user  

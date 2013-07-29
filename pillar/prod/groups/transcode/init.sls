@@ -8,5 +8,4 @@
 include:
   - ${grains['environment']}
   - ${grains['environment']}.groups.${grains['group']}.server_roles
-  - ${grains['environment']}.groups.${grains['group']}.custom
-#  - ${grains['environment']}.groups.${grains['group']}.custom-preview
+

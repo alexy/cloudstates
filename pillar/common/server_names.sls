@@ -63,6 +63,7 @@ server_names:
     - graceland
     - hicksville
     - indianapolis
+    - inspector
     - jamestown
     - kansascity
     - london

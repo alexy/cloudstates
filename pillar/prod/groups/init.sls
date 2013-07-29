@@ -17,3 +17,5 @@ groups:
   - anise
   - common
   - nodesites
+  - versalorg
+  - scoreup

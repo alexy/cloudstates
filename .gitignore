@@ -1,3 +1,6 @@
 *.pyc
 salt-cloud.sls
 *live_instances.sls
+*.war
+*.tar*
+*.map
