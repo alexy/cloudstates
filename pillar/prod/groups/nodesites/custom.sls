@@ -25,17 +25,13 @@ node_api_url:   "http://alpha.versal.com/api"
 ##-----------------
 
 api_key: SECRET
-## URLs
-<%
-    % if ${environment} == 'staging':
-        siteUrl = 'http://staging.versal.com'
-        apiUrl = 'https://stagingstack.versal.com/api2'
-        playerUrl = 'https://stagingstack.versal.com/player2'
-    % else:
-        siteUrl = 'http://versal.com'
-        apiUrl = 'https://stack.versal.com/api2'
-        playerUrl = 'https://stack.versal.com/player2'
-%>
+# URLs
+
+siteUrl: 'https://versal.com'
+apiUrl: 'https://stack.versal.com/api2'
+playerUrl: 'https://stack.versal.com/player2'
+timerPrefix: 'versal.com'
+
 #ports
 node_app_port: '3001'
 ## mailer block settings
