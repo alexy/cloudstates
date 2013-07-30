@@ -20,6 +20,7 @@ my-aws-migrated-config:
     private_key: /root/keys/newversal1or.pem
     provider: ec2
     location: us-west-2
+    ssh_username: ubuntu
     availability_zone: us-west-2b
 
 #EC2.id: 'AKIAI432PQQEY2TABA7A'
