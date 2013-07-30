@@ -71,9 +71,10 @@ def generate_role(p, role):
         'master': p['salt_master'],
         'grains': {
           'group': p['group'],
-          'roles': [server_group['role']]
+          'roles': [server_group['role']],
+          'environment': environment,
+          'id': instance_name
           }, 
-        'environment': environment
       }
 
       instance_list.append({instance_name: instance_props})
