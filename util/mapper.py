@@ -31,7 +31,7 @@ def generate_cloud_profiles(p, envs, os_name="Ubuntu", os_version="12_04_LTS"):
           image          = p['cloud_images'][provider][os_name][os_version][location]
           instance_size  = p['instance_kinds'][instance_kind][provider]
 
-          minion = deepcopy(p['minion']) # NB otherwise pyyaml created &id001 reference 
+          minion = deepcopy(p['minion']) # NB otherwise pyyaml created &id001 reference
           # to the subarray in the first map,
           # and referenced it as *id001 in every subsequent map!
 
@@ -74,7 +74,11 @@ def generate_role(p, role):
           'roles': [server_group['role']],
           'environment': environment,
           'id': instance_name
+<<<<<<< HEAD
           }, 
+=======
+          },
+>>>>>>> 4b62a251ae270b0c14cf8bd40f76059db224b127
       }
 
       instance_list.append({instance_name: instance_props})
@@ -110,15 +114,15 @@ def generate_group_instances(pillarOpt=None, rolesOpt=None, environment=None, gr
         instance_props = {'location': location, 'roles': role}
         # TODO if we have multiple roles per instance,
         # the instance name key may have been already present
-        # and we'd need to 
-        # (1) validate location equality and 
+        # and we'd need to
+        # (1) validate location equality and
         # (2) merge the roles into an array
         r[instance_name] = instance_props
   return r
 
 def generate_environment_instances(environment):
   # TODO error well if the key is missing!
-  group_init_path = groups_top_init(environment) 
+  group_init_path = groups_top_init(environment)
   group_init = load_mako_yaml(group_init_path, environment)
   print group_init
   groups = group_init['groups']
