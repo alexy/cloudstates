@@ -27,17 +27,10 @@ node_api_url:   "http://alpha.versal.com/api"
 api_key: SECRET
 ## URLs
 
-#% if environment=='staging':
 siteUrl: 'http://staging.versal.com'
 apiUrl: 'https://stagingstack.versal.com/api2'
 playerUrl: 'https://stagingstack.versal.com/player2'
 timerPrefix: 'staging.versal.com'
-#% else:
-#  siteUrl: 'http://versal.com'
-#  apiUrl: 'https://stack.versal.com/api2'
-#  playerUrl: 'https://stack.versal.com/player2'
-#  timerPrefix: 'versal.com'
-#% endif
 
 #ports
 node_app_port: '3001'
@@ -59,7 +52,8 @@ node_db_pwd: 'jech7wez'
 #memcache
 node_memcache_url: 'nodesites-prod.tbbxfu.0001.usw2.cache.amazonaws.com'
 node_memcache_port: '11211'
-
+<%! from time import strftime as time %>
+cachePrefix: 'staging_${"%s" | time}'
 
 # #TODO clean this up. arg why is this required? shouldn't be here.
 # s3cdn_bucket:   'com.versal.beta.assets.staging'
