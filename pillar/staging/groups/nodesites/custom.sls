@@ -25,6 +25,14 @@ node_api_url:   "http://alpha.versal.com/api"
 ##-----------------
 
 api_key: SECRET
+adminIDs: '[
+  "38211",
+  "38276",
+  "38351",
+  "38366",
+  "111051",
+  "118516"
+]'
 ## URLs
 
 siteUrl: 'http://staging.versal.com'
