@@ -35,7 +35,7 @@ adminIDs: '[
 ]'
 ## URLs
 
-siteUrl: 'http://staging.versal.com'
+siteUrl: 'https://staging.versal.com'
 apiUrl: 'https://stagingstack.versal.com/api2'
 playerUrl: 'https://stagingstack.versal.com/player2'
 timerPrefix: 'staging.versal.com'
